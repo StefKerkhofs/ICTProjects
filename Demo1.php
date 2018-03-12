@@ -6,5 +6,5 @@
  * Time: 14:39
  */
 phpinfo();
-echo "Hello";
+echo "Hello2";
 
