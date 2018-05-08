@@ -8,14 +8,9 @@
     <title>App Name - @yield('title')</title>
 </head>
 <body>
-@section('userMenu')
-@show
-@section('mainMenu')
-@show
-
-@section('sidebar')
-@show
-
+    @include('admin.layout.userHeader')
+    @include('admin.layout.header')
+    @include('admin.layout.sidebar')
 <div class="container">
     @yield('content')
 </div>
