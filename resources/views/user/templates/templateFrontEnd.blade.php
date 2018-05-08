@@ -8,9 +8,9 @@
 </head>
 <body>
 @section('userbar')
-    @include('layouts.userbar')
+    @include('user.layout.userbar')
 @section('headbar')
-    @include('layouts.headbar')
+    @include('user.layout.headbar')
 @show
 
 <div class="container">
