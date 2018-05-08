@@ -1,0 +1,1 @@
+<div class="fixed-bottom">Dit is de footer van de site.</div>
