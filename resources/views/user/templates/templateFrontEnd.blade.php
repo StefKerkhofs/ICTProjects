@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Template @yield('title')</title>
+    <title>Template @section('title')</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('css/template.css')}}" rel="stylesheet">
 </head>
@@ -14,7 +14,7 @@
 @show
 
 <div class="container">
-    @yield('content')
+    @section('content')
 </div>
 </body>
 </html>
