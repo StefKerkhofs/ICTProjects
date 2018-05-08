@@ -1,7 +1,7 @@
 <nav class=" navbar-expand-lg navbar-expand-md navbar-expand-sm headbar">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <img src="{{asset("/image/ucll_3493.png")}}" alt="ucll logo" height="75" width="150"/>
+        <img src="{{asset("/image/ucll_3493.png")}}" alt="ucll logo" height="55" width="120"/>
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">

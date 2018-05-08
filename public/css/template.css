@@ -1,13 +1,13 @@
 * {
     font-family: "Aleo", "Arial", "Helvetica", "sans-serif";
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0px;
     overflow: hidden;
 }
 
@@ -55,4 +55,21 @@ nav.userbar a:hover {
 .right {
     display: inline;
     float: right;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    background-color: #95c8da;
+    color: #003469;
+    text-align: center;
+}
+
+.footer p {
+    margin: 15px;
 }

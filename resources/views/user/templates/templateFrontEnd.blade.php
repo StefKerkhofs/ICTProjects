@@ -16,5 +16,10 @@
 <div class="container">
     @section('content')
 </div>
+
+<div class="footer">
+    @section('footer')
+        @include('user.layout.footer')
+</div>
 </body>
 </html>
