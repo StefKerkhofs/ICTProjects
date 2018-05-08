@@ -1,0 +1,58 @@
+* {
+    font-family: "Aleo", "Arial", "Helvetica", "sans-serif";
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+li {
+    margin: 0px 10px;
+}
+
+li:hover {
+}
+
+li a {
+    display: block;
+}
+
+li a:hover {
+    background-color: #003469;
+    color: #e00049;
+}
+
+nav.headbar {
+    background-color: #e00049;
+    font-size: 1.75em;
+}
+
+nav.userbar {
+    background-color: #003469;
+    font-size: 1.5em;
+}
+
+nav.headbar a {
+    text-transform: uppercase;
+}
+
+nav.userbar a:hover {
+    background-color: #e00049;
+    color: #003469;
+}
+
+.right {
+    display: inline;
+    float: right;
+}

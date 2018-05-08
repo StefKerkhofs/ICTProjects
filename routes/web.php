@@ -19,3 +19,11 @@ Route::get('/', function () {
  */
 Route::get('/admin/info', 'AdminInfoController@getInfo');
 Route::post('/admin/info', 'AdminInfoController@updateInfo');
+
+/**
+ *  Front end pages
+ */
+
+Route::get('/template', function () {
+    return view('user.templates.templateFrontEnd');
+});
