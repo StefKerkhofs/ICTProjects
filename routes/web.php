@@ -19,3 +19,5 @@ Route::get('/', function () {
  */
 Route::get('/admin/info', 'AdminInfoController@getInfo');
 Route::post('/admin/info', 'AdminInfoController@updateInfo');
+Route::get('/admin/trip', 'TripController@getTrips');
+Route::get('/admin/editTrip', 'TripController@createTrip');
