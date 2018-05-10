@@ -20,4 +20,7 @@ Route::get('/', function () {
 Route::get('/admin/info', 'AdminInfoController@getInfo');
 Route::post('/admin/info', 'AdminInfoController@updateInfo');
 Route::get('/admin/trip', 'TripController@getTrips');
-Route::get('/admin/editTrip', 'TripController@createTrip');
+Route::get('/admin/editTrip/', 'TripController@editTripForm');
+Route::get('/admin/editTrip/{trip_id?}', 'TripController@editTripForm');
+Route::get('/admin/editTripForm/', 'TripController@editTrip');
+Route::post('/admin/createTripForm/', 'TripController@createTrip');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Trip;
+use App\Trip;
 
 /**
  * Class TripController
@@ -35,15 +35,42 @@ class TripController extends Controller
      * @return bool $bSucces
      * @return view $oTripView
      */
-    public function createTrip()
+    public function createTrip(Request $request)
     {
-        return view('admin.TripForm');
-    }
+        $sName = $request->post('sNameTrip');
+        $iYear = $request->post('iYearTrip');
+        $iPrice = $request->post('iPriceTrip');
+        $bActive = $request->post('bActive');
+        if($bActive == true)
+        {
+            $bActive = 1;
+        }else
+            {
+                $bActive = 0;
+            }
+        Trip::insert(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
+        return view('admin.trip');    }
     /**
      * @param Trip $trip
      */
+    public function editTripForm($trip_id = null)
+    {
+        if($trip_id == null){
+            return view('admin.TripForm',array('oFormValues', null));
+        }
+        $oFormValues = Trip::where('trip_id', $trip_id)->first();
+        return view('admin.TripForm', array(
+            'oFormValues' => $oFormValues,
+        ));
+    }
     public function editTrip(Request $request)
     {
-        return redirect('admin/trips');
+        $sName = $request->post('sNameTrip');
+        $iYear = $request->post('iYearTrip');
+        $iPrice = $request->post('iPriceTrip');
+        $bActive = $request->post('bActive');
+        Trip::where('name', 'sNameTrip')->update(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
+        return view('admin.trip');
+
     }
 }
