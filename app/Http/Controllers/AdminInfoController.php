@@ -25,9 +25,9 @@ class AdminInfoController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getInfo(){
-        $oPageContent = Page::where('page_name', 'Info')->get();
+        $oPageContent = Page::where('page_name', 'Info')->first();
         return view('admin.info', array(
-            'oPageContent' => $oPageContent[0],
+            'oPageContent' => $oPageContent,
         ));
     }
 
