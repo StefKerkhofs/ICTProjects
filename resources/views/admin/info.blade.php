@@ -1,9 +1,10 @@
 @extends('admin.templates.templateBackend')
 @section('content')
-<p>{{ $oPageContent }}</p>
 {{ Form::open(array('action' => 'AdminInfoController@updateInfo', 'method' => 'post')) }}
-    {{ Form::label('content', 'Page Content') }}
     {{ Form::textArea('content', $oPageContent->page_content) }}
-    {{ Form::submit('Update') }}
+    <div class="actions">
+        {{ Form::submit('Opslaan') }}
+        <input type="button" onclick="history.go(0)" value="Annuleren"/>
+    </div>
 {{ Form::close() }}
     @endsection
