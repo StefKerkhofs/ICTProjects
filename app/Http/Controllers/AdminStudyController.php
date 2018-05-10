@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\major;
 use App\Page;
+use App\Study;
 use Illuminate\Http\Request;
 
 /**
@@ -22,4 +24,45 @@ class AdminStudyController extends Controller
      * @author Stef Kerkhofs
      * @since 2018-05-08
      */
+
+    public function getList(){
+
+
+        $aMajorData = Major::get();
+        $aStudyData = Study::get();
+
+
+
+        return view("admin.study.overview", array(
+            'aMajorData' => $aMajorData,
+            'aStudyData' => $aStudyData
+        ));
+
 }
+    /**
+     *addStudy()
+     * Adds a new study in the list of studies
+     *
+     * @author Stef Kerkhofs
+     * @since 2018-05-10
+     */
+
+    public function addStudy(){
+    
+
+
+    }
+
+    /**
+     *addMajor()
+     * Adds a new major in the list of majors attached to a study
+     *
+     * @author Stef Kerkhofs
+     * @since 2018-05-10
+     */
+
+    public function addMajor(){
+
+    }
+}
+

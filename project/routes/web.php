@@ -14,12 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-/**
- * Admin page routes
- */
-Route::get('/admin/info', 'AdminInfoController@getInfo');
-Route::post('/admin/info', 'AdminInfoController@updateInfo');
-
-
-Route::get('/admin/study', 'AdminStudyController@getList');
-
