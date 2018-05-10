@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  * @author Nico Schelfhout
  */
-
 class AdminZipController extends Controller
 {
     /**
@@ -41,6 +40,6 @@ class AdminZipController extends Controller
      *
      */
     public function addTown($iZipCode, $sTownName){
-
+        return view("admin.zip.add");
     }
 }
