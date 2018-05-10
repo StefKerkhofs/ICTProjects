@@ -13,7 +13,8 @@ use App\Trip;
 
 class TripController extends Controller
 {
-    /**
+    /**@description
+     * getTrips gets all the current trips in the database and returns them in view trip
      * function getTrips()
      * @return array $aTrips
      */
@@ -27,13 +28,10 @@ class TripController extends Controller
      * function createTrip()
      *
      * @description
-     * @param string $sName
-     * @param int $iYear
-     * @param int $iPrice
-     * @param bool $bActive
+     * createTrip adds a new trip to the database
+     * @param request $request
      *
-     * @return bool $bSucces
-     * @return view $oTripView
+     * @return view trip
      */
     public function createTrip(Request $request)
     {
@@ -69,6 +67,13 @@ class TripController extends Controller
         $iYear = $request->post('iYearTrip');
         $iPrice = $request->post('iPriceTrip');
         $bActive = $request->post('bActive');
+        if($bActive == true)
+        {
+            $bActive = 1;
+        }else
+        {
+            $bActive = 0;
+        }
         Trip::where('name', 'sNameTrip')->update(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
         return view('admin.trip');
 
