@@ -17,12 +17,14 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('page_name');
             $table->string('page_content');
+            $table->string('page_type');
             $table->timestamps();
         });
 
         DB::table('pages')->insert(array(
             'page_name' => 'Info',
             'page_content' => '',
+            'page_type' => 'html',
         ));
     }
 
