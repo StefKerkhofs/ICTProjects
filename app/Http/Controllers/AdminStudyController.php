@@ -48,8 +48,13 @@ class AdminStudyController extends Controller
      */
 
     public function addStudy(){
-    
 
+
+        $aStudyData = Study::get();
+
+        return view("admin.study.overview", array(
+            'aStudyData' => $aStudyData
+        ));
 
     }
 
@@ -62,7 +67,12 @@ class AdminStudyController extends Controller
      */
 
     public function addMajor(){
+        $aMajorData = Major::get();
 
+
+        return view("admin.study.overview", array(
+            'aMajorData' => $aMajorData
+        ));
     }
 }
 

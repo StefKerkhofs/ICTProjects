@@ -22,4 +22,6 @@ Route::post('/admin/info', 'AdminInfoController@updateInfo');
 
 
 Route::get('/admin/study', 'AdminStudyController@getList');
+Route::post('/admin/study', 'AdminStudyController@addStudy');
+Route::post('/admin/study', 'AdminStudyController@addMajor');
 
