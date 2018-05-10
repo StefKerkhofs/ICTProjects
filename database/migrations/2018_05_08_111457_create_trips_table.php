@@ -18,7 +18,8 @@ class CreateTripsTable extends Migration
             $table->string('name');
             $table->integer('year');
             $table->integer('price');
-            $table->tinyInteger('is_active');
+            $table->boolean('is_active');
+            $table->timestamps();
         });
 
         DB::table('trips')->insert(array(

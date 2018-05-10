@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Trip;
+use App\Trip;
 
 /**
  * Class TripController
@@ -13,7 +13,8 @@ use app\Trip;
 
 class TripController extends Controller
 {
-    /**
+    /**@description
+     * getTrips gets all the current trips in the database and returns them in view trip
      * function getTrips()
      * @return array $aTrips
      */
@@ -27,23 +28,54 @@ class TripController extends Controller
      * function createTrip()
      *
      * @description
-     * @param string $sName
-     * @param int $iYear
-     * @param int $iPrice
-     * @param bool $bActive
+     * createTrip adds a new trip to the database
+     * @param request $request
      *
-     * @return bool $bSucces
-     * @return view $oTripView
+     * @return view trip
      */
-    public function createTrip()
+    public function createTrip(Request $request)
     {
-        return view('admin.TripForm');
-    }
+        $sName = $request->post('sNameTrip');
+        $iYear = $request->post('iYearTrip');
+        $iPrice = $request->post('iPriceTrip');
+        $bActive = $request->post('bActive');
+        if($bActive == true)
+        {
+            $bActive = 1;
+        }else
+            {
+                $bActive = 0;
+            }
+        Trip::insert(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
+        return view('admin.trip');    }
     /**
      * @param Trip $trip
      */
+    public function editTripForm($trip_id = null)
+    {
+        if($trip_id == null){
+            return view('admin.TripForm',array('oFormValues', null));
+        }
+        $oFormValues = Trip::where('trip_id', $trip_id)->first();
+        return view('admin.TripForm', array(
+            'oFormValues' => $oFormValues,
+        ));
+    }
     public function editTrip(Request $request)
     {
-        return redirect('admin/trips');
+        $sName = $request->post('sNameTrip');
+        $iYear = $request->post('iYearTrip');
+        $iPrice = $request->post('iPriceTrip');
+        $bActive = $request->post('bActive');
+        if($bActive == true)
+        {
+            $bActive = 1;
+        }else
+        {
+            $bActive = 0;
+        }
+        Trip::where('name', 'sNameTrip')->update(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
+        return view('admin.trip');
+
     }
 }
