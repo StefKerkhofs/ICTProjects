@@ -1,4 +1,4 @@
-@extends('admin.templates.templateBackend')
+@extends('admin.main')
 @section('content')
 <style>
     #content-left
@@ -16,6 +16,33 @@
 
 
 </style>
+
+<table>
+    <thead>
+    <tr>
+        <th>Richtingen</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($aStudyData as $oStudyData)
+    <tr>
+        <td>{{ $oStudyData->study_name }}</td>
+    </tr>
+    @endforeach
+    </tbody>
+    <tfoot>
+    <tr>
+        <td class="row">
+            <div class="col-9">
+                <input type="text" class="form-control"/>
+            </div>
+            <div class="col-3">
+                <button type="submit" class="form-control">+</button>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
 <div id="content-left">
     <table id="studyTable">
         <thead>

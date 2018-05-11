@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Trip;
 
 /**
- * Class TripController
+ * Class AdminTripController
  * @package App\Http\Controllers
  * @author Sasha Van de Voorde
  */
 
-class TripController extends Controller
+class AdminTripController extends Controller
 {
     /**@description
      * getTrips gets all the current trips in the database and returns them in view trip
@@ -21,7 +21,7 @@ class TripController extends Controller
     public function getTrips()
     {
         $oTripContent = Trip::get();
-        return view('admin.trip',array('oTripContent' => $oTripContent));
+        return view('admin.trip.trip',array('oTripContent' => $oTripContent));
     }
 
     /**
@@ -47,17 +47,17 @@ class TripController extends Controller
                 $bActive = 0;
             }
         Trip::insert(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
-        return view('admin.trip');    }
+        return view('admin.trip.trip');    }
     /**
      * @param Trip $trip
      */
     public function editTripForm($trip_id = null)
     {
         if($trip_id == null){
-            return view('admin.TripForm',array('oFormValues', null));
+            return view('admin.trip.TripForm',array('oFormValues', null));
         }
         $oFormValues = Trip::where('trip_id', $trip_id)->first();
-        return view('admin.TripForm', array(
+        return view('admin.trip.TripForm', array(
             'oFormValues' => $oFormValues,
         ));
     }
@@ -75,7 +75,7 @@ class TripController extends Controller
             $bActive = 0;
         }
         Trip::where('name', 'sNameTrip')->update(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
-        return view('admin.trip');
+        return view('admin.trip.trip');
 
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.templates.templateBackend')
+@extends('admin.main')
 @section('content')
 {{ Form::open(array('action' => 'AdminInfoController@updateInfo', 'method' => 'post')) }}
     {{ Form::textArea('content', $oPageContent->page_content, ['class' => 'form-control']) }}
@@ -7,4 +7,4 @@
         <input type="button" onclick="history.go(0)" value="Annuleren"/>
     </div>
 {{ Form::close() }}
-    @endsection
+@endsection

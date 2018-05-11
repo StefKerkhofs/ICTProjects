@@ -1,8 +1,8 @@
-@extends('admin.templates.templateBackend')
+@extends('admin.main')
 
 @section('content')
     @isset($oFormValues)
-        {{ Form::open(array('action' => 'TripController@editTrip', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'AdminTripController@editTrip', 'method' => 'post')) }}
         {{ Form::label('sNameTrip', 'Naam reis') }}
         {{ Form::text('sNameTrip',$oFormValues->name) }}
         {{ Form::label('iYearTrip', 'Jaar') }}
@@ -18,7 +18,7 @@
         {{ Form::close() }}
         @endisset
     @empty($oFormValues)
-        {{ Form::open(array('action' => 'TripController@createTrip', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'AdminTripController@createTrip', 'method' => 'post')) }}
         {{ Form::label('sNameTrip', 'Naam reis') }}
         {{ Form::text('sNameTrip') }}
         {{ Form::label('iYearTrip', 'Jaar') }}

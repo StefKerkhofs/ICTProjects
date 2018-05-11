@@ -1,4 +1,4 @@
-@extends('admin.templates.templateBackend')
+@extends('admin.main')
 @section('content')
     {{ Form::open(array('action' => 'AdminZipController@addTown', 'method' => 'post')) }}
     {{ Form::label('sZipcode', 'Postcode') }}

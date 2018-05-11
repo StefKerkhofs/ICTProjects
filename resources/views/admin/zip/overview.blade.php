@@ -1,4 +1,4 @@
-@extends('admin.templates.templateBackend')
+@extends('admin.main')
 @section('content')
     {{$aZipcodesData }}
     {{$aTownsData }}

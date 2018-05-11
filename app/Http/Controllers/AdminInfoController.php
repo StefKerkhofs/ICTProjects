@@ -26,7 +26,7 @@ class AdminInfoController extends Controller
      */
     public function getInfo(){
         $oPageContent = Page::where('page_name', 'Info')->first();
-        return view('admin.info', array(
+        return view('admin.info.info', array(
             'oPageContent' => $oPageContent,
         ));
     }

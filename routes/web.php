@@ -27,8 +27,8 @@ Route::post('/admin/study', 'AdminStudyController@addStudy');
 Route::post('/admin/study', 'AdminStudyController@addMajor');
 
 
-Route::get('/admin/trip', 'TripController@getTrips');
-Route::get('/admin/trip/edit', 'TripController@editTripForm');
-Route::get('/admin/trip/edit/{trip_id?}', 'TripController@editTripForm');
-Route::post('/admin/trip/update/', 'TripController@editTrip');
-Route::post('/admin/trip/insert/', 'TripController@createTrip');
+Route::get('/admin/trip', 'AdminTripController@getTrips');
+Route::get('/admin/trip/edit', 'AdminTripController@editTripForm');
+Route::get('/admin/trip/edit/{trip_id?}', 'AdminTripController@editTripForm');
+Route::post('/admin/trip/update/', 'AdminTripController@editTrip');
+Route::post('/admin/trip/insert/', 'AdminTripController@createTrip');

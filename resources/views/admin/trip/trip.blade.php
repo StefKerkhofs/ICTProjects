@@ -1,6 +1,6 @@
-@extends('admin.templates.templateBackend')
+@extends('admin.main')
 @section('content')
-    {{ Form::open(array('action' => 'TripController@createTrip', 'method' => 'post')) }}
+    {{ Form::open(array('action' => 'AdminTripController@createTrip', 'method' => 'post')) }}
     {{ Form::label('sNameTrip', 'Naam reis') }}
     {{ Form::text('sNameTrip') }}
     {{ Form::label('sYearTrip', 'Jaar') }}
