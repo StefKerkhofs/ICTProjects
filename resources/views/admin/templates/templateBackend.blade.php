@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/userHeader.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('css/header.css')}}"/>-->
         <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <title>App Name - @yield('title')</title>
+    <title>{{ config('app.name') }}</title>
     <style>
         body {
             background-color: #E9F3F8;
@@ -82,7 +82,7 @@
         .actions{
             text-align: center;
         }
-        article { 
+        article {
             margin-left: 200px;
             padding: 50px;
             overflow-y: auto;
@@ -158,7 +158,7 @@
         </section>
     </article>
     <footer id="footer">
-        {{ date('Y') }} - Reizen technologie
+        {{ date('Y') }} - {{ config('app.name') }}
     </footer>
     <script type="text/javascript">
         setDimensions = function () {
