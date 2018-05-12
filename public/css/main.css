@@ -107,6 +107,15 @@ footer{
     background-color: #95C8DA;
     width: 100%;
 }
+form{
+    margin: 50px 50px 0 50px;
+}
+form>*{
+    margin-top: 25px;
+}
+form>*:last-child{
+    margin-top: 0px;
+}
 @media only screen and (max-width: 904px) {
     #side-bar {
         height: 50px;

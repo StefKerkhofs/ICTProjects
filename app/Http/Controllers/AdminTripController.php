@@ -46,7 +46,7 @@ class AdminTripController extends Controller
             {
                 $bActive = 0;
             }
-        Trip::insert(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
+        Trip::insert(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
         return view('admin.trip.trip');    }
     /**
      * @param Trip $trip
@@ -74,7 +74,7 @@ class AdminTripController extends Controller
         {
             $bActive = 0;
         }
-        Trip::where('name', 'sNameTrip')->update(['name' => $sName,'year' => $iYear, 'price' => $iPrice, 'is_active' => $bActive]);
+        Trip::where('trip_name', 'sNameTrip')->update(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
         return view('admin.trip.trip');
 
     }

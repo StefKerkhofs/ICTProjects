@@ -20,7 +20,8 @@ Route::get('/', function () {
 Route::get('/admin/info', 'AdminInfoController@getInfo');
 Route::post('/admin/info', 'AdminInfoController@updateInfo');
 
-
+Route::get('/admin/pdf', 'AdminPDFController@index');
+Route::post('/admin/pdf', 'AdminPDFController@updateContent');
 
 Route::get('/admin/study', 'AdminStudyController@getList');
 Route::post('/admin/study', 'AdminStudyController@addStudy');
