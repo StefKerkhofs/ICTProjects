@@ -25,5 +25,23 @@
     </article>
     <!-- Page Footer -->
     @include('admin.inc.footer')
+    <!-- Custom Scripts -->
+    <script type="text/javascript">var url = window.location.href;
+        var navList = document.getElementById('side-bar');
+        var links = navList.querySelectorAll("a");
+        for (var i = 0; i < links.length; i++){
+            if (url.startsWith(links[i].href))
+                links[i].className += ("active");
+        };
+    </script>
+    <script type="text/javascript">
+        tableOnClick = function (tripId) {
+            var url = window.location.href;
+            if (!url.endsWith('/')){
+                url += '/';
+            }
+            document.location=url + tripId;
+        }
+    </script>
 </body>
 </html>

@@ -20,8 +20,10 @@ class AdminTripController extends Controller
      */
     public function getTrips()
     {
-        $oTripContent = Trip::get();
-        return view('admin.trip.trip',array('oTripContent' => $oTripContent));
+        $aTripData = Trip::get();
+        return view('admin.trip.overview',[
+                'aTripData' => $aTripData
+        ]);
     }
 
     /**
@@ -51,16 +53,14 @@ class AdminTripController extends Controller
     /**
      * @param Trip $trip
      */
-    public function editTripForm($trip_id = null)
+    public function editTripForm($id)
     {
-        if($trip_id == null){
-            return view('admin.trip.TripForm',array('oFormValues', null));
-        }
-        $oFormValues = Trip::where('trip_id', $trip_id)->first();
-        return view('admin.trip.TripForm', array(
-            'oFormValues' => $oFormValues,
-        ));
+        $oTripData = Trip::where('trip_id', $id)->first();
+        return view('admin.trip.editForm', [
+            'oTripData' => $oTripData,
+        ]);
     }
+
     public function editTrip(Request $request)
     {
         $sName = $request->post('sNameTrip');

@@ -110,11 +110,17 @@ footer{
 form{
     margin: 50px 50px 0 50px;
 }
+table{
+    margin: 50px;
+}
 form>*{
     margin-top: 25px;
 }
 form>*:last-child{
     margin-top: 0px;
+}
+.table-hover tbody tr:hover{
+    cursor: pointer;
 }
 @media only screen and (max-width: 904px) {
     #side-bar {
