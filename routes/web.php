@@ -24,8 +24,8 @@ Route::get('/admin/pdf', 'AdminPDFController@index');
 Route::post('/admin/pdf', 'AdminPDFController@updateContent');
 
 Route::get('/admin/study', 'AdminStudyController@getList');
-Route::post('/admin/study', 'AdminStudyController@addStudy');
-Route::post('/admin/study', 'AdminStudyController@addMajor');
+Route::post('/admin/study/addstudy', 'AdminStudyController@addStudy');
+Route::post('/admin/study/addmajor', 'AdminStudyController@addMajor');
 
 Route::get('/admin/trip', 'AdminTripController@getTrips');
 Route::get('/admin/trip/{id}', 'AdminTripController@editTripForm');

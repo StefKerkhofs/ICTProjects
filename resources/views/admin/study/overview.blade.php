@@ -18,10 +18,10 @@
                 <tfoot>
                 <tr>
                     <td class="row">
-                        {{Form::open(array())}}
-                        {{form::text('majorName', '', ['class' => 'col-xs'])}}
-                        {{Form::submit('+'),'', ['class' => 'btn-xs']}}
-                        {{Form::close()}}
+                        {{ Form::open(['action' => 'AdminStudyController@addStudy', 'method' => 'post']) }}
+                        {{ Form::text('studyName', '', ['class' => 'form-control']) }}
+                        {{ Form::submit('Toevoegen') }}
+                        {{ Form::close() }}
                     </td>
                 </tr>
                 </tfoot>
