@@ -34,4 +34,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@profile');
-Route::get('/editprofile', 'ProfileController@editprofile');
+Route::get('/profileEdit', 'ProfileController@profileEdit');
+Route::get('/searchStudentEdit', 'ProfileController@searchStudentEdit');
