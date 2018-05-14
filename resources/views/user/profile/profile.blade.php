@@ -68,6 +68,7 @@
     </style>
 @endsection
 @section('content')
+    <div class="container">
     <form>
         <div class="formcontainer">
             <div class="leftform">
@@ -95,4 +96,5 @@
             <a class="nav-link" href="/profileEdit">Aanpassen</a>
         </div>
     </form>
+    </div>
 @endsection

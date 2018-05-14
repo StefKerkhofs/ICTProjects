@@ -78,6 +78,7 @@
     </style>
 @endsection
 @section('content')
+    <div class="container">
     <form>
         <div class="formcontainer">
             <div class="leftform">
@@ -108,4 +109,5 @@
             <input type="submit" value="Opslaan">
         </div>
     </form>
+    </div>
 @endsection
