@@ -3,6 +3,9 @@
     <title>Template @section('title')</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('css/template.css')}}" rel="stylesheet">
+    <section id="style">
+        @yield('style')
+    </section>
 </head>
 <body>
 @section('userbar')
@@ -12,7 +15,9 @@
 @show
 
 <div class="container">
-    @section('content')
+    <section id="content">
+        @yield('content')
+    </section>
 </div>
 
 <div class="footer">
