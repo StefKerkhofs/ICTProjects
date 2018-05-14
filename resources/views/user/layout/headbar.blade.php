@@ -1,10 +1,5 @@
-<<<<<<< HEAD:resources/views/user/layout/headbar.blade.php
-
-
-<nav class=" navbar navbar-expand-lg navbar-dark headbar">
-=======
 <nav class="navbar navbar-expand-lg navbar-light headbar">
->>>>>>> 87966dffde90323d84dec24337890a9af4a3c4b5:resources/views/user/inc/nav.blade.php
+
     <img src="{{asset("/image/ucll_3493.png")}}" alt="ucll logo" height="55" width="120"/>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
