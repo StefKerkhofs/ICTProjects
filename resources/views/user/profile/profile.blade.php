@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="button">
-            <a class="nav-link" href="/editprofile">Aanpassen</a>
+            <a class="nav-link" href="/profileEdit">Aanpassen</a>
         </div>
     </form>
 @endsection

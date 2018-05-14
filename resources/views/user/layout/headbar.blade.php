@@ -20,7 +20,7 @@
                 <a class="nav-link"  href="/template">Deelnemers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="/template">Editeer</a>
+                <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
