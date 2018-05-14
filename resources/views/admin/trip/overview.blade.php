@@ -1,6 +1,7 @@
 @extends('admin.main')
 @section('content')
     <table class="table table-hover">
+
         <thead>
         <tr>
             <th>Naam</th>
@@ -17,5 +18,8 @@
             </tr>
         @endforeach
         </tbody>
+        <tfoot>
+        <tr><td><a href="trip/add" class="btn  btn-primary" role="button">+</a></td></tr>
+        </tfoot>
     </table>
 @endsection

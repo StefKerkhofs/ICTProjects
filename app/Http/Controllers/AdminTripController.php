@@ -50,6 +50,12 @@ class AdminTripController extends Controller
             }
         Trip::insert(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
         return view('admin.trip.trip');    }
+
+    public function createTripForm()
+    {
+
+        return view('admin.trip.addForm');
+    }
     /**
      * @param Trip $trip
      */
@@ -61,7 +67,7 @@ class AdminTripController extends Controller
         ]);
     }
 
-    public function editTrip(Request $request)
+    public function editTrip($id,Request $request)
     {
         $sName = $request->post('sNameTrip');
         $iYear = $request->post('iYearTrip');
@@ -74,8 +80,7 @@ class AdminTripController extends Controller
         {
             $bActive = 0;
         }
-        Trip::where('trip_name', 'sNameTrip')->update(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
-        return view('admin.trip.trip');
-
+        Trip::where('trip_id', $id)->update(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
+        return redirect('admin/trip');
     }
 }

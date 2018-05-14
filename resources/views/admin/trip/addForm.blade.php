@@ -1,23 +1,6 @@
 @extends('admin.main')
 
 @section('content')
-    @isset($oFormValues)
-        {{ Form::open(array('action' => 'AdminTripController@editTrip', 'method' => 'post')) }}
-        {{ Form::label('sNameTrip', 'Naam reis') }}
-        {{ Form::text('sNameTrip',$oFormValues->name) }}
-        {{ Form::label('iYearTrip', 'Jaar') }}
-        {{ Form::text('iYearTrip',$oFormValues->year) }}
-        {{ Form::label('iPriceTrip', 'Kostprijs') }}
-        {{ Form::text('iPriceTrip',$oFormValues->price) }}
-        {{ Form::radio('bActive', 'true',true) }}
-        {{ Form::label('Ja') }}
-        {{ Form::radio('bActive', 'false') }}
-        {{ Form::label('Nee') }}
-        {{ Form::submit('Opslaan') }}
-        <a href="{{ url()->previous()}}"><input type="button" value="Annuleren"/></a>
-        {{ Form::close() }}
-        @endisset
-    @empty($oFormValues)
         {{ Form::open(array('action' => 'AdminTripController@createTrip', 'method' => 'post')) }}
         {{ Form::label('sNameTrip', 'Naam reis') }}
         {{ Form::text('sNameTrip') }}
@@ -32,6 +15,4 @@
         {{ Form::submit('Opslaan') }}
         <a href="{{ url()->previous()}}"><input type="button" value="Annuleren"/></a>
         {{ Form::close() }}
-    @endempty
-
 @endsection
