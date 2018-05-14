@@ -27,7 +27,7 @@ Route::post('/admin/info', 'AdminInfoController@updateInfo');
 Route::get('/template', function () {
     return view('user.templates.templateFrontEnd');
 });
-Route::get('/reg', 'RegisterController@returnv(1)');
+Route::get('/reg', 'RegisterController@returnv');
 
 Auth::routes();
 
