@@ -16,7 +16,15 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/template">Reis 2</a>
             </li>
-            <li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/template">Deelnemers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/template">Editeer</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
                 <a class="nav-link" href="/template">Contact</a>
             </li>
         </ul>
