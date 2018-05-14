@@ -23,7 +23,7 @@ class CreatePagesTable extends Migration
 
         DB::table('pages')->insert(array(
             'page_name' => 'info',
-            'page_content' => '',
+            'page_content' => 'Dit is content',
             'page_type' => 'html',
         ));
     }
