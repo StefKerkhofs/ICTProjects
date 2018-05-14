@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the commands for the application.
+     * register the commands for the application.
      *
      * @return void
      */

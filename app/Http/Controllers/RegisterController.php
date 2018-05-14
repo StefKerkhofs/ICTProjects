@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    function returnv(){
-        return view('user.templates.templateFrontEnd');
+    function returnv($iViewID){
+        switch ($iViewID){
+            case 1:
+                return view('user.register.form1');
+                break;
+            case 2:
+                break;
+        }
     }
 }
