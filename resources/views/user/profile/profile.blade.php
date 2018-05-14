@@ -18,10 +18,9 @@
             display:flex;
             justify-content:center;
             align-items:center;
-            padding:4px;
+            padding-top: 20px;
         }
         .leftform{
-            width: 500px;
             height: 500px;
             float:left;
         //border: 1px solid red;
@@ -48,20 +47,22 @@
             border: none;
             width: 275px;
             height: 70px;
-            margin: 10px;
+            margin: 20px;
+            text-transform: none;
         }
         label.field{
             text-align: left;
             width: 150px;
             float: left;
         }
-        input.textbox{
+        span{
             width: 250px;
             float: left;
+            font-weight: normal;
         }
         form p{
             clear: both;
-            padding: 20px;
+            padding: 19px;
         }
 
     </style>
@@ -70,24 +71,24 @@
     <form>
         <div class="formcontainer">
             <div class="leftform">
-                <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="" name="lastname" ></p>
-                <p><label class="field" for="name">Voornaam:</label>        <input type="text" class="textbox" value="" name="firstname"></p>
-                <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="" name="gender"></p>
-                <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" value="" name="birthdate"></p>
-                <p><label class="field" for="name">Geboorteplaats:</label>  <input type="text" class="textbox" value="" name="birthplace"></p>
-                <p><label class="field" for="name">Nationaliteit:</label>   <input type="text" class="textbox" value="" name="nationality"></p>
-                <p><label class="field" for="name">Adres: </label>          <input type="text" class="textbox" value="" name="address"></p>
-                <p><label class="field" for="name">Gemeente:</label>        <input type="text" class="textbox" value="" name="town"></p>
-                <p><label class="field" for="name">Land:</label>            <input type="text" class="textbox" value="" name="country"></p>
+                <p><label class="field" for="name">Naam:</label>            <span>lastname</span></p>
+                <p><label class="field" for="name">Voornaam:</label>        <span>firstname</span></p>
+                <p><label class="field" for="name">Geslacht:</label>        <span>gender</span></p>
+                <p><label class="field" for="name">Geboortedatum:</label>   <span>birthdate</span></p>
+                <p><label class="field" for="name">Geboorteplaats:</label>  <span>birthplace</span></p>
+                <p><label class="field" for="name">Nationaliteit:</label>   <span>nationality</span></p>
+                <p><label class="field" for="name">Adres: </label>          <span>address</span></p>
+                <p><label class="field" for="name">Gemeente:</label>        <span>town</span></p>
+                <p><label class="field" for="name">Land:</label>            <span>country</span></p>
             </div>
 
             <div class="rightform">
-                <p><label class="field" for="name">Email:</label>           <input type="text" class="textbox" value="" name="email"></p>
-                <p><label class="field" for="name">Telefoon:</label>        <input type="text" class="textbox" value="" name="phone"></p>
-                <p><label class="field" for="name">Noodnummer 1:</label>    <input type="text" class="textbox" value="" name="emergency_phone_1"></p>
-                <p><label class="field" for="name">Noodnummer 2:</label>    <input type="text" class="textbox" value="" name="emergency_phone_2"></p>
-                <p><label class="field" for="name">Behandeling:</label>     <input type="text" class="textbox" value="" name="treatment"></p>
-                <p><label class="field" for="name">Medische info:</label>   <input type="text" class="textbox" value="" name="medical_info"></p>
+                <p><label class="field" for="name">Email:</label>           <span>email</span></p>
+                <p><label class="field" for="name">Telefoon:</label>        <span>phone</span></p>
+                <p><label class="field" for="name">Noodnummer 1:</label>    <span>emergency_phone_1</span></p>
+                <p><label class="field" for="name">Noodnummer 2:</label>    <span>emergency_phone_2</span></p>
+                <p><label class="field" for="name">Behandeling:</label>     <span>treatment</span></p>
+                <p><label class="field" for="name">Medische info:</label>   <span>medical_info</span></p>
             </div>
         </div>
         <div class="button">
