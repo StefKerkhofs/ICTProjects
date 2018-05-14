@@ -34,3 +34,5 @@ Route::get('/admin/trip/edit', 'AdminTripController@editTripForm');
 Route::get('/admin/trip/edit/{trip_id?}', 'AdminTripController@editTripForm');
 Route::post('/admin/trip/update/', 'AdminTripController@editTrip');
 Route::post('/admin/trip/insert/', 'AdminTripController@createTrip');
+
+Route::get('/admin/zip', 'AdminZipController@index');

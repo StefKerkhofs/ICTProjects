@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\Zip;
 use App\Zipcode;
 use Illuminate\Http\Request;
 
@@ -22,14 +23,11 @@ class AdminZipController extends Controller
      * @author Nico Schelfhout
      *
      */
-    public function getList(){
-        $aZipcodesData = Zipcode::get();
-        $aTownsData = Town::get();
-
-        return view("admin.zip.overview", array(
-            'aZipcodesData' => $aZipcodesData,
-            'aTownsData' => $aTownsData
-        ));
+    public function index(){
+        $aZipData = Zip::get();
+        return view('admin.zip.overview', [
+            'aZipData' => $aZipData,
+        ]);
     }
     /**
      * addTown

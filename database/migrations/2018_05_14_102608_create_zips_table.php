@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagesTable extends Migration
+class CreateZipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
-            $table->increments('page_id');
-            $table->string('page_name');
-            $table->text('page_content');
-            $table->string('page_type');
+        Schema::create('zips', function (Blueprint $table) {
+            $table->increments('zip_id');
+            $table->integer('zip_code');
+            $table->string('zip_town');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('zips');
     }
 }
