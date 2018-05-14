@@ -19,6 +19,7 @@ a {
 
 li {
     margin: 0px 10px;
+    color: white;
 }
 
 li:hover {
@@ -53,8 +54,7 @@ nav.userbar a:hover {
 }
 
 .right {
-    display: inline;
-    float: right;
+    text-align: right;
 }
 
 .footer {
