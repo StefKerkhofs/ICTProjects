@@ -41,17 +41,17 @@ class AdminStudyController extends Controller
 }
     /**
      *addStudy()
-     * Adds a new study in the list of studies
+     * Adds a new study to the list of studies
      *
      * @author Stef Kerkhofs
      * @since 2018-05-10
      */
 
-    public function addStudy(){
-
-
+    public function addStudy(Request $request){
+        Study::insert([
+            'study_name' => $request->post('studyName')
+        ]);
         $aStudyData = Study::get();
-
         return view("admin.study.overview", array(
             'aStudyData' => $aStudyData
         ));
@@ -60,7 +60,7 @@ class AdminStudyController extends Controller
 
     /**
      *addMajor()
-     * Adds a new major in the list of majors attached to a study
+     * Adds a new major to the list of majors attached to a study
      *
      * @author Stef Kerkhofs
      * @since 2018-05-10
