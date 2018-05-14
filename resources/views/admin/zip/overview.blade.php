@@ -1,5 +1,6 @@
 @extends('admin.main')
 @section('content')
+    <a href="{{ url('admin/zip/add') }}">+</a>
     <table class="table table-hover">
         <thead>
         <tr>

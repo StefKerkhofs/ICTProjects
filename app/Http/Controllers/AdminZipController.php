@@ -47,7 +47,11 @@ class AdminZipController extends Controller
         return redirect('admin/zip');
     }
 
-    public  function updateZip($id, Request $request){
+    public function addZipForm(){
+        return view('admin.zip.addZip');
+    }
+
+    public  function editZip($id, Request $request){
         Zip::where('zip_id', $id)->update([
             'zip_code' => $request->post('zipCode'),
             'zip_town' => $request->post('zipTown'),
