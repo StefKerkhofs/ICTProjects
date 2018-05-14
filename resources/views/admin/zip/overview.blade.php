@@ -9,7 +9,7 @@
         </thead>
         <tbody>
         @foreach($aZipData as $oZipData)
-            <tr>
+            <tr onclick="tableOnClick({{$oZipData->zip_id}})">
                 <td>{{ $oZipData->zip_code }}</td>
                 <td>{{ $oZipData->zip_town }}</td>
             </tr>

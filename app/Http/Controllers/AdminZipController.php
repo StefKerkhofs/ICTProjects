@@ -4,9 +4,11 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\Trip;
 use App\Zip;
 use App\Zipcode;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class AdminZipController
@@ -37,7 +39,26 @@ class AdminZipController extends Controller
      * @author Nico Schelfhout
      *
      */
-    public function addTown($iZipCode, $sTownName){
-        return view("admin.zip.add");
+    public function addZip(Request $request){
+        Zip::insert([
+            'zip_code' => $request->post('zipCode'),
+            'zip_town' => $request->post('zipTown'),
+        ]);
+        return redirect('admin/zip');
+    }
+
+    public  function updateZip($id, Request $request){
+        Zip::where('zip_id', $id)->update([
+            'zip_code' => $request->post('zipCode'),
+            'zip_town' => $request->post('zipTown'),
+        ]);
+        return redirect('admin/zip');
+    }
+
+    public function editZipForm($id){
+        $oZipData = Zip::where('zip_id', $id)->first();
+        return view('admin.zip.editZip', [
+            'oZipData' => $oZipData
+        ]);
     }
 }
