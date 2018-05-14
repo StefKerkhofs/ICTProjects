@@ -3,6 +3,19 @@
     <title>Template @section('title')</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('css/template.css')}}" rel="stylesheet">
+    <style>
+        body{
+            background: #E9F3F8;
+        }
+        .container{
+            background: #FFF;
+            height: auto;
+            font-weight: bold;
+            color: #003469;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+    </style>
     <section id="style">
         @yield('style')
     </section>
