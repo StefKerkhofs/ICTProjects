@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark headbar">
+<nav class="navbar navbar-expand-lg navbar-dark headbar">
 
     <img src="{{asset("/image/ucll_3493.png")}}" alt="ucll logo" height="55" width="120"/>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,10 +25,13 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/reg">Registreren</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/">test</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Contact</a>
+                <a class="nav-link" href="/contact">Contact</a>
             </li>
         </ul>
     </div>

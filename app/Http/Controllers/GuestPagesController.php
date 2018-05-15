@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\Trip;
 use App\TripsModel;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class GuestPagesController extends Controller
     {
         $sContent="";
         if ($page == "contact"){
-           $aActiveTrips = TripsModel::where('is_active', true)->get();
+           $aActiveTrips = Trip::where('is_active', true)->get();
 
             return view('guest.contact', [
                 'aActiveTrips' => $aActiveTrips

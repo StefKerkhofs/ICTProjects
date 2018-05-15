@@ -37,10 +37,12 @@ route::post('/reg/form6', 'RegisterController@form6');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::get('/profile', 'ProfileController@profile');
 Route::get('/profileEdit', 'ProfileController@profileEdit');
 Route::get('/searchStudentEdit', 'ProfileController@searchStudentEdit');
 Route::get('/editSearchedStudent', 'ProfileController@editSearchedStudent');
+
 Route::get('/{page}', 'GuestPagesController@showPage');
+

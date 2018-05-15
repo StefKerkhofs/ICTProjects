@@ -22,5 +22,4 @@ class ProfileController extends Controller
     {
         return view('user.profile.editSearchedStudent');
     }
-
 }
