@@ -19,6 +19,9 @@ class CreateTravellersTable extends Migration
             $table->integer('study_id');
             $table->integer('trip_id');
             $table->integer('user_id');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('city');
             $table->string('country',11);
             $table->string('address',255);
             $table->string('sex',11);
