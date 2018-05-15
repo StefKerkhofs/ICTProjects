@@ -31,11 +31,18 @@ class AdminStudyController extends Controller
         $aMajorData = Major::get();
         $aStudyData = Study::get();
 
+        $aStudyForm = array();
+        foreach($aStudyData as $oStudyData)
+        {
+            $aStudyForm[$oStudyData->study_id]=$oStudyData->study_name;
+
+        }
 
 
         return view("admin.study.overview", array(
             'aMajorData' => $aMajorData,
-            'aStudyData' => $aStudyData
+            'aStudyData' => $aStudyData,
+            'aStudyForm' => $aStudyForm
         ));
 
 }
@@ -48,12 +55,17 @@ class AdminStudyController extends Controller
      */
 
     public function addStudy(Request $request){
-        Study::insert([
-            'study_name' => $request->post('studyName')
-        ]);
+
+
+            $aStudyForm = $request->post('studySelect');
+
         $aStudyData = Study::get();
+
+
         return view("admin.study.overview", array(
-            'aStudyData' => $aStudyData
+
+            'aStudyData' => $aStudyData,
+            'aStudyForm' => $aStudyForm
         ));
 
     }
@@ -67,7 +79,10 @@ class AdminStudyController extends Controller
      */
 
     public function addMajor(){
+
+
         $aMajorData = Major::get();
+
 
 
         return view("admin.study.overview", array(
