@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    private $aData = null;
     public function form1(){
-        setcookie("register", serialize($this->aData), time() + (86400 * 30), "/");
+        $aData = null;
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
         return view('user.register.form1');
     }
 
@@ -16,8 +16,10 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return $this->form1();
         }
-        $this->aDate['nummer'] = $aRequest->post('txtNummer');
-        $this->aDate['wachtwoord'] = $aRequest->post('txtWachtwoord');
+        $aData = unserialize($_COOKIE['register']);
+        $aData['txtNummer'] = $aRequest->post('txtNummer');
+        $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
         return view('user.register.form2');
     }
 
@@ -25,12 +27,10 @@ class RegisterController extends Controller
          if (!isset($_COOKIE['register'])){
              return $this->form1();
          }
-        $this->aData['reis'] = $aRequest->post('ReisKiezen');
-        $this->aData['afstudeerRichting'] = $aRequest->post('AfstudeerrichtingKiezen');
-         echo $this->aData['nummer'];
-         echo $this->aData['wachtwoord'];
-         echo $this->aData['reis'];
-         echo $this->aData['afstudeerRichting'];
+         $aData = unserialize($_COOKIE['register']);
+        $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
+        $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
          return view('user.register.form3');
     }
 
@@ -38,13 +38,29 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return $this->form1();
         }
+        $aData = unserialize($_COOKIE['register']);
+        $aData["lastname"] = $aRequest->post('lastname');
+        $aData["firstname"] = $aRequest->post('firstname');
+        $aData["gender"] = $aRequest->post('gender');
+        $aData["birthdate"] = $aRequest->post('birthdate');
+        $aData["birthplace"] = $aRequest->post('birthplace');
+        $aData["nationality"] = $aRequest->post('nationality');
+        $aData["address"] = $aRequest->post('address');
+        $aData["Postcode"] = $aRequest->post('Postcode');
+        $aData["country"] = $aRequest->post('country');
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+        $aData = unserialize($_COOKIE['register']);
+        echo $aData['nummer'];
+
         return view('user.register.form4');
     }
 
-    public function form5(){
+    public function form5(Request $aRequest){
         if (!isset($_COOKIE['register'])){
             return $this->form1();
         }
+        $aData = unserialize($_COOKIE['register']);
+        echo serialize($aData);
         return view('user.register.form5');
     }
 
