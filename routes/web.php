@@ -24,7 +24,14 @@ Route::post('/admin/info', 'AdminInfoController@updateInfo');
 Route::get('/', function () {
     return view('user.templates.templateFrontEnd');
 });
+
+Route::get('/info', function(){
+    return view('user.info.info');
+});
+
 Route::get('/reg', 'RegisterController@returnv');
+Route::get('/nextForm', 'RegisterController@next');
+Route::get('/prevForm', 'RegisterController@previous');
 
 Auth::routes();
 
