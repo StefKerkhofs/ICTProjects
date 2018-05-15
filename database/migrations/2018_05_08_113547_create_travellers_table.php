@@ -38,6 +38,23 @@ class CreateTravellersTable extends Migration
             //$table->foreign('user_id')->references('user_id')->on('users');
             //$table->foreign('zipcode_id')->references('zipcode_id')->on('zipcodes');
         });
+
+        // Insert some stuff
+        DB::table('travellerrs')->insert(
+            array(
+                'country' => 'belgië',
+                'address' => 'heesterweg 7',
+                'sex' => 'man',
+                'email' => 'jos@gmail.com',
+                'phone' => '0471487952',
+                'emergency_phone_1' => '0472597432',
+                'emergency_phone_2' => '0471652518',
+                'nationality' => 'belg',
+                'birthdate' => '',
+                'birthplace' => '',
+                'medical_onfo' => '',
+            )
+        );
     }
 
     /**

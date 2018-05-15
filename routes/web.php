@@ -37,4 +37,5 @@ Route::get('/profile', 'ProfileController@profile');
 Route::get('/profileEdit', 'ProfileController@profileEdit');
 Route::get('/searchStudentEdit', 'ProfileController@searchStudentEdit');
 Route::get('/editSearchedStudent', 'ProfileController@editSearchedStudent');
+
 Route::get('/{page}', 'GuestPagesController@showPage');
