@@ -79,23 +79,23 @@
 @endsection
 @section('content')
     <div class="container">
-        <form>
+        {{ Form::open(array('action' => 'RegisterController@form2', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
-                    <p><label class="field" for="name">Studenten-/Docentennummer*</label></p>
-                    <p><input type="text" class="textbox" value="" name="nummer" required="required" ></p>
-                    <p><label class="field" for="name">Wachtwoord*</label></p>
-                    <p><input type="text" class="textbox" value="" name="wachtwoord" required="required"></p>
-                    <p><label class="field" for="name">Bevestig wachtwoord*</label></p>
-                    <p><input type="text" class="textbox" value="" name="bevestigwachtwoord" required="required"></p>
+                    <p>{{ Form::label('lblNummer', 'Studenten-/docentennummer*', ['class' => 'field']) }}</p>
+                    <p>{{ Form::text('txtNummer', '', ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblWachtwoord', 'Wachtwoord*', ['class' => 'field']) }}</p>
+                    <p>{{ Form::input('password', 'txtWachtwoord', '', ['class' => 'textbox']) }} </p>
+                    <p>{{ Form::label('lblBWachtwoord', 'Bevestig wachtwoord*', ['class' => 'field']) }}</p>
+                    <p>{{ Form::input('password', 'txtBWachtwoord', '', ['class' => 'textbox'])  }} </p>
                 </div>
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/nextForm">Annuleren</a>
+                    <a class="nav-link" href="/reg/form2">Annuleren</a>
                 </div>
-                <input type="submit" value="Opslaan">
+                {{ Form::submit('volgende') }}
             </div>
-        </form>
+        {{ Form::close() }}
     </div>
 @endsection
