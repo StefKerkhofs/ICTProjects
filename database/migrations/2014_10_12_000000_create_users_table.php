@@ -21,12 +21,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        // Insert some stuff
-        DB::table('user')->insert(
-            array(
-                'function' => 'begeleider'
-            )
-        );
     }
     /**
      * Reverse the migrations.
