@@ -8,33 +8,33 @@ class RegisterController extends Controller
 {
     function returnv(){
         if(!isset($_COOKIE['register'])) {
-            $aUserData['PageID'] = 1;
-            $this->CreateCookie($aUserData);
+            $aData['PageID'] = 1;
+            $aData['PageTest'] = 'Test';
+            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+            $_COOKIE['register'] = serialize($aData);
         }
-        else{
-            return $this->ShowView();
-        }
+        return $this->ShowView();
     }
     function next(){
         $aData = unserialize($_COOKIE['register']);
         $aData['PageID']++;
-        $this->CreateCookie($aData);
+        $aData['PageTest'] = 'Next';
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+        $_COOKIE['register'] = serialize($aData);
         return $this->ShowView();
     }
     function previous(){
         $aData = unserialize($_COOKIE['register']);
         $aData['PageID']--;
-        $this->CreateCookie($aData);
+        $aData['PageTest'] = 'Previous';
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+        $_COOKIE['register'] = serialize($aData);
         return $this->ShowView();
     }
 
-    function CreateCookie($aData){
-        $cookie_name = "register";
-        $cookie_value = $aData;
-        setcookie($cookie_name, serialize($cookie_value), time() + (86400 * 30), "/");
-    }
     function ShowView(){
         $aData = unserialize($_COOKIE['register']);
+        echo $aData['PageTest'];
         switch ($aData['PageID']){
             case 1:
                 return view('user.register.form1');
