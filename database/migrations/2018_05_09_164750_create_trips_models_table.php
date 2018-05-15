@@ -22,12 +22,7 @@ class CreateTripsModelsTable extends Migration
             $table->string('trip_contact');
             //$table->timestamps();
         });
-        DB::table('tripsmodels')->insert(array(
-            'trip_name' => 'amerika',
-            'trip_year' => 2000,
-            'is_active' => true,
-            'trip_contact'=>'kaan@akpinar.be',
-        ));
+
     }
 
     /**

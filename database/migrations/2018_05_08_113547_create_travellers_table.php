@@ -43,7 +43,7 @@ class CreateTravellersTable extends Migration
         });
 
         // Insert some stuff
-        DB::table('travellerrs')->insert(
+        /*DB::table('travellers')->insert(
             array(
                 'firstname' => 'jos',
                 'lastname' => 'potter',
@@ -60,7 +60,7 @@ class CreateTravellersTable extends Migration
                 'birthplace' => '',
                 'medical_onfo' => '',
             )
-        );
+        );*/
     }
 
     /**

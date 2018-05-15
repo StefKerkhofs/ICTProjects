@@ -25,6 +25,7 @@ class CreateTripsTable extends Migration
         DB::table('trips')->insert(array(
             'trip_name' => 'amerika',
             'trip_year' => 2000,
+            'trip_price' => 1000,
             'is_active' => true,
             'trip_contact'=>'kaan@akpinar.be',
         ));
