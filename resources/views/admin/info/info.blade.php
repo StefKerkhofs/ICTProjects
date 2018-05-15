@@ -1,19 +1,18 @@
 @extends('admin.main')
 @section('content')
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey="></script>
-{{ Form::open(array('action' => 'AdminInfoController@updateInfo', 'method' => 'post')) }}
-    {{ Form::textArea('content', $oPageContent->page_content, ['class' => 'form-control']) }}
-    <div class="actions">
-        {{ Form::submit('Opslaan') }}
-        <input type="button" onclick="history.go(0)" value="Annuleren"/>
-    </div>
-{{ Form::close() }}
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ehx8bfmpyigk7t2szqgjzgjcxudwmge7f5isi5cn0m2f2uu3"></script>
+    {{ Form::open(array('action' => 'AdminInfoController@updateInfo', 'method' => 'post')) }}
+        {{ Form::textArea('content', $oPageContent->page_content, ['class' => 'form-control']) }}
+        <div class="actions">
+            {{ Form::submit('Opslaan') }}
+            <input type="button" onclick="history.go(0)" value="Annuleren"/>
+        </div>
+    {{ Form::close() }}
     <script type="text/javascript">
         tinymce.init({
             selector: 'textarea',
             height: 500,
             theme: 'modern',
-            plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern help',
             toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
             image_advtab: true,
             templates: [
