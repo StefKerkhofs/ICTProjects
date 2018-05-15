@@ -15,10 +15,11 @@ class CreateTripsModelsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('trip_id');
-            $table->string('name', 255);
-            $table->integer('year');
-            $table->double('price');
+            $table->string('trip_name');
+            $table->integer('trip_year');
+            $table->integer('trip_price');
             $table->boolean('is_active');
+            $table->string('trip_contact');
             //$table->timestamps();
         });
     }
