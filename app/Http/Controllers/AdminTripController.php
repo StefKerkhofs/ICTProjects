@@ -14,10 +14,12 @@ use App\Page;
 
 class AdminTripController extends Controller
 {
-    /**@description
-     * getTrips gets all the current trips in the database and returns them in view trip
-     * function getTrips()
-     * @return array $aTrips
+    /**
+     * getTrips
+     *
+     * getTrips gets all the current trips in the database and returns them in a view trip
+     * @return view overview
+     * @return array $aTripData
      */
     public function getTrips()
     {
@@ -28,13 +30,13 @@ class AdminTripController extends Controller
     }
 
     /**
-     * function createTrip()
+     * createTrip
      *
-     * @description
      * createTrip adds a new trip to the database
      * @param request $request
      *
      * @return view trip
+     * @return message succes
      */
     public function createTrip(Request $request)
     {
@@ -54,16 +56,24 @@ class AdminTripController extends Controller
         $iId = Page::where('page_name', $sName)->value('page_id');
         Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
         return redirect('admin/trip')->with('message', 'De reis is opgeslagen');
-
-
     }
 
+    /**
+     * createTripForm
+     *
+     * Gets a form view
+     * @return View addForm
+     */
     public function createTripForm()
     {
         return view('admin.trip.addForm');
     }
     /**
-     * @param Trip $trip
+     * editTripForm
+     *
+     * searches the database for a trip with a given id, then returns an editForm view
+     * @param integer $id
+     * @return view editForm
      */
     public function editTripForm($id)
     {
@@ -73,6 +83,14 @@ class AdminTripController extends Controller
         ]);
     }
 
+    /**
+     * editTrip
+     *
+     * Updates a trip in the database with values from a form by a given id
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function editTrip($id,Request $request)
     {
         $sName = $request->post('sNameTrip');
