@@ -17,7 +17,7 @@ class CreateStudiesModelsTable extends Migration
             $table->increments('study_id');
             $table->integer('major_id');
             $table->string('name', 255);
-            $table->foreign('major_id')->references('major_id')->on('majors');
+            //$table->foreign('major_id')->references('major_id')->on('majors');
 
             $table->timestamps();
         });
