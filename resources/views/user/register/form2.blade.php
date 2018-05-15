@@ -107,10 +107,10 @@
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/reg/form3">Annuleren</a>
+                    <a class="nav-link" href="/">Annuleren</a>
                 </div>
-                <input type="submit" value="Opslaan">
+                <input type="submit" value="volgende">
             </div>
-        </form>
+        {{ Form::close() }}
     </div>
 @endsection

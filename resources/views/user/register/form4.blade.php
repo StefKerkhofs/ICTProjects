@@ -84,24 +84,24 @@
 @endsection
 @section('content')
     <div class="container">
-        <form>
+        {{ Form::open(array('action' => 'RegisterController@form5', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="leftform">
-                    <p><label class="field" for="name">Email:</label>            <input type="text" class="textbox" value="" name="lastname" ></p>
-                    <p><label class="field" for="name">GSM:</label>        <input type="text" class="textbox" value="" name="firstname"></p>
+                    <p><label class="field" for="name">Email:</label>            <input type="text" class="textbox" value="" name="NoodmMail" ></p>
+                    <p><label class="field" for="name">GSM:</label>        <input type="text" class="textbox" value="" name="NoodGSM"></p>
                 </div>
 
                 <div class="rightform">
-                    <p><label class="field" for="name">Noodnummer 1:</label>   <input type="text" class="textbox" value="" name="nationality"></p>
-                    <p><label class="field" for="name">Noodnummer 2: </label>          <input type="text" class="textbox" value="" name="address"></p>
+                    <p><label class="field" for="name">Noodnummer 1:</label>   <input type="text" class="textbox" value="" name="NoodNummer1"></p>
+                    <p><label class="field" for="name">Noodnummer 2: </label>          <input type="text" class="textbox" value="" name="NoodNummer2"></p>
                 </div>
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/reg/form5">Annuleren</a>
+                    <a class="nav-link" href="/">Annuleren</a>
                 </div>
-                <input type="submit" value="Opslaan">
+                <input type="submit" value="volgende">
             </div>
-        </form>
+        {{ Form::close() }}
     </div>
 @endsection

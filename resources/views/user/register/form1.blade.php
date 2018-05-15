@@ -92,7 +92,7 @@
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/reg/form2">Annuleren</a>
+                    <a class="nav-link" href="/">Annuleren</a>
                 </div>
                 {{ Form::submit('volgende') }}
             </div>
