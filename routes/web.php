@@ -33,6 +33,8 @@ Route::get('/info', function(){
 });
 
 Route::get('/reg', 'RegisterController@returnv');
+Route::get('/nextForm', 'RegisterController@next');
+Route::get('/prevForm', 'RegisterController@previous');
 
 Auth::routes();
 
