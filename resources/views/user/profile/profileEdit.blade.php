@@ -70,6 +70,13 @@
             float: left;
             padding-left: 1px;
         }
+        .radiobuttons{
+            width: 250px;
+            float: left;
+            padding-left: 1px;
+            border: 1px solid #0b2e13;
+            align: right;
+        }
         form p{
             clear: both;
             padding: 19px;
@@ -84,7 +91,15 @@
             <div class="leftform">
                 <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="lastname" name="lastname" ></p>
                 <p><label class="field" for="name">Voornaam:</label>        <input type="text" class="textbox" value="firstname" name="firstname"></p>
-                <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="gender" name="gender"></p>
+                <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="sex" name="sex">
+                    <!--
+                    <div class="radiobuttons">
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                        <input type="radio" name="gender" value="other"> Other
+                    </div>
+                    -->
+                </p>
                 <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" value="birthdate" name="birthdate"></p>
                 <p><label class="field" for="name">Geboorteplaats:</label>  <input type="text" class="textbox" value="birthplace" name="birthplace"></p>
                 <p><label class="field" for="name">Nationaliteit:</label>   <input type="text" class="textbox" value="nationality" name="nationality"></p>
