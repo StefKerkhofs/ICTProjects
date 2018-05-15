@@ -17,7 +17,8 @@ class AdminContactController extends Controller
             Trip::where('trip_name', $aInputKeys[$iCounter])->update(['trip_contact' => $oInputValue]);
             $iCounter++;
         }
-    return view('admin.contact.contact');
+        return redirect('admin/contact')->with('message', 'De contactpersoon is veranderd');
+
     }
 
     public function showContact(){

@@ -48,6 +48,6 @@ class AdminInfoController extends Controller
             $sContentString = "";
         }
         Page::where('page_name', 'Info')->update(['page_content' => $sContentString]);
-        return redirect()->back();
+        return redirect()->back()->with('message', 'De info pagina is aangepast');
     }
 }

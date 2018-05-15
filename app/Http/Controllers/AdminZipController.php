@@ -44,7 +44,7 @@ class AdminZipController extends Controller
             'zip_code' => $request->post('zipCode'),
             'zip_town' => $request->post('zipTown'),
         ]);
-        return redirect('admin/zip');
+        return redirect('admin/zip')->with('message', 'De gemeente is toegevoegd');
     }
 
     public function addZipForm(){
@@ -56,7 +56,7 @@ class AdminZipController extends Controller
             'zip_code' => $request->post('zipCode'),
             'zip_town' => $request->post('zipTown'),
         ]);
-        return redirect('admin/zip');
+        return redirect('admin/zip')->with('message', 'De gemeente is aangepast');
     }
 
     public function editZipForm($id){
