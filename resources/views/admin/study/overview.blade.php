@@ -18,12 +18,10 @@
                 <tfoot>
                 <tr>
                     <td class="row">
-                        <div class="col-9">
-                            <input type="text" class="form-control"/>
-                        </div>
-                        <div class="col-3">
-                            <button type="submit" class="form-control">+</button>
-                        </div>
+                        {{ Form::open(['action' => 'AdminStudyController@addStudy', 'method' => 'post']) }}
+                        {{ Form::text('studyName', '', ['class' => 'form-control']) }}
+                        {{ Form::submit('Toevoegen') }}
+                        {{ Form::close() }}
                     </td>
                 </tr>
                 </tfoot>
@@ -34,7 +32,6 @@
                 <thead>
                 <tr>
                     <th>Afstudeerrichtingen</th>
-
                 </tr>
                 </thead>
                 <tbody>
@@ -47,12 +44,10 @@
                 <tfoot>
                 <tr>
                     <td class="row">
-                        <div class="col-9">
-                            <input type="text" class="form-control"/>
-                        </div>
-                        <div class="col-3">
-                            <button type="submit" class="form-control">+</button>
-                        </div>
+                        {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post'))}}
+                        {{form::text('majorName', '', ['class' => 'col-xs'])}}
+                        {{Form::submit('+'),'', ['class' => 'btn-xs']}}
+                        {{Form::close()}}
                     </td>
                 </tr>
                 </tfoot>
