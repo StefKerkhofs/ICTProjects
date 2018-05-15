@@ -1,37 +1,39 @@
 @extends('admin.main')
 @section('content')
-    {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
-    {{form::select('studySelect', $aStudyForm)}}
+    <h4>Richtingen</h4>
+    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post'))}}
+    {{Form::select('studySelect', $aStudyForm), ['onChange'=>"filterMajors($aStudyData, $aMajorData)"]}}
+    {{form::text('majorName')}}
     {{Form::submit('+')}}
     {{Form::close()}}
 
-    <div class="row">
-        <div class="col">
-            <table id="majorTable" class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Afstudeerrichtingen</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($aMajorData = DB::table('majors')->get() as $oMajor)
-                    <tr>
-                        <td> {{$oMajor->major_name}} </td>
-                    </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td class="row">
-                        {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post'))}}
-                        {{form::text('majorName', '', ['class' => 'col-xs'])}}
-                        {{Form::submit('+'),'', ['class' => 'btn-xs']}}
-                        {{Form::close()}}
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
+    <h4>Afstudeerrichtingen</h4>
+
+    {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
+    {{form::text('studyName')}}
+    {{Form::submit('+ ')}}
+    <table id = "majors">
+        @foreach($aMajorData = DB::table('majors')->get() as $oMajor)
+            <tr>
+                <td>
+                    {{$oMajor->major_name}}
+                </td>
+            </tr>
+        @endforeach
+    </table>
+<script type="text/javascript">
+    filterMajors = function(aStudyData, aMajorData){
+
+        fore
+           var studies = {
+               id: aStudyData['study_id'],
+
+           }
+
+
+
+
+    }
+</script>
 
 @endsection

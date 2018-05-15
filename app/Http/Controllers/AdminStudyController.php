@@ -32,17 +32,23 @@ class AdminStudyController extends Controller
         $aStudyData = Study::get();
 
         $aStudyForm = array();
+        $aMajorForm = array();
         foreach($aStudyData as $oStudyData)
         {
             $aStudyForm[$oStudyData->study_id]=$oStudyData->study_name;
 
         }
+        foreach($aMajorData as $oMajorData)
+        {
+            $aMajorForm[$oMajorData->major_id]=$oMajorData->major_name;
 
+        }
 
         return view("admin.study.overview", array(
             'aMajorData' => $aMajorData,
             'aStudyData' => $aStudyData,
-            'aStudyForm' => $aStudyForm
+            'aStudyForm' => $aStudyForm,
+            'aMajorForm' => $aMajorForm
         ));
 
 }
@@ -56,17 +62,14 @@ class AdminStudyController extends Controller
 
     public function addStudy(Request $request){
 
+        Study::insert([
+            'study_name'=> $request->post('studyName')
+        ]);
 
-            $aStudyForm = $request->post('studySelect');
-
-        $aStudyData = Study::get();
 
 
-        return view("admin.study.overview", array(
 
-            'aStudyData' => $aStudyData,
-            'aStudyForm' => $aStudyForm
-        ));
+        return redirect()->back();
 
     }
 
@@ -78,16 +81,20 @@ class AdminStudyController extends Controller
      * @since 2018-05-10
      */
 
-    public function addMajor(){
+    public function addMajor(Request $request){
 
 
         $aMajorData = Major::get();
+        $sNewMajor = $request->post('majorName');
 
 
+            Major::insert([
+                'major_name' => $sNewMajor,
+                'study_id' => $request->post('studySelect')
+            ]);
 
-        return view("admin.study.overview", array(
-            'aMajorData' => $aMajorData
-        ));
+
+        return redirect()->back();
     }
 }
 
