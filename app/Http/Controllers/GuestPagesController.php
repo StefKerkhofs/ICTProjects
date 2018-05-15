@@ -14,7 +14,7 @@ class GuestPagesController extends Controller
     {
         $sContent="";
         if ($page == "contact"){
-           $aActiveTrips = TripsModel::where('is_active', true)->get();
+           $aActiveTrips = Trip::where('is_active', true)->get();
 
             return view('guest.contact', [
                 'aActiveTrips' => $aActiveTrips
