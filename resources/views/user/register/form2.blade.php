@@ -70,6 +70,11 @@
             float: left;
             padding-left: 1px;
         }
+        .select{
+            width: 250px;
+            float: left;
+            padding-left: 1px;
+        }
         form p{
             clear: both;
             padding: 19px;
@@ -82,12 +87,16 @@
         <form>
             <div class="formcontainer">
                 <div class="middleform">
-                    <p><label class="field" for="name">Studenten-/Docentennummer*</label></p>
-                    <p><input type="text" class="textbox" value="" name="nummer" required="required" ></p>
-                    <p><label class="field" for="name">Wachtwoord*</label></p>
-                    <p><input type="text" class="textbox" value="" name="wachtwoord" required="required"></p>
-                    <p><label class="field" for="name">Bevestig wachtwoord*</label></p>
-                    <p><input type="text" class="textbox" value="" name="bevestigwachtwoord" required="required"></p>
+                    <p><label class="field" for="name">Reis*</label></p>
+                    <p><select name="ReisKiezer" class="select" required="required">
+                            <!-- ADD PHP CODE -->
+                        </select>
+                    </p>
+                    <p><label class="field" for="name">Afstudeerrichting*</label></p>
+                    <p><select name="AfstudeerRichtingKiezer" class="select" required="required">
+                            <!-- ADD PHP CODE -->
+                        </select>
+                    </p>
                 </div>
             </div>
             <div class="formbutton">
