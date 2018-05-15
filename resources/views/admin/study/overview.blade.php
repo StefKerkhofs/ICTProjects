@@ -1,15 +1,11 @@
 @extends('admin.main')
 @section('content')
+    {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
+    {{form::select('studySelect', $aStudyForm)}}
+    {{Form::submit('+')}}
+    {{Form::close()}}
+
     <div class="row">
-        <div class="col">
-                    <h3>Richtingen</h3>
-
-
-            {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
-            {{form::select('studySelect', $aStudyForm)}}
-            {{Form::submit('+')}}
-            {{Form::close()}}
-        </div>
         <div class="col">
             <table id="majorTable" class="table table-hover">
                 <thead>
