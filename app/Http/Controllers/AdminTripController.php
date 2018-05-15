@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Trip;
+use App\Page;
 
 /**
  * Class AdminTripController
@@ -48,12 +49,14 @@ class AdminTripController extends Controller
             {
                 $bActive = 0;
             }
-        Trip::insert(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
-        return view('admin.trip.trip');    }
+        Page::insert(['page_name' => $sName,'page_content' => '' ,'page_type' => 'PDF']);
+        $iId = Page::where('page_name', $sName)->value('page_id');
+        Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
+        return redirect('admin/trip');
+    }
 
     public function createTripForm()
     {
-
         return view('admin.trip.addForm');
     }
     /**

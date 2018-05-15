@@ -19,7 +19,7 @@
         @endforeach
         </tbody>
         <tfoot>
-        <tr><td><a href="trip/add" class="btn  btn-primary" role="button">+</a></td></tr>
+        <tr><td><a href="/admin/trip/add" class="btn  btn-primary" role="button">+</a></td></tr>
         </tfoot>
     </table>
 @endsection
