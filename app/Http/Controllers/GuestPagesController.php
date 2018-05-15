@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class GuestPagesController extends Controller
@@ -20,8 +21,8 @@ class GuestPagesController extends Controller
                 $sContent = $oPageData->page_content;
             }
         }
-        catch (ErrorException  $e){
-            $sContent = $e->getMessage();
+        catch (QueryException $e){
+            $sContent = 'Error 404, page not found';
         }
 
 
