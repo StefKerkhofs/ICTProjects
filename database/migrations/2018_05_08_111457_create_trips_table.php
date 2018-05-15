@@ -20,6 +20,7 @@ class CreateTripsTable extends Migration
             $table->integer('trip_year');
             $table->integer('trip_price');
             $table->boolean('is_active');
+            $table->string('trip_contact')->nullable();
             $table->timestamps();
         });
     }

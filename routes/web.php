@@ -43,3 +43,6 @@ Route::get('/admin/zip/add', 'AdminZipController@addZipForm');
 Route::post('/admin/zip/add', 'AdminZipController@addZip');
 Route::get('/admin/zip/{id}', 'AdminZipController@editZipForm');
 Route::post('/admin/zip/{id}/edit', 'AdminZipController@editZip');
+
+Route::get('/admin/contact', 'AdminContactController@showContact');
+Route::post('/admin/contact', 'AdminContactController@updateContact');
