@@ -22,10 +22,6 @@ Route::post('/admin/info', 'AdminInfoController@updateInfo');
  */
 
 Route::get('/', function () {
-    return view('user.templates.templateFrontEnd');
-});
-
-Route::get('/info', function(){
     return view('user.info.info');
 });
 
