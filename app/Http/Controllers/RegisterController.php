@@ -32,28 +32,25 @@ class RegisterController extends Controller
         return $this->ShowView();
     }
 
-    function ShowView(){
-        $aData = unserialize($_COOKIE['register']);
-        echo $aData['PageTest'];
-        switch ($aData['PageID']){
-            case 1:
-                return view('user.register.form1');
-                break;
-            case 2:
-                return view('user.register.form2');
-                break;
-            case 3:
-                return view('user.register.form3');
-                break;
-            case 4:
-                return view('user.register.form4');
-                break;
-            case 5:
-                return view('user.register.form5');
-                break;
-            case 6:
-                return view('user.register.form6');
-                break;
-        }
+    public function form1(){
+        return view('user.register.form1');
+    }
+    public function form2(Request $aRequest){
+        $aDate['nummer'] = $aRequest->post('txtNummer');
+        $aDate['wachtwoord'] = $aRequest->post('txtWachtwoord');
+        echo $aDate['nummer'];
+        return view('user.register.form2');
+    }
+     public function form3(){
+        return view('user.register.form3');
+    }
+    public function form4(){
+        return view('user.register.form4');
+    }
+    public function form5(){
+        return view('user.register.form5');
+    }
+    public function form6(){
+        return view('user.register.form6');
     }
 }
