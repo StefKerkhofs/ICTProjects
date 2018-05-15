@@ -2,7 +2,7 @@
 @section('content')
     <h4>Richtingen</h4>
     {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post'))}}
-    {{Form::select('studySelect', $aStudyForm), ['onChange'=>"filterMajors($aStudyData, $aMajorData)"]}}
+    {{Form::select('studySelect', $aStudyForm)}}
     {{form::text('majorName')}}
     {{Form::submit('+')}}
     {{Form::close()}}
@@ -22,18 +22,17 @@
         @endforeach
     </table>
 <script type="text/javascript">
-    filterMajors = function(aStudyData, aMajorData){
-
-        fore
-           var studies = {
-               id: aStudyData['study_id'],
-
-           }
-
-
-
-
-    }
+    var select = document.getElementsByName('studySelect')[0];
+    var table = document.getElementById('majors');
+    console.log(select);
+    var majorData = <?php echo $aMajorData ?>;
+    console.log(studyData);
+    console.log(majorData);
+    select.addEventListener('change', function () {
+        var studyId = select.value;
+        alert(studyId);
+        table.innerHTML = "";
+    })
 </script>
 
 @endsection
