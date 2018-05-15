@@ -84,17 +84,23 @@
 @endsection
 @section('content')
     <div class="container">
-        <form>
+        {{ Form::open(array('action' => 'RegisterController@form3', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
                     <p><label class="field" for="name">Reis*</label></p>
-                    <p><select name="ReisKiezer" class="select" required="required">
-                            <!-- ADD PHP CODE -->
+                    <p>
+                        <select name="ReisKiezen" class="select">
+                            <option value="1">Cup</option> <!-- Suppose this option selected -->
+                            <option value="2">Pen</option>
+                            <option value="3">Book</option>
                         </select>
                     </p>
                     <p><label class="field" for="name">Afstudeerrichting*</label></p>
-                    <p><select name="AfstudeerRichtingKiezer" class="select" required="required">
-                            <!-- ADD PHP CODE -->
+                    <p>
+                        <select name="AfstudeerrichtingKiezen"class="select">
+                            <option value="1">Cup</option> <!-- Suppose this option selected -->
+                            <option value="2">Pen</option>
+                            <option value="3">Book</option>
                         </select>
                     </p>
                 </div>
