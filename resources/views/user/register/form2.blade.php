@@ -101,7 +101,7 @@
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/nextForm">Annuleren</a>
+                    <a class="nav-link" href="/reg/form3">Annuleren</a>
                 </div>
                 <input type="submit" value="Opslaan">
             </div>
