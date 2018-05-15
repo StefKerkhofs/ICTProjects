@@ -22,6 +22,9 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/reg">Registreren</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
