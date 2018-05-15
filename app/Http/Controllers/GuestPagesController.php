@@ -12,10 +12,18 @@ class GuestPagesController extends Controller
     public function showPage($page)
     {
         $sContent="";
-        try{
+        if ($page == "contact"){
+           $aActiveTrips = Trip::where('is_active', true)->get();
+
+            return view('guest.contact', [
+                'aActiveTrips' => $aActiveTrips
+            ]);
+        }
+        else{
+            try{
             $oPageData = Page::where('page_name', $page)->first();
             if ($oPageData->page_type == 'pdf'){
-                $sContent = '<iframe src="http://docs.google.com/gview?url='.$oPageData->page_content.'&embedded=true" style="width:100%; height:1000px;" frameborder="0"></iframe>';
+                $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
             }
             else{
                 $sContent = $oPageData->page_content;
@@ -23,13 +31,16 @@ class GuestPagesController extends Controller
         }
         catch (QueryException $e){
             $sContent = 'Error 404, page not found';
+            }
+            return view('guest.contentpage', [
+                'sContent' => $sContent
+            ]);
         }
 
 
 
-        return view('guest.contentpage', [
-            'sContent' => $sContent
-        ]);
+
+
 
     }
 }
