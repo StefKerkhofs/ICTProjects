@@ -8,16 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarS">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/template">Info <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/info">Info <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/template">Reis 1</a>
+                <a class="nav-link" href="/">Reis 1</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="/template">Reis 2</a>
+                <a class="nav-link"  href="/">Reis 2</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="/template">Deelnemers</a>
+                <a class="nav-link"  href="/">Deelnemers</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
@@ -28,7 +28,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/template">Contact</a>
+                <a class="nav-link" href="/">Contact</a>
             </li>
         </ul>
     </div>

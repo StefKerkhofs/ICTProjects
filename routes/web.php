@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 /**
  * Admin page routes
  */
@@ -24,10 +21,9 @@ Route::post('/admin/info', 'AdminInfoController@updateInfo');
  *  Front end pages
  */
 
-Route::get('/template', function () {
-    return view('user.templates.templateFrontEnd');
+Route::get('/', function () {
+    return view('user.info.info');
 });
-
 
 Route::get('/reg', 'RegisterController@returnv');
 Route::get('/nextForm', 'RegisterController@next');
