@@ -10,11 +10,14 @@ class AdminContactController extends Controller
     public function updateContact(Request $request){
 
         $aInputData = $request->all();
-        foreach ($aInputData as $oInputData){
-            Trip::where('trip_name', $oInputData->)
+        $aInputKeys = array_keys($aInputData);
+        $aInputValues = array_values($aInputData);
+        $iCounter = 0;
+        foreach ($aInputValues as $oInputValue){
+            Trip::where('trip_name', $aInputKeys[$iCounter])->update(['trip_contact' => $oInputValue]);
+            $iCounter++;
         }
-
-
+    return view('admin.contact.contact');
     }
 
     public function showContact(){
