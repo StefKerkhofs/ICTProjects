@@ -67,13 +67,13 @@
                     <td>Naam</td>
                     <td>Voornaam</td>
                     <td>Klas</td>
-                    <td><a href="/profileEdit"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
+                    <td><a href="/editSearchedStudent"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
                 </tr>
                 <tr>
                     <td>Naam</td>
                     <td>Voornaam</td>
                     <td>Klas</td>
-                    <td><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40" href="#"/></td>
+                    <td><a href="/editSearchedStudent"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
                 </tr>
             </table>
         </div>

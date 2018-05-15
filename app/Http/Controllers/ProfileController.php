@@ -18,5 +18,9 @@ class ProfileController extends Controller
     {
         return view('user.profile.searchStudentEdit');
     }
+    public function editSearchedStudent()
+    {
+        return view('user.profile.editSearchedStudent');
+    }
 
 }
