@@ -38,6 +38,7 @@ class AdminTripController extends Controller
      */
     public function createTrip(Request $request)
     {
+
         $sName = $request->post('sNameTrip');
         $iYear = $request->post('iYearTrip');
         $iPrice = $request->post('iPriceTrip');
@@ -52,7 +53,9 @@ class AdminTripController extends Controller
         Page::insert(['page_name' => $sName,'page_content' => '' ,'page_type' => 'PDF']);
         $iId = Page::where('page_name', $sName)->value('page_id');
         Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
-        return redirect('admin/trip');
+        return redirect('admin/trip')->with('message', 'De reis is opgeslagen');
+
+
     }
 
     public function createTripForm()
@@ -84,6 +87,6 @@ class AdminTripController extends Controller
             $bActive = 0;
         }
         Trip::where('trip_id', $id)->update(['trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
-        return redirect('admin/trip');
+        return redirect('admin/trip')->with('message', 'De reis is aangepast');
     }
 }
