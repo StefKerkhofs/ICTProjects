@@ -22,16 +22,16 @@ class CreateTravellersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('city');
-            $table->string('country',11);
-            $table->string('address',255);
-            $table->string('sex',11);
-            $table->string('email',255);
-            $table->string('phone',255);
-            $table->string('emergency_phone_1',255);
-            $table->string('emergency_phone_2',255);
-            $table->string('nationality',255);
+            $table->string('country', 11);
+            $table->string('address', 255);
+            $table->string('sex', 11);
+            $table->string('email', 255);
+            $table->string('phone', 255);
+            $table->string('emergency_phone_1', 255);
+            $table->string('emergency_phone_2', 255);
+            $table->string('nationality', 255);
             $table->date('birthdate');
-            $table->string('birthplace',255);
+            $table->string('birthplace', 255);
             $table->longText('medical_info');
             $table->rememberToken();
             $table->timestamps();
@@ -41,38 +41,5 @@ class CreateTravellersTable extends Migration
             //$table->foreign('user_id')->references('user_id')->on('users');
             //$table->foreign('zipcode_id')->references('zipcode_id')->on('zipcodes');
         });
-<<<<<<< HEAD
-
-        // Insert some stuff
-        /*DB::table('travellers')->insert(
-            array(
-                'firstname' => 'jos',
-                'lastname' => 'potter',
-                'city' => 'averbode',
-                'country' => 'belgië',
-                'address' => 'heesterweg 7',
-                'sex' => 'man',
-                'email' => 'jos@gmail.com',
-                'phone' => '0471487952',
-                'emergency_phone_1' => '0472597432',
-                'emergency_phone_2' => '0471652518',
-                'nationality' => 'belg',
-                'birthdate' => '',
-                'birthplace' => '',
-                'medical_onfo' => '',
-            )
-        );*/
-=======
->>>>>>> 963782efd79c82aca1d53b4df6eea98cda5b75e4
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('travellers');
     }
 }
