@@ -41,6 +41,7 @@ class CreateTravellersTable extends Migration
             //$table->foreign('user_id')->references('user_id')->on('users');
             //$table->foreign('zipcode_id')->references('zipcode_id')->on('zipcodes');
         });
+<<<<<<< HEAD
 
         // Insert some stuff
         /*DB::table('travellers')->insert(
@@ -61,6 +62,8 @@ class CreateTravellersTable extends Migration
                 'medical_onfo' => '',
             )
         );*/
+=======
+>>>>>>> 963782efd79c82aca1d53b4df6eea98cda5b75e4
     }
 
     /**
