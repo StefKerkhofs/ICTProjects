@@ -1,6 +1,6 @@
 @extends('admin.main')
 @section('content')
-    {{ Form::open(array('action' => 'AdminPDFController@updateContent', 'method' => 'post')) }}
+    {{ Form::open(array('action' => 'AdminPDFController@updateContent', 'method' => 'post','files' => true)) }}
     <select name="pageSelector" class="form-control">
         @foreach($aPageList as $oPage)
             <option value="{{ $oPage->page_id }}">{{ $oPage->page_name }}</option>

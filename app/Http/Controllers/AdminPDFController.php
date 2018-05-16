@@ -28,9 +28,13 @@ class AdminPDFController extends Controller
         ));
     }
 
-    public function updateContent(Request $request, UploadedFile $pdf){
-        $iPageId = $request->post('pageSelector');
-        $pdf->store('public');
-        return $pdf;
+    public function updateContent(Request $request){
+        $pdf = $request->file('pdf');
+        $pdf->store($pdf->getFilename());
+        var_dump($pdf);
+      //  Storage::store($pdf->getFilename(), $pdf);
+
+        //$pdf->store('public');
+        //return $pdf;
     }
 }
