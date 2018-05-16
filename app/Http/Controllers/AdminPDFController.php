@@ -30,8 +30,9 @@ class AdminPDFController extends Controller
 
     public function updateContent(Request $request){
         $pdf = $request->file('pdf');
-        $pdf->store($pdf->getFilename());
-        var_dump($pdf);
+        $path = $pdf->store('storage');
+            var_dump($pdf);
+            echo $path;
       //  Storage::store($pdf->getFilename(), $pdf);
 
         //$pdf->store('public');
