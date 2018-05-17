@@ -1,7 +1,7 @@
 @extends('admin.main')
 @section('content')
     <h4>Richtingen</h4>
-    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post'))}}
+    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post', 'onchange' => 'openMajorTable'))}}
     {{Form::select('studySelect', $aStudyForm)}}
     {{form::text('majorName')}}
     {{Form::submit('+')}}
@@ -13,26 +13,44 @@
     {{form::text('studyName')}}
     {{Form::submit('+ ')}}
     <table id = "majors">
-        @foreach($aMajorData = DB::table('majors')->get() as $oMajor)
-            <tr>
-                <td>
-                    {{$oMajor->major_name}}
-                </td>
-            </tr>
-        @endforeach
     </table>
-<script type="text/javascript">
-    var select = document.getElementsByName('studySelect')[0];
-    var table = document.getElementById('majors');
-    console.log(select);
-    var majorData = <?php echo $aMajorData ?>;
-    console.log(studyData);
-    console.log(majorData);
-    select.addEventListener('change', function () {
-        var studyId = select.value;
-        alert(studyId);
-        table.innerHTML = "";
-    })
-</script>
+    {{Form::close()}}
+    <script type="text/javascript">
+      openMajorTable();
+    function openMajorTable(){
 
+            var select = document.getElementsByName('studySelect')[0];
+            var table = document.getElementById('majors');
+
+            var majorData = <?php echo $aMajorData ?>;
+
+        select.addEventListener('change', filter());
+
+        function filter(){
+            var studyId = select.value;
+            table.innerHTML = "";
+
+            for(var major of majorData)
+            {
+                if(major.study_id == studyId)
+                {
+                    var row = document.createElement('tr');
+                    var column = document.createElement('td');
+                    column.innerHTML = major.major_name;
+                    row.appendChild(column);
+                    table.appendChild(row);
+                }
+            }
+
+        }
+
+
+
+
+    }
+    </script>
 @endsection
+
+
+
+

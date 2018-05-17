@@ -61,14 +61,9 @@ class AdminStudyController extends Controller
      */
 
     public function addStudy(Request $request){
-
         Study::insert([
             'study_name'=> $request->post('studyName')
         ]);
-
-
-
-
         return redirect()->back();
 
     }
@@ -82,8 +77,6 @@ class AdminStudyController extends Controller
      */
 
     public function addMajor(Request $request){
-
-
         $aMajorData = Major::get();
         $sNewMajor = $request->post('majorName');
 
