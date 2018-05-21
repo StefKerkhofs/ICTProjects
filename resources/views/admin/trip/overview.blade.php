@@ -24,7 +24,7 @@
         @endforeach
         </tbody>
         <tfoot>
-        <tr><td><a href="/admin/trip/add" class="btn  btn-primary" role="button">+</a></td></tr>
+        <tr><td colspan="3"><a href="/admin/trip/add" class="button">Nieuwe Reis</a></td></tr>
         </tfoot>
     </table>
 @endsection

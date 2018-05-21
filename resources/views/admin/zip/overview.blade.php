@@ -5,7 +5,6 @@
             {{ session()->get('message') }}
         </div>
     @endif
-    <a href="{{ url('admin/zip/add') }}">+</a>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -21,5 +20,8 @@
             </tr>
         @endforeach
         </tbody>
+        <tfoot>
+        <tr><td colspan="3"><a href="{{ url('admin/zip/add') }}" class="button">Nieuwe Gemeente</a></td></tr>
+        </tfoot>
     </table>
 @endsection

@@ -100,6 +100,10 @@ section#content {
   overflow: hidden;
 }
 
+section#content table {
+  margin-left: 0;
+}
+
 textarea {
   resize: none;
   width: 100%;
@@ -188,6 +192,18 @@ form > *:last-child {
   #side-bar li {
     padding: 0 7px;
   }
+}
+
+.button, .button:hover {
+  display: block;
+  margin: 50px auto 30px;
+  background-color: #003469;
+  height: 50px;
+  width: 200px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
 }
 
 /*# sourceMappingURL=app.css.map */
