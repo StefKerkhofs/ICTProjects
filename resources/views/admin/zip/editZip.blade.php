@@ -1,5 +1,6 @@
 @extends('admin.main')
 @section('content')
+    <h2>Postcodes Aanpassen</h2>
     {{ Form::open(array('url' => "admin/zip/$oZipData->zip_id/edit", 'method' => 'post')) }}
     {{ Form::label('zipCode', 'Postcode') }}
     {{ Form::text('zipCode', $oZipData->zip_code, ['class' => 'form-control']) }}

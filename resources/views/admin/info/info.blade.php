@@ -5,6 +5,7 @@
             {{ session()->get('message') }}
         </div>
     @endif
+    <h2>Infopagina Aanpassen</h2>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ehx8bfmpyigk7t2szqgjzgjcxudwmge7f5isi5cn0m2f2uu3"></script>
     {{ Form::open(array('action' => 'AdminInfoController@updateInfo', 'method' => 'post')) }}
         {{ Form::textArea('content', $oPageContent->page_content, ['class' => 'form-control']) }}

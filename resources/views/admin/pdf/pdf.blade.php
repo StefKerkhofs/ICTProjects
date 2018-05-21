@@ -1,5 +1,6 @@
 @extends('admin.main')
 @section('content')
+    <h2>PDF Toevoegen</h2>
     {{ Form::open(array('action' => 'AdminPDFController@updateContent', 'method' => 'post','files' => true)) }}
     <select name="pageSelector" class="form-control">
         @foreach($aPageList as $oPage)

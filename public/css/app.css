@@ -104,6 +104,11 @@ section#content table {
   margin-left: 0;
 }
 
+section#content h2 {
+  margin-top: 50px;
+  text-align: center;
+}
+
 textarea {
   resize: none;
   width: 100%;
@@ -111,12 +116,12 @@ textarea {
 }
 
 input[type="submit"], input[type="button"] {
-  height: 50px;
-  width: 200px;
+  height: 55px;
+  width: 220px;
   background-color: #003469;
   color: #FFF;
   border: none;
-  margin: 50px;
+  margin: 50px 40px;
 }
 
 .actions {
@@ -198,8 +203,8 @@ form > *:last-child {
   display: block;
   margin: 50px auto 30px;
   background-color: #003469;
-  height: 50px;
-  width: 200px;
+  height: 55px;
+  width: 220px;
   line-height: 50px;
   text-align: center;
   text-decoration: none;

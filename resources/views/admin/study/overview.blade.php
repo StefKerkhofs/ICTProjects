@@ -1,20 +1,28 @@
 @extends('admin.main')
 @section('content')
-    <h4>Richtingen</h4>
-    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post', 'onchange' => 'openMajorTable'))}}
-    {{Form::select('studySelect', $aStudyForm)}}
-    {{form::text('majorName')}}
-    {{Form::submit('+')}}
-    {{Form::close()}}
-
-    <h4>Afstudeerrichtingen</h4>
-
+    <h2>Richting Toevoegen</h2>
     {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
-    {{form::text('studyName')}}
-    {{Form::submit('+ ')}}
-    <table id = "majors">
-    </table>
+    {{ Form::label('studyName', 'Richting') }}
+    {{form::text('studyName', '', ['class' => 'form-control', 'placeholder' => 'Richting'])}}
+    <div class="actions">
+        {{ Form::submit('Richting Toevoegen') }}
+        <input type="button" onclick="history.go(0)" value="Annuleren"/>
+    </div>
     {{Form::close()}}
+
+    <h2>Afstudeerrichting Toevoegen</h2>
+    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post', 'onchange' => 'openMajorTable'))}}
+    {{ Form::label('studySelect', 'Selecteer Richting') }}
+    {{Form::select('studySelect', $aStudyForm)}}
+    <table id="majors" class="table"></table>
+    {{ Form::label('majorName', 'Afstudeeerrichting') }}
+    {{form::text('majorName','' , ['class' => 'form-control', 'placeholder' => 'Afstudeerrichting'])}}
+    <div class="actions">
+        {{ Form::submit('Afstudeerrichting Toevoegen') }}
+        <input type="button" onclick="history.go(0)" value="Annuleren"/>
+    </div>
+    {{Form::close()}}
+
     <script type="text/javascript">
         openMajorTable();
         function openMajorTable(){

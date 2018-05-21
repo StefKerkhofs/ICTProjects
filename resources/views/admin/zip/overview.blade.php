@@ -5,6 +5,7 @@
             {{ session()->get('message') }}
         </div>
     @endif
+    <h2>Postcodes</h2>
     <table class="table table-hover">
         <thead>
         <tr>
