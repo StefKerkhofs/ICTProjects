@@ -13,7 +13,7 @@
     <h2>Afstudeerrichting Toevoegen</h2>
     {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post', 'onchange' => 'openMajorTable'))}}
     {{ Form::label('studySelect', 'Selecteer Richting') }}
-    {{Form::select('studySelect', $aStudyForm)}}
+    {{Form::select('studySelect', $aStudyForm, null, ['class' => 'form-control'])}}
     <table id="majors" class="table"></table>
     {{ Form::label('majorName', 'Afstudeeerrichting') }}
     {{form::text('majorName','' , ['class' => 'form-control', 'placeholder' => 'Afstudeerrichting'])}}
@@ -24,28 +24,30 @@
     {{Form::close()}}
 
     <script type="text/javascript">
-        openMajorTable();
+        var select = document.getElementsByName('studySelect')[0];
+        var table = document.getElementById('majors');
+
+        select.addEventListener('change', function () {
+            openMajorTable();
+        });
+
         function openMajorTable(){
-            var select = document.getElementsByName('studySelect')[0];
-            var table = document.getElementById('majors');
             var majorData = <?php echo $aMajorData ?>;
-            select.addEventListener('change', filter());
-            function filter(){
-                var studyId = select.value;
-                table.innerHTML = "";
-                for(var major of majorData)
+            table.innerHTML = "";
+            var studyId = select.value;
+            for(var major of majorData)
+            {
+                if(major.study_id == studyId)
                 {
-                    if(major.study_id == studyId)
-                    {
-                        var row = document.createElement('tr');
-                        var column = document.createElement('td');
-                        column.innerHTML = major.major_name;
-                        row.appendChild(column);
-                        table.appendChild(row);
-                    }
+                    var row = document.createElement('tr');
+                    var column = document.createElement('td');
+                    column.innerHTML = major.major_name;
+                    row.appendChild(column);
+                    table.appendChild(row);
                 }
             }
         }
+        openMajorTable();
     </script>
 @endsection
 
