@@ -44,5 +44,8 @@ Route::get('/profileEdit', 'ProfileController@profileEdit');
 Route::get('/searchStudentEdit', 'ProfileController@searchStudentEdit');
 Route::get('/editSearchedStudent', 'ProfileController@editSearchedStudent');
 
+Route::get('/filter', 'FilterController@index');
+route::post('/filter/getTravelers', 'FilterController@getFilteredTraveller');
+
 Route::get('/{page}', 'GuestPagesController@showPage');
 
