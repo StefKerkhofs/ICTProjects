@@ -15,7 +15,7 @@
     {{ Form::label('studySelect', 'Selecteer Richting') }}
     {{Form::select('studySelect', $aStudyForm, null, ['class' => 'form-control'])}}
     <table id="majors" class="table"></table>
-    {{ Form::label('majorName', 'Afstudeeerrichting') }}
+    {{ Form::label('majorName', 'Afstudeerrichting') }}
     {{form::text('majorName','' , ['class' => 'form-control', 'placeholder' => 'Afstudeerrichting'])}}
     <div class="actions">
         {{ Form::submit('Afstudeerrichting Toevoegen') }}
