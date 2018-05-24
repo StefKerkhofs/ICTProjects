@@ -13,7 +13,7 @@
     {{form::text('studyName')}}
     {{Form::submit('+ ')}}
     <table id = "majors">
-        @foreach($aMajorData = DB::table('majors')->get() as $oMajor)
+        @foreach($aMajorData as $oMajor)
             <tr>
                 <td>
                     {{$oMajor->major_name}}
@@ -24,10 +24,7 @@
 <script type="text/javascript">
     var select = document.getElementsByName('studySelect')[0];
     var table = document.getElementById('majors');
-    console.log(select);
     var majorData = <?php echo $aMajorData ?>;
-    console.log(studyData);
-    console.log(majorData);
     select.addEventListener('change', function () {
         var studyId = select.value;
         alert(studyId);
