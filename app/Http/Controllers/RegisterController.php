@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Traveller;
+use App\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -17,6 +18,7 @@ class RegisterController extends Controller
         $aData['txtNummer'] = $aRequest->post('txtNummer');
         $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+        echo serialize($_COOKIE['register']);
         return view('user.register.form2');
     }
 
@@ -26,10 +28,18 @@ class RegisterController extends Controller
              setcookie("register", serialize($aData), time() + (86400 * 30), "/");
              return view('user.register.form1');
          }
+
          $aData = unserialize($_COOKIE['register']);
         $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
         $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+         User::insert(
+             [
+                 'name' => $aData['txtNummer'],
+                 'password' => $aData['txtWachtwoord'],
+                 'function' => 'reiziger',
+             ]
+         );
          return view('user.register.form3');
     }
 
@@ -80,6 +90,8 @@ class RegisterController extends Controller
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
         echo serialize($_COOKIE['register']);
 
+
+        /*
         Traveller::insert(
             [
                 'user_id' => $aData['txtNummer'],
@@ -102,6 +114,7 @@ class RegisterController extends Controller
                 'medical_info' => $aRequest->post('MedischeInfo'),
             ]
         );
+        */
 
         return view('user.register.form6');
     }
