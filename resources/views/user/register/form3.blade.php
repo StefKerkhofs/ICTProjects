@@ -84,7 +84,7 @@
 @endsection
 @section('content')
     <div class="container">
-        <form>
+        {{ Form::open(array('action' => 'RegisterController@form4', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="leftform">
                     <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="" name="lastname" ></p>
@@ -99,6 +99,9 @@
                     <p><label class="field" for="name">Adres: </label>          <input type="text" class="textbox" value="" name="address"></p>
                     <p><label class="field" for="name">Postcode, gemeente:</label>
                         <select name="Postcode" class="select">
+                            <option value="1">Cup</option> <!-- Suppose this option selected -->
+                            <option value="2">Pen</option>
+                            <option value="3">Book</option>
                         </select>
                     </p>
                     <p><label class="field" for="name">Land:</label>            <input type="text" class="textbox" value="" name="country"></p>
@@ -106,10 +109,10 @@
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/reg/form4">Annuleren</a>
+                    <a class="nav-link" href="/">Annuleren</a>
                 </div>
-                <input type="submit" value="Opslaan">
+                <input type="submit" value="volgende">
             </div>
-        </form>
+        {{ Form::close() }}
     </div>
 @endsection
