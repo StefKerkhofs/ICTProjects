@@ -26,8 +26,6 @@ Route::get('/', function () {
 });
 
 Route::get('/reg', 'RegisterController@form1');
-Route::get('/nextForm', 'RegisterController@next');
-Route::get('/prevForm', 'RegisterController@previous');
 route::get('/reg/form1', 'RegisterController@form1');
 route::post('/reg/form2', 'RegisterController@form2');
 route::post('/reg/form3', 'RegisterController@form3');

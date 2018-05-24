@@ -87,8 +87,8 @@
         {{ Form::open(array('action' => 'RegisterController@form5', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="leftform">
-                    <p><label class="field" for="name">Email:</label>            <input type="text" class="textbox" value="" name="NoodmMail" ></p>
-                    <p><label class="field" for="name">GSM:</label>        <input type="text" class="textbox" value="" name="NoodGSM"></p>
+                    <p><label class="field" for="name">Email:</label>            <input type="text" class="textbox" value="" name="email" ></p>
+                    <p><label class="field" for="name">GSM:</label>        <input type="text" class="textbox" value="" name="gsm"></p>
                 </div>
 
                 <div class="rightform">

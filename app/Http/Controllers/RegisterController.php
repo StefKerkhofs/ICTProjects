@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Traveller;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -59,8 +60,8 @@ class RegisterController extends Controller
             return view('user.register.form1');
         }
         $aData = unserialize($_COOKIE['register']);
-        $aData['NoodmMail'] = $aRequest->post('NoodmMail');
-        $aData['NoodGSM'] = $aRequest->post('NoodGSM');
+        $aData['NoodmMail'] = $aRequest->post('email');
+        $aData['NoodGSM'] = $aRequest->post('gsm');
         $aData['NoodNummer1'] = $aRequest->post('NoodNummer1');
         $aData['NoodNummer2'] = $aRequest->post('NoodNummer2');
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
@@ -78,6 +79,30 @@ class RegisterController extends Controller
         $aData['MedischeInfo'] = $aRequest->post('MedischeInfo');
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
         echo serialize($_COOKIE['register']);
+
+        Traveller::insert(
+            [
+                'user_id' => $aData['txtNummer'],
+                'trip_id' => $aData['ReisKiezen'],
+                'study_id' => $aData['AfstudeerrichtingKiezen'],
+                'zipcode_id' => $aData['Postcode'],
+                'firstname' => $aData['firstname'],
+                'lastname' => $aData['firstname'],
+                'city' => $aData['firstname'],
+                'country' => $aData['firstname'],
+                'address' => $aData['firstname'],
+                'sex' => $aData['firstname'],
+                'email' => $aData['firstname'],
+                'phone' => $aData['gender'],
+                'emergency_phone_1' => $aData['NoodNummer1'],
+                'emergency_phone_2' => $aData['NoodNummer2'],
+                'nationality' => $aData['nationality'],
+                'birthdate' => $aData['birthdate'],
+                'birthplace' => $aData['birthplace'],
+                'medical_info' => $aRequest->post('MedischeInfo'),
+            ]
+        );
+
         return view('user.register.form6');
     }
     public function form1(){

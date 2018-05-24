@@ -18,7 +18,7 @@ class CreateTravellersTable extends Migration
             $table->integer('zipcode_id');
             $table->integer('study_id');
             $table->integer('trip_id');
-            $table->integer('user_id');
+            $table->string('user_id');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('city');
@@ -30,7 +30,7 @@ class CreateTravellersTable extends Migration
             $table->string('emergency_phone_1',255);
             $table->string('emergency_phone_2',255);
             $table->string('nationality',255);
-            $table->date('birthdate');
+            $table->string('birthdate');
             $table->string('birthplace',255);
             $table->longText('medical_info');
             $table->rememberToken();
