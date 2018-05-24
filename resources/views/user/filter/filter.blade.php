@@ -1,22 +1,28 @@
 @extends("user.templates.templateFrontEnd")
 @section('content')
+
+    <div class="container">
+        {{Form::open(array('action' => 'FilterController@getFilteredTraveller', 'method' => 'post'))}}
+        <div class="formcontainer">
+            <div class="middleform">
+                <p>{{Form::radio('Naam', 'Naam',true)}}</p>
+                <p>{{Form::radio('Voornaam', 'Voornaam',true)}}</p>
+                <p>{{Form::radio('Telefoon', 'Telefoon',true)}}</p>
+                <p>{{Form::radio('Reis', 'Reis')}}</p>
+                <p>{{Form::radio('Klas', 'Klas')}}</p>
+            </div>
+        </div>
+        <div class="formbutton">
+            {{Form::submit('Toon Lijst')}}
+        </div>
+        {{ Form::close() }}
+    </div>
+
+
+
     <table>
         <tr>
-            <td>
-                {{Form::open(array('action' => 'FilterController@getFilteredTraveller'))}}
-                {{Form::radio('Naam', 'Naam',true)}}
-                {{Form::radio('Voornaam', 'Voornaam',true)}}
-                {{Form::radio('Telefoon', 'Telefoon',true)}};
-                {{Form::radio('Reis', 'Reis')}}
-                {{Form::radio('Klas', 'Klas')}}
-                {{Form::submit('Toon Lijst')}}
-                {{Form::close()}}
-            </td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-        @foreach($afiltereduserlist as $ofiltereduserlist)
+        @foreach($afilteredUserList as $ofiltereduserlist)
             <tr>
                 @foreach($afilters as $ofilters)
                     <td>
