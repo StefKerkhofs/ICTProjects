@@ -1,35 +1,56 @@
 @extends('admin.main')
 @section('content')
-    <h4>Richtingen</h4>
-    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post'))}}
-    {{Form::select('studySelect', $aStudyForm)}}
-    {{form::text('majorName')}}
-    {{Form::submit('+')}}
+    <h2>Richting Toevoegen</h2>
+    {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
+    {{ Form::label('studyName', 'Richting') }}
+    {{form::text('studyName', '', ['class' => 'form-control', 'placeholder' => 'Richting'])}}
+    <div class="actions">
+        {{ Form::submit('Richting Toevoegen') }}
+        <input type="button" onclick="history.go(0)" value="Annuleren"/>
+    </div>
     {{Form::close()}}
 
-    <h4>Afstudeerrichtingen</h4>
+    <h2>Afstudeerrichting Toevoegen</h2>
+    {{Form::open(array('action' => 'AdminStudyController@addMajor', 'method' => 'post', 'onchange' => 'openMajorTable'))}}
+    {{ Form::label('studySelect', 'Selecteer Richting') }}
+    {{Form::select('studySelect', $aStudyForm, null, ['class' => 'form-control'])}}
+    <table id="majors" class="table"></table>
+    {{ Form::label('majorName', 'Afstudeerrichting') }}
+    {{form::text('majorName','' , ['class' => 'form-control', 'placeholder' => 'Afstudeerrichting'])}}
+    <div class="actions">
+        {{ Form::submit('Afstudeerrichting Toevoegen') }}
+        <input type="button" onclick="history.go(0)" value="Annuleren"/>
+    </div>
+    {{Form::close()}}
 
-    {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
-    {{form::text('studyName')}}
-    {{Form::submit('+ ')}}
-    <table id = "majors">
-        @foreach($aMajorData as $oMajor)
-            <tr>
-                <td>
-                    {{$oMajor->major_name}}
-                </td>
-            </tr>
-        @endforeach
-    </table>
-<script type="text/javascript">
-    var select = document.getElementsByName('studySelect')[0];
-    var table = document.getElementById('majors');
-    var majorData = <?php echo $aMajorData ?>;
-    select.addEventListener('change', function () {
-        var studyId = select.value;
-        alert(studyId);
-        table.innerHTML = "";
-    })
-</script>
+    <script type="text/javascript">
+        var select = document.getElementsByName('studySelect')[0];
+        var table = document.getElementById('majors');
 
+        select.addEventListener('change', function () {
+            openMajorTable();
+        });
+
+        function openMajorTable(){
+            var majorData = <?php echo $aMajorData ?>;
+            table.innerHTML = "";
+            var studyId = select.value;
+            for(var major of majorData)
+            {
+                if(major.study_id == studyId)
+                {
+                    var row = document.createElement('tr');
+                    var column = document.createElement('td');
+                    column.innerHTML = major.major_name;
+                    row.appendChild(column);
+                    table.appendChild(row);
+                }
+            }
+        }
+        openMajorTable();
+    </script>
 @endsection
+
+
+
+

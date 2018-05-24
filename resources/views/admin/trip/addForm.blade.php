@@ -1,14 +1,14 @@
 @extends('admin.main')
 
 @section('content')
-
+        <h2>Reis Aanmaken</h2>
         {{ Form::open(array('action' => 'AdminTripController@createTrip', 'method' => 'post')) }}
         {{ Form::label('sNameTrip', 'Naam reis') }}
-        {{ Form::text('sNameTrip') }}
+        {{ Form::text('sNameTrip', '', ['class' => 'form-control']) }}
         {{ Form::label('iYearTrip', 'Jaar') }}
-        {{ Form::number('iYearTrip') }}
+        {{ Form::number('iYearTrip', '', ['class' => 'form-control']) }}
         {{ Form::label('iPriceTrip', 'Kostprijs') }}
-        {{ Form::number('iPriceTrip') }}
+        {{ Form::number('iPriceTrip', '', ['class' => 'form-control']) }}
         {{ Form::checkbox('bActive', 1, true) }}
         {{ Form::label('bActive', 'Actief') }}
 

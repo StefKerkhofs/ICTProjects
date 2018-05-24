@@ -1,6 +1,6 @@
 @extends('admin.main')
 @section('content')
-
+    <h2>Reis Aanpassen</h2>
     {{ Form::open(array('url' => "admin/trip/$oTripData->trip_id/edit", 'method' => 'post')) }}
     {{ Form::label('sNameTrip', 'Naam reis') }}
     {{ Form::text('sNameTrip', $oTripData->trip_name, ['class' => 'form-control']) }}
@@ -14,7 +14,6 @@
 
     <div class="actions">
         {{ Form::submit('Opslaan') }}
-
         <input type="button" onclick="history.go(-1)" value="Annuleren"/>
     </div>
     {{ Form::close() }}

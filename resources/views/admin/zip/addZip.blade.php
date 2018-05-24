@@ -1,5 +1,6 @@
 @extends('admin.main')
 @section('content')
+    <h2>Postcodes Aanmaken</h2>
     {{ Form::open(array('action' => 'AdminZipController@addZipForm', 'method' => 'post')) }}
     {{ Form::label('zipCode', 'Postcode') }}
     {{ Form::text('zipCode', '', ['class' => 'form-control']) }}

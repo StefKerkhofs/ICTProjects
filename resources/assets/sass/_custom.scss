@@ -1,168 +1,142 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 /* Color Settings */
+$body-bg: #E9F3F8;
+$footer-bg: #95C8DA;
+$color-primary: #E00049;
+$color-secondary: #003469;
+$color-light: #FFF;
+$color-dark: #000;
+
 /* CSS */
-@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css");
 body {
-  background-color: #E9F3F8;
+  background-color: $body-bg;
   overflow-y: hidden;
 }
-
 * {
   padding: 0;
   margin: 0;
 }
-
-header * {
+header *{
   padding: 0;
   margin: 0;
   height: 48px;
 }
-
-header a {
+header a{
   text-decoration: none;
-  color: #FFF;
+  color: $color-light;
 }
-
-header a:hover {
-  color: #E00049;
+header a:hover{
+  color: $color-primary;
   text-decoration: none;
 }
-
 header div {
   padding: 0 40px 0 60px;
 }
-
-#top-bar {
-  background-color: #003469;
+#top-bar{
+  background-color: $color-secondary;
 }
-
-header ul {
+header ul{
   list-style: none;
   float: right;
 }
-
-header li {
-  color: #FFF;
+header li{
+  color: $color-light;
   display: inline-block;
   line-height: 48px;
 }
-
-header li a {
+header li a{
   padding: 0 20px;
 }
-
-header li:first-child a {
-  border-right: 1px solid #FFF;
+header li:first-child a{
+  border-right: 1px solid $color-light;
   padding-right: 25px;
 }
-
-#bottom-bar {
-  background-color: #E00049;
+#bottom-bar{
+  background-color: $color-primary;
   height: 90px;
 }
-
 #side-bar {
   float: left;
-  background-color: #FFF;
+  background-color: $color-light;
   width: 200px;
   text-align: center;
 }
-
-#side-bar ul {
+#side-bar ul{
   list-style-type: none;
   height: 100%;
 }
-
-#side-bar li {
+#side-bar li{
   line-height: 50px;
   font-size: large;
   border-bottom: 0px;
   text-transform: uppercase;
 }
-
-nav a {
-  color: #000;
+nav a{
+  color: $color-dark;
   text-decoration: none;
 }
-
-nav a:hover, .active {
+nav a:hover, .active{
   text-decoration: none;
-  color: #FFF;
+  color: $color-light;
 }
-
-nav a:hover li, .active li {
-  background-color: #E00049;
+nav a:hover li, .active li{
+  background-color: $color-primary;
 }
-
-section#content {
-  background-color: #FFF;
+section#content{
+  background-color: $color-light;
   width: 100%;
   overflow: hidden;
 }
-
-section#content table {
+section#content table{
   margin-left: 0;
 }
-
-section#content h2 {
+section#content h2{
   margin-top: 50px;
   text-align: center;
 }
-
-textarea {
+textarea{
   resize: none;
   width: 100%;
   height: 500px;
 }
-
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"]{
   height: 55px;
   width: 220px;
-  background-color: #003469;
-  color: #FFF;
+  background-color: $color-secondary;
+  color: $color-light;
   border: none;
   margin: 50px 9px;
 }
-
-.actions {
+.actions{
   text-align: center;
 }
-
 article {
   margin-left: 200px;
   padding: 50px;
   overflow-y: auto;
 }
-
-footer {
+footer{
   position: fixed;
   bottom: 0;
   line-height: 50px;
   text-align: center;
-  background-color: #95C8DA;
+  background-color: $footer-bg;
   width: 100%;
 }
-
-form {
+form{
   margin: 50px 50px 0 50px;
 }
-
-table {
+table{
   margin: 50px;
 }
-
-form > * {
+form>*{
   margin-top: 25px;
 }
-
-form > *:last-child {
+form>*:last-child{
   margin-top: 0px;
 }
-
-.table-hover tbody tr:hover {
+.table-hover tbody tr:hover{
   cursor: pointer;
 }
-
 @media only screen and (max-width: 904px) {
   #side-bar {
     height: 50px;
@@ -170,14 +144,14 @@ form > *:last-child {
     text-align: center;
     overflow: hidden;
   }
-  #side-bar li {
+  #side-bar li{
     display: inline-block;
     border: none;
     padding: 0 12px;
     font-size: medium;
     margin: 0 -3px;
   }
-  input[type="submit"], input[type="button"] {
+  input[type="submit"], input[type="button"]{
     margin: 50px 30px;
     width: 175px;
   }
@@ -185,30 +159,26 @@ form > *:last-child {
     padding: 0 10px 0 30px;
   }
 }
-
 @media only screen and (max-width: 580px) {
-  input[type="submit"], input[type="button"] {
+  input[type="submit"], input[type="button"]{
     margin: 50px 10px;
     width: 175px;
   }
   header div {
     padding: 0 0 0 10px;
   }
-  #side-bar li {
+  #side-bar li{
     padding: 0 7px;
   }
 }
-
 .button, .button:hover {
   display: block;
   margin: 50px auto 30px;
-  background-color: #003469;
+  background-color: $color-secondary;
   height: 55px;
   width: 220px;
   line-height: 50px;
   text-align: center;
   text-decoration: none;
-  color: #FFF;
+  color: $color-light;
 }
-
-/*# sourceMappingURL=app.css.map */
