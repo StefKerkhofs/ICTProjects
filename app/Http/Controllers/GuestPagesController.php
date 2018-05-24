@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use App\Trip;
-use App\TripsModel;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
 
 class GuestPagesController extends Controller
 {
