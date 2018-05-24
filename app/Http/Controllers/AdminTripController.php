@@ -40,7 +40,11 @@ class AdminTripController extends Controller
      */
     public function createTrip(Request $request)
     {
-
+        $validatedData = $request->validate([
+            'sNameTrip' => 'required',
+            'iYearTrip' => 'required',
+            'iPriceTrip' => 'required',
+        ],$this->messages());
         $sName = $request->post('sNameTrip');
         $iYear = $request->post('iYearTrip');
         $iPrice = $request->post('iPriceTrip');
@@ -57,7 +61,16 @@ class AdminTripController extends Controller
         Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
         return redirect('admin/trip')->with('message', 'De reis is opgeslagen');
     }
+    public function messages()
+    {
+        return [
+            'sNameTrip.required' => 'De reis naam mag niet leeg zijn.',
+            'iYearTrip.required'  => 'Het jaar dat de reis doorgaat mag niet leeg zijn.',
+            'iPriceTrip.required'  => 'De prijs van de reis mag niet leeg zijn',
 
+
+        ];
+    }
     /**
      * createTripForm
      *

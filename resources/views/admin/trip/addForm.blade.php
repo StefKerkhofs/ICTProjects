@@ -1,6 +1,15 @@
 @extends('admin.main')
 
 @section('content')
+        @if ($errors->any())
+                <div class="alert alert-danger">
+                        <ul>
+                                @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                @endforeach
+                        </ul>
+                </div>
+        @endif
         <h2>Reis Aanmaken</h2>
         {{ Form::open(array('action' => 'AdminTripController@createTrip', 'method' => 'post')) }}
         {{ Form::label('sNameTrip', 'Naam reis') }}
