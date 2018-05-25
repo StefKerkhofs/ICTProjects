@@ -33,13 +33,7 @@ class RegisterController extends Controller
         $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
         $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
-         User::insert(
-             [
-                 'name' => $aData['txtNummer'],
-                 'password' => $aData['txtWachtwoord'],
-                 'function' => 'reiziger',
-             ]
-         );
+
          return view('user.register.form3');
     }
 
@@ -88,13 +82,19 @@ class RegisterController extends Controller
         $aData['MedischeAandoening'] = $aRequest->post('MedischeAandoening');
         $aData['MedischeInfo'] = $aRequest->post('MedischeInfo');
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
-        echo serialize($_COOKIE['register']);
+        User::insert(
+            [
+                'name' => $aData['txtNummer'],
+                'password' => $aData['txtWachtwoord'],
+                'function' => 'reiziger',
+            ]
+        );
 
-
+        $iUserID = User::where('name',$aData['txtNummer']) ->value('id');
         /*
         Traveller::insert(
             [
-                'user_id' => $aData['txtNummer'],
+                'user_id' => $iUserID,
                 'trip_id' => $aData['ReisKiezen'],
                 'study_id' => $aData['AfstudeerrichtingKiezen'],
                 'zipcode_id' => $aData['Postcode'],
@@ -113,8 +113,7 @@ class RegisterController extends Controller
                 'birthplace' => $aData['birthplace'],
                 'medical_info' => $aRequest->post('MedischeInfo'),
             ]
-        );
-        */
+        );*/
 
         return view('user.register.form6');
     }
