@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/reg', 'RegisterController@form1');
-route::get('/reg/form1', 'RegisterController@form1');
+route::post('/reg/form1', 'RegisterController@form1');
 route::post('/reg/form2', 'RegisterController@form2');
 route::post('/reg/form3', 'RegisterController@form3');
 route::post('/reg/form4', 'RegisterController@form4');

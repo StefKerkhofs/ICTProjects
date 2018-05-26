@@ -84,6 +84,15 @@
 @endsection
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         {{ Form::open(array('action' => 'RegisterController@form3', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
