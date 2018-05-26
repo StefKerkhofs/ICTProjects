@@ -5,11 +5,16 @@
         {{Form::open(array('action' => 'FilterController@getFilteredTraveller', 'method' => 'post'))}}
         <div class="formcontainer">
             <div class="middleform">
-                <p>{{Form::radio('Naam', 'Naam',true)}}</p>
-                <p>{{Form::radio('Voornaam', 'Voornaam',true)}}</p>
-                <p>{{Form::radio('Telefoon', 'Telefoon',true)}}</p>
-                <p>{{Form::radio('Reis', 'Reis')}}</p>
-                <p>{{Form::radio('Klas', 'Klas')}}</p>
+                <p>{{ Form::label('lblNaam', 'Naam', ['class' => 'field']) }}
+                {{Form::checkbox('Naam', 'Naam')}}</p>
+                <p>{{ Form::label('lblVoornaam', 'Voornaam', ['class' => 'field']) }}
+                {{Form::checkbox('Voornaam', 'Voornaam')}}</p>
+                <p>{{ Form::label('lblTelefoon', 'Telefoon', ['class' => 'field']) }}
+                {{Form::checkbox('Telefoon', 'Telefoon')}}</p>
+                <p>{{ Form::label('lblReis', 'Reis', ['class' => 'field']) }}
+                {{Form::checkbox('Reis', 'Reis')}}</p>
+                <p>{{ Form::label('lblKlas', 'Klas', ['class' => 'field']) }}
+                {{Form::checkbox('Klas', 'Klas')}}</p>
             </div>
         </div>
         <div class="formbutton">
@@ -18,10 +23,13 @@
         {{ Form::close() }}
     </div>
 
-
-
+    {{--@php
+        var_dump($afilters);
+        var_dump($afilteredUserList);
+    @endphp
+--}}
     <table>
-        <tr>
+
         @foreach($afilteredUserList as $ofiltereduserlist)
             <tr>
                 @foreach($afilters as $ofilters)
@@ -30,8 +38,7 @@
                     </td>
                 @endforeach
             </tr>
-            @endforeach
-            </tr>
+        @endforeach
     </table>
 
 
