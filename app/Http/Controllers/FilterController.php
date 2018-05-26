@@ -15,14 +15,20 @@ use Illuminate\Http\Request;
 class FilterController extends Controller
 {
     public function index(){
-        return view('user.filter.filter');
+        $afilteredUserList=array();
+        $afilters=array();
+        return view('user.filter.filter', [
+            'afilteredUserList' => $afilteredUserList,
+            'afilters'=>$afilters
+        ]);
     }
     public function getFilteredTraveller(Request $request)
     {
-        $id = Auth::id();
+        //$id = Auth::id();
         $afilters=$request->all();
-        $tripId=  Traveller::where('user_id',$id)->select('trip_id');
-        $afilteredUserList= Traveller::where('trip_id',$tripId)->get();
+        array_shift($afilters);
+        $tripId=  Traveller::where('user_id','1'/*id*/)->pluck('trip_id');
+        $afilteredUserList= Traveller::where('trip_id','1'/*$tripId*/)->get();
         return view('user.filter.filter', [
             'afilteredUserList' => $afilteredUserList,
             'afilters'=>$afilters

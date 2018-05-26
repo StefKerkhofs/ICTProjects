@@ -17,7 +17,7 @@
                 <a class="nav-link"  href="/">Reis 2</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="/">Deelnemers</a>
+                <a class="nav-link"  href="/filter">Deelnemers</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
@@ -28,6 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/">test</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
