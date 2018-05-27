@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Traveller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class FilterController
@@ -17,9 +18,11 @@ class FilterController extends Controller
     public function index(){
         $afilteredUserList=array();
         $afilters=array();
+        $tripid=array();
         return view('user.filter.filter', [
             'afilteredUserList' => $afilteredUserList,
-            'afilters'=>$afilters
+            'afilters'=>$afilters,
+            'tripid'=>$tripid
         ]);
     }
     public function getFilteredTraveller(Request $request)
@@ -27,11 +30,21 @@ class FilterController extends Controller
         //$id = Auth::id();
         $afilters=$request->all();
         array_shift($afilters);
-        $tripId=  Traveller::where('user_id','1'/*id*/)->pluck('trip_id');
-        $afilteredUserList= Traveller::where('trip_id','1'/*$tripId*/)->get();
+        $tripid=DB::table('travellers')
+            ->where('user_id','0'/*id*/)
+            ->select('trip_id')
+        ->get();
+        $tripid = json_decode(json_encode($tripid),true);
+
+        $afilteredUserList=DB::table('travellers')
+            //->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+            ->where('trip_id',$tripid[0])
+            ->get();
+        $afilteredUserList = json_decode(json_encode($afilteredUserList),true);
         return view('user.filter.filter', [
             'afilteredUserList' => $afilteredUserList,
-            'afilters'=>$afilters
+            'afilters'=>$afilters,
+            'tripid'=>$tripid
         ]);
     }
 

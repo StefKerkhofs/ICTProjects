@@ -28,6 +28,9 @@ class GuestPagesController extends Controller
             }
 
         }
+        elseif ($page == "Home"){
+            $sContent = "test voor de header";
+        }
         else{
             try{
                 $oPageData = Page::where('page_name', $page)->first();

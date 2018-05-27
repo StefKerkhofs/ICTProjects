@@ -8,9 +8,15 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
             </li>
+            @guest
             <li class="nav-item">
-                <a class="nav-link" href="/login">Log in</a>
+                <a class="nav-link" href="{{ route('login') }}">Log in</a>
             </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">Log in</a>
+                </li>
+            @endguest
         </ul>
     </div>
 </nav>
