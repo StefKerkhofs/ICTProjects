@@ -68,9 +68,10 @@
                 <tr>
                     <td>{{$data->lastname}}</td>
                     <td>{{$data->firstname}}</td>
-                    <td>{{$data->study_id}}</td>
+                    <td>{{$data->name}}</td>
                     <td><a href="/editSearchedStudent"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
                 </tr>
+
                 @endforeach
                 {{--@endfor--}}
             </table>

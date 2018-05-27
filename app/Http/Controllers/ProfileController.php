@@ -20,8 +20,8 @@ class ProfileController extends Controller
     public function searchStudentEdit()
     {
         $aTravellers = DB::table('travellers')
-            //->join('studies', 'travellers.study_id', '=', 'studies.study_id')
-            //->select('travellers.*', 'studies.name')
+            ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+            ->select('travellers.*', 'studies.name')
             ->get();
         return view('user.profile.searchStudentEdit', ['aTravellers' => $aTravellers]);
     }
