@@ -29,6 +29,9 @@
             border: 1px solid darkgray;
             border-collapse: collapse;
         }
+        table{
+            margin-bottom: 20px;
+        }
         th{
             text-align: center;
             background-color: #e00049;
