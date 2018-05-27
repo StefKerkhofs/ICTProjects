@@ -13,12 +13,10 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form2(Request $aRequest){
         if (!isset($_COOKIE['register'])){
-            $aData = null;
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
             return view('user.register.form1');
         }
-        session_start();
 
+        session_start();
 
         $aData = unserialize($_COOKIE['register']);
         $aRequest->validate([
@@ -53,26 +51,34 @@ class RegisterController extends Controller
     /*--------------------------------------------------------------------------FORM 3--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form3(Request $aRequest){
-         if (!isset($_COOKIE['register'])){
-             $aData = null;
-             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
-             return view('user.register.form1');
-         }
-         if(isset($_SESSION['StudentOrDocent'])){
-             $_SESSION['StudentOrDocent'] = null;
-         }
-         $aRequest->validate([
-             'ReisKiezen' => 'required',
-             'AfstudeerrichtingKiezen' => 'required',
-         ],$this->messages());
-
-         $aData = unserialize($_COOKIE['register']);
-        $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
-        $sTest = $aRequest->post('AfstudeerrichtingKiezen');
-        if (isset($sTest)) {
-            $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
+        if (!isset($_COOKIE['register'])){
+            return view('user.register.form1');
         }
+
+        $aData = unserialize($_COOKIE['register']);
+
+        if(isset($_SESSION['StudentOrDocent'])){
+             if ($_SESSION['StudentOrDocent'] == 1){
+                 $aRequest->validate([
+                     'ReisKiezen' => 'required',
+                     'AfstudeerrichtingKiezen' => 'required',
+                 ],$this->messages());
+                 $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
+
+             }
+             else{
+                 $aRequest->validate([
+                     'ReisKiezen' => 'required',
+                 ],$this->messages());
+             }
+         }
+         else{
+             //return view('user.register.form2');
+         }
+        $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
+
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+
 
          return view('user.register.form3');
     }
@@ -82,33 +88,36 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form4(Request $aRequest){
         if (!isset($_COOKIE['register'])){
-            $aData = null;
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
             return view('user.register.form1');
         }
 
-        $aRequest->validate([
+        if($aRequest->validate([
             'lastname' => 'required',
             'firstname' => 'required',
             'gender' => 'required',
-            'birthdate' => 'required|date',
+            'birthdate' => 'required|date_format:d/m/Y',
             'birthplace' => 'required',
             'nationality' => 'required',
             'address' => 'required',
             'Postcode' => 'required',
             'country' => 'required',
-        ],$this->messages());
+        ],$this->messages())){
+        };
 
         $aData = unserialize($_COOKIE['register']);
         $aData["lastname"] = $aRequest->post('lastname');
         $aData["firstname"] = $aRequest->post('firstname');
         $aData["gender"] = $aRequest->post('gender');
-        $aData["birthdate"] = $aRequest->post('birthdate');
         $aData["birthplace"] = $aRequest->post('birthplace');
         $aData["nationality"] = $aRequest->post('nationality');
         $aData["address"] = $aRequest->post('address');
         $aData["Postcode"] = $aRequest->post('Postcode');
         $aData["country"] = $aRequest->post('country');
+
+        $dBirthDate = $aRequest->post('birthdate');
+
+
+        $aData["birthdate"] = $dBirthDate;
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
         return view('user.register.form4');
@@ -119,13 +128,15 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form5(Request $aRequest){
         if (!isset($_COOKIE['register'])){
-            $aData = null;
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
             return view('user.register.form1');
         }
 
+        $aRequest->validate([
+            'gsm' => 'required',
+            'NoodNummer1' => 'required',
+        ],$this->messages());
+
         $aData = unserialize($_COOKIE['register']);
-        $aData['email'] = $aRequest->post('email');
         $aData['gsm'] = $aRequest->post('gsm');
         $aData['NoodNummer1'] = $aRequest->post('NoodNummer1');
         $aData['NoodNummer2'] = $aRequest->post('NoodNummer2');
@@ -139,10 +150,12 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form6(Request $aRequest){
         if (!isset($_COOKIE['register'])){
-            $aData = null;
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
             return view('user.register.form1');
         }
+
+        $aRequest->validate([
+            'MedischeAandoening' => 'required',
+        ],$this->messages());
 
         $aData = unserialize($_COOKIE['register']);
         $aData['MedischeAandoening'] = $aRequest->post('MedischeAandoening');
@@ -170,33 +183,59 @@ class RegisterController extends Controller
 
         $iUserID = User::where('email',$aData['email']) ->value('id');
 
-        Traveller::insert(
-            [
-                'user_id' => $iUserID,
-                'trip_id' => $aData['ReisKiezen'],
-                'study_id' => $aData['AfstudeerrichtingKiezen'],
-                'zipcode_id' => $aData['Postcode'],
-                'firstname' => $aData['firstname'],
-                'lastname' => $aData['lastname'],
-                'city' => $aData['Postcode'],
-                'country' => $aData['country'],
-                'address' => $aData['address'],
-                'sex' => $aData['gender'],
-                'phone' => $aData['gsm'],
-                'emergency_phone_1' => $aData['NoodNummer1'],
-                'emergency_phone_2' => $aData['NoodNummer2'],
-                'nationality' => $aData['nationality'],
-                'birthdate' => $aData['birthdate'],
-                'birthplace' => $aData['birthplace'],
-                'medical_info' => $aRequest->post('MedischeInfo'),
-                'MedicalIssue' => $aRequest->post('MedischeAandoening')
-            ]
-        );
+        if (!isset($aData['AfstudeerrichtingKiezen'])){
+            Traveller::insert(
+                [
+                    'user_id' => $iUserID,
+                    'trip_id' => $aData['ReisKiezen'],
+                    'zipcode_id' => $aData['Postcode'],
+                    'firstname' => $aData['firstname'],
+                    'lastname' => $aData['lastname'],
+                    'city' => $aData['Postcode'],
+                    'country' => $aData['country'],
+                    'address' => $aData['address'],
+                    'sex' => $aData['gender'],
+                    'phone' => $aData['gsm'],
+                    'emergency_phone_1' => $aData['NoodNummer1'],
+                    'emergency_phone_2' => $aData['NoodNummer2'],
+                    'nationality' => $aData['nationality'],
+                    'birthdate' => $aData['birthdate'],
+                    'birthplace' => $aData['birthplace'],
+                    'medical_info' => $aRequest->post('MedischeInfo'),
+                    'MedicalIssue' => $aRequest->post('MedischeAandoening')
+                ]
+            );
+        }
+        else{
+            Traveller::insert(
+                [
+                    'user_id' => $iUserID,
+                    'trip_id' => $aData['ReisKiezen'],
+                    'study_id' => $aData['AfstudeerrichtingKiezen'],
+                    'zipcode_id' => $aData['Postcode'],
+                    'firstname' => $aData['firstname'],
+                    'lastname' => $aData['lastname'],
+                    'city' => $aData['Postcode'],
+                    'country' => $aData['country'],
+                    'address' => $aData['address'],
+                    'sex' => $aData['gender'],
+                    'phone' => $aData['gsm'],
+                    'emergency_phone_1' => $aData['NoodNummer1'],
+                    'emergency_phone_2' => $aData['NoodNummer2'],
+                    'nationality' => $aData['nationality'],
+                    'birthdate' => $aData['birthdate'],
+                    'birthplace' => $aData['birthplace'],
+                    'medical_info' => $aRequest->post('MedischeInfo'),
+                    'MedicalIssue' => $aRequest->post('MedischeAandoening')
+                ]
+            );
+        }
+
         return view('user.register.form6');
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
-    /*--------------------------------------------------------------------------FORM 1--------------------------------------*/
+    /*------DONE----------------------------------------------------------------FORM 1--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form1(){
         if(isset($_SESSION['StudentOrDocent'])){
@@ -208,6 +247,7 @@ class RegisterController extends Controller
         foreach ($aTravellers as $oTraveller){
             echo  $oTraveller;
         }
+        redirect()->route('login');
         return view('user.register.form1');
     }
     public function messages()
@@ -229,12 +269,18 @@ class RegisterController extends Controller
             'firstname.required' => 'Je moet je voornaam invullen.',
             'gender.required' => 'Je moet een geslacht kiezen.',
             'birthdate.required' => 'Je moet je geboorte datum ingeven.',
-            'birthdate.date' => 'De waarde die je hebt ingevuld hebt bij geboorte datum in ongeldig',
+            'birthdate.date_format' => 'De waarde die je hebt ingevuld hebt bij geboorte datum in ongeldig',
             'birthplace.required' => 'Je moet je geboorte plaats ingeven.',
             'nationality.required' => 'je moet je nationaliteit opgeven.',
             'adress.required' => 'Je moet je adres ingeven.',
             'Postcode.required' => 'Je moet je postcode ingeven.',
             'country.required' => 'Je moet je land ingeven',
+            'address.required' => 'Je moet je adres ingeven.',
+
+            'gsm.required' => 'Je moet je GSM nummer invullen.',
+            'NoodNummer1.required' => 'Je moet minstens 1 noodnummer invullen.',
+
+            'MedischeAandoening.required' => 'Je moet aanduiden indien je een medische behandeling volgt of niet.',
         ];
     }
 }

@@ -95,12 +95,9 @@
         @endif
         {{ Form::open(array('action' => 'RegisterController@form5', 'method' => 'post')) }}
             <div class="formcontainer">
-                <div class="leftform">
-                    <p><label class="field" for="name">GSM:</label>        <input type="text" class="textbox" value="" name="gsm"></p>
-                </div>
-
-                <div class="rightform">
-                    <p><label class="field" for="name">Noodnummer 1:</label>   <input type="text" class="textbox" value="" name="NoodNummer1"></p>
+                <div class="middleform">
+                    <p><label class="field" for="name">GSM*:</label>        <input type="text" class="textbox" value="" name="gsm"></p>
+                    <p><label class="field" for="name">Noodnummer 1*:</label>   <input type="text" class="textbox" value="" name="NoodNummer1"></p>
                     <p><label class="field" for="name">Noodnummer 2:</label>          <input type="text" class="textbox" value="" name="NoodNummer2"></p>
                 </div>
             </div>

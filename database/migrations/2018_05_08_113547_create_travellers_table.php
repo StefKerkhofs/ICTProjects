@@ -16,7 +16,7 @@ class CreateTravellersTable extends Migration
         Schema::create('travellers', function (Blueprint $table) {
             $table->increments('traveller_id');
             $table->integer('zipcode_id');
-            $table->integer('study_id');
+            $table->integer('study_id')->nullable();
             $table->integer('trip_id');
             $table->string('user_id');
             $table->string('firstname');
