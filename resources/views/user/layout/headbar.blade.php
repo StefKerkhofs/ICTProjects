@@ -1,3 +1,5 @@
+<?php use \App\Http\Controllers\HomeController;?>
+
 <nav class="navbar navbar-expand-lg navbar-dark headbar">
 
     <img src="{{asset("/image/ucll_3493.png")}}" alt="ucll logo" height="55" width="120"/>
@@ -25,9 +27,14 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/reg">Registreren</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link"  href="/">test</a>
-            </li>
+            <?php $navbars = HomeController::index(); ?>
+                @foreach($navbars as $navbar)
+
+                    <li class="nav-item">
+                        <a class="nav-link navlink" href="{{ url("/").'/'.$navbar->name }}">{{ $navbar->name }}</a>
+                    </li>
+
+                @endforeach
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

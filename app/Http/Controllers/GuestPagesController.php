@@ -19,15 +19,18 @@ class GuestPagesController extends Controller
                 'aActiveTrips' => $aActiveTrips
             ]);
         }
+        elseif ($page == "Home"){
+            $sContent = "test voor de header";
+        }
         else{
             try{
             $oPageData = Page::where('page_name', $page)->first();
-            if ($oPageData->page_type == 'pdf'){
-                $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
-            }
-            else{
-                $sContent = $oPageData->page_content;
-            }
+            //if ($oPageData->page_type == 'pdf'){
+              //  $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
+            //}
+            //else{
+              //  $sContent = $oPageData->page_content;
+            //}
         }
         catch (QueryException $e){
             $sContent = 'Error 404, page not found';
