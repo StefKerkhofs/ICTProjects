@@ -33,15 +33,6 @@ class GuestPagesController extends Controller
         }
         else{
             try{
-<<<<<<< HEAD
-            $oPageData = Page::where('page_name', $page)->first();
-            //if ($oPageData->page_type == 'pdf'){
-              //  $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
-            //}
-            //else{
-              //  $sContent = $oPageData->page_content;
-            //}
-=======
                 $oPageData = Page::where('page_name', $page)->first();
                 if ($oPageData->page_type == 'pdf'){
                     $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
@@ -49,7 +40,6 @@ class GuestPagesController extends Controller
                 else{
                     $sContent = $oPageData->page_content;
                 }
->>>>>>> 8f82aaa9c67b6bcde7a48606f5693fa76508eb6d
         }
             catch (QueryException $e){
                 $sContent = 'Error 404, page not found';
