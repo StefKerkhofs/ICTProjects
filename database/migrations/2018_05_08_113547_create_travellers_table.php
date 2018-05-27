@@ -32,7 +32,7 @@ class CreateTravellersTable extends Migration
             $table->string('birthdate');
             $table->string('birthplace',255);
             $table->string('MedicalIssue');
-            $table->longText('medical_info');
+            $table->longText('medical_info')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
