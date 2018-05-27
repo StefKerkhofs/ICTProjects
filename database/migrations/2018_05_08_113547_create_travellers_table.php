@@ -43,24 +43,52 @@ class CreateTravellersTable extends Migration
         });
 
         // Insert some stuff
-        /*DB::table('travellers')->insert(
+
+        DB::table('travellers')->insert(
             array(
+                'zipcode_id' => 0,
+                'study_id' => 0,
+                'trip_id' => 0,
+                'user_id' => 0,
                 'firstname' => 'jos',
                 'lastname' => 'potter',
                 'city' => 'averbode',
                 'country' => 'belgië',
                 'address' => 'heesterweg 7',
                 'sex' => 'man',
-                'email' => 'jos@gmail.com',
                 'phone' => '0471487952',
                 'emergency_phone_1' => '0472597432',
                 'emergency_phone_2' => '0471652518',
                 'nationality' => 'belg',
-                'birthdate' => '',
-                'birthplace' => '',
-                'medical_onfo' => '',
+                'birthdate' => '1998',
+                'birthplace' => 'Zichem',
+                'MedicalIssue' => '',
+                'medical_info' => ''
             )
-        );*/
+        );
+        DB::table('travellers')->insert(
+            array(
+                'zipcode_id' => 0,
+                'study_id' => 0,
+                'trip_id' => 0,
+                'user_id' => 0,
+                'firstname' => 'jefke',
+                'lastname' => 'azerty',
+                'city' => 'averbode',
+                'country' => 'belgië',
+                'address' => 'heesterweg 7',
+                'sex' => 'man',
+                'phone' => '0471487952',
+                'emergency_phone_1' => '0472597432',
+                'emergency_phone_2' => '0471652518',
+                'nationality' => 'belg',
+                'birthdate' => '1998',
+                'birthplace' => 'Zichem',
+                'MedicalIssue' => '',
+                'medical_info' => ''
+            )
+        );
+
     }
 
     /**
