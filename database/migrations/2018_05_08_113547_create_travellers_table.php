@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -36,7 +37,7 @@ class CreateTravellersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            //$table->foreign('study_id')->references('study_id')->on('studies');
+            $table->foreign('study_id')->references('study_id')->on('studies');
             //$table->foreign('trip_id')->references('trip_id')->on('trips');
             //$table->foreign('user_id')->references('user_id')->on('users');
             //$table->foreign('zipcode_id')->references('zipcode_id')->on('zipcodes');

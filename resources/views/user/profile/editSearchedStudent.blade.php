@@ -79,27 +79,28 @@
 @endsection
 @section('content')
     <div class="container">
+        @foreach($aTravellers as $traveller => $data)
         <form>
             <div class="formcontainer">
                 <div class="leftform">
-                    <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="lastname" name="lastname" ></p>
-                    <p><label class="field" for="name">Voornaam:</label>        <input type="text" class="textbox" value="firstname" name="firstname"></p>
-                    <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="gender" name="gender"></p>
-                    <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" value="birthdate" name="birthdate"></p>
-                    <p><label class="field" for="name">Geboorteplaats:</label>  <input type="text" class="textbox" value="birthplace" name="birthplace"></p>
-                    <p><label class="field" for="name">Nationaliteit:</label>   <input type="text" class="textbox" value="nationality" name="nationality"></p>
-                    <p><label class="field" for="name">Adres: </label>          <input type="text" class="textbox" value="address" name="address"></p>
-                    <p><label class="field" for="name">Gemeente:</label>        <input type="text" class="textbox" value="town" name="town"></p>
-                    <p><label class="field" for="name">Land:</label>            <input type="text" class="textbox" value="country" name="country"></p>
+                    <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="{{$data->lastname}}" name="lastname" ></p>
+                    <p><label class="field" for="name">Voornaam:</label>        <input type="text" class="textbox" value="{{$data->firstname}}" name="firstname"></p>
+                    <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="{{$data->sex}}" name="gender"></p>
+                    <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" value="{{$data->birthdate}}" name="birthdate"></p>
+                    <p><label class="field" for="name">Geboorteplaats:</label>  <input type="text" class="textbox" value="{{$data->birthplace}}" name="birthplace"></p>
+                    <p><label class="field" for="name">Nationaliteit:</label>   <input type="text" class="textbox" value="{{$data->nationality}}" name="nationality"></p>
+                    <p><label class="field" for="name">Adres: </label>          <input type="text" class="textbox" value="{{$data->address}}" name="address"></p>
+                    <p><label class="field" for="name">Gemeente:</label>        <input type="text" class="textbox" value="{{$data->city}}" name="town"></p>
+                    <p><label class="field" for="name">Land:</label>            <input type="text" class="textbox" value="{{$data->country}}" name="country"></p>
                 </div>
 
                 <div class="rightform">
-                    <p><label class="field" for="name">Email:</label>           <input type="text" class="textbox" value="email" name="email"></p>
-                    <p><label class="field" for="name">Telefoon:</label>        <input type="text" class="textbox" value="phone" name="phone"></p>
-                    <p><label class="field" for="name">Noodnummer 1:</label>    <input type="text" class="textbox" value="emergency_phone_1" name="emergency_phone_1"></p>
-                    <p><label class="field" for="name">Noodnummer 2:</label>    <input type="text" class="textbox" value="emergency_phone_2" name="emergency_phone_2"></p>
-                    <p><label class="field" for="name">Behandeling:</label>     <input type="text" class="textbox" value="treatment" name="treatment"></p>
-                    <p><label class="field" for="name">Medische info:</label>   <input type="text" class="textbox" value="medical_info" name="medical_info"></p>
+                    <p><label class="field" for="name">Email:</label>           <input type="text" class="textbox" value="xxxxx" name="email"></p>
+                    <p><label class="field" for="name">Telefoon:</label>        <input type="text" class="textbox" value="{{$data->phone}}" name="phone"></p>
+                    <p><label class="field" for="name">Noodnummer 1:</label>    <input type="text" class="textbox" value="{{$data->emergency_phone_1}}" name="emergency_phone_1"></p>
+                    <p><label class="field" for="name">Noodnummer 2:</label>    <input type="text" class="textbox" value="{{$data->emergency_phone_2}}" name="emergency_phone_2"></p>
+                    <p><label class="field" for="name">Behandeling:</label>     <input type="text" class="textbox" value="{{$data->MedicalIssue}}" name="treatment"></p>
+                    <p><label class="field" for="name">Medische info:</label>   <input type="text" class="textbox" value="{{$data->medical_info}}" name="medical_info"></p>
                 </div>
             </div>
             <div class="formbutton">
@@ -109,5 +110,6 @@
                 <input type="submit" value="Opslaan">
             </div>
         </form>
+        @endforeach
     </div>
 @endsection
