@@ -18,6 +18,17 @@ class CreateMajorsModelsTable extends Migration
             $table->string('name', 255);
             //$table->timestamps();
         });
+
+        DB::table('majors')->insert(
+            array(
+                'name' => 'ICT',
+            )
+        );
+        DB::table('majors')->insert(
+            array(
+                'name' => 'ELO',
+            )
+        );
     }
 
     /**

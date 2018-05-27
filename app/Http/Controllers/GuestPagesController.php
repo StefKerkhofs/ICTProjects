@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use App\Trip;
+use App\TripsModel;
 use Illuminate\Database\QueryException;
 
 class GuestPagesController extends Controller
@@ -13,25 +14,33 @@ class GuestPagesController extends Controller
     {
         $sContent="";
         if ($page == "contact"){
-           $aActiveTrips = Trip::where('is_active', true)->get();
+            try{
+                $aActiveTrips = Trip::where('is_active', true)->get();
+                return view('guest.contact', [
+                    'aActiveTrips' => $aActiveTrips
+                ]);
+            }
+            catch (QueryException $e){
+                $sContent = $e->getMessage();
+                return view('guest.contentpage', [
+                    'sContent' => $sContent
+                ]);
+            }
 
-            return view('guest.contact', [
-                'aActiveTrips' => $aActiveTrips
-            ]);
         }
         else{
             try{
-            $oPageData = Page::where('page_name', $page)->first();
-            if ($oPageData->page_type == 'pdf'){
-                $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
-            }
-            else{
-                $sContent = $oPageData->page_content;
-            }
+                $oPageData = Page::where('page_name', $page)->first();
+                if ($oPageData->page_type == 'pdf'){
+                    $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
+                }
+                else{
+                    $sContent = $oPageData->page_content;
+                }
         }
-        catch (QueryException $e){
-            $sContent = 'Error 404, page not found';
-            }
+            catch (QueryException $e){
+                $sContent = 'Error 404, page not found';
+                }
             return view('guest.contentpage', [
                 'sContent' => $sContent
             ]);
