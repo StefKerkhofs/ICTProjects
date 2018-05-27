@@ -1,45 +1,117 @@
 @extends("user.templates.templateFrontEnd")
+@section('style')
+    <style>
+
+        .search input{
+            width: 300px;
+            height: 50px;
+            border: transparent;
+            border-right: none;
+            outline: none;
+            padding-left: 5px;
+        }
+        .gegTable,.gegTable th,.gegTable td {
+            border: 1px solid darkgray;
+            border-collapse: collapse;
+        }
+        .gegTable th{
+            text-align: center;
+            background-color: #e00049;
+            color: #E9F3F8;
+        }
+        .gegTable th{
+            height: 50px;
+            width: 350px;
+        }
+        .gegTable td{
+            padding: 15px;
+            text-align: right;
+        }
+        .filterTable,.filterTable td{
+            border-bottom: 1px solid darkgray;
+            border-top: 1px solid darkgray;
+            border-left: 0px;
+            border-right: 0px;
+            border-collapse: collapse;
+        }
+
+        .filterTable td{
+            padding: 15px;
+            text-align: right;
+        }
+
+
+    </style>
+@endsection
 @section('content')
-
     <div class="container">
+    <table class="filterTable">
         {{Form::open(array('action' => 'FilterController@getFilteredTraveller', 'method' => 'post'))}}
-        <div class="formcontainer">
-            <div class="middleform">
-                <p>{{ Form::label('lblNaam', 'Naam', ['class' => 'field']) }}
-                {{Form::checkbox('Naam', 'Naam')}}</p>
-                <p>{{ Form::label('lblVoornaam', 'Voornaam', ['class' => 'field']) }}
-                {{Form::checkbox('Voornaam', 'Voornaam')}}</p>
-                <p>{{ Form::label('lblTelefoon', 'Telefoon', ['class' => 'field']) }}
-                {{Form::checkbox('Telefoon', 'Telefoon')}}</p>
-                <p>{{ Form::label('lblReis', 'Reis', ['class' => 'field']) }}
-                {{Form::checkbox('Reis', 'Reis')}}</p>
-                <p>{{ Form::label('lblKlas', 'Klas', ['class' => 'field']) }}
-                {{Form::checkbox('Klas', 'Klas')}}</p>
-            </div>
-        </div>
-        <div class="formbutton">
-            {{Form::submit('Toon Lijst')}}
-        </div>
+        <tr>
+            <td>{{ Form::label('lblNaam', 'Naam', ['class' => 'field']) }}</td>
+            <td>{{Form::checkbox('lastname', 'lastname')}}</td>
+        </tr>
+        <tr>
+            <td>{{ Form::label('lblVoornaam', 'Voornaam', ['class' => 'field']) }}</td>
+            <td>{{Form::checkbox('firstname', 'firstname')}}</td>
+        </tr>
+        <tr>
+            <td>{{ Form::label('lblTelefoon', 'Telefoon', ['class' => 'field']) }}</td>
+            <td>{{Form::checkbox('phone', 'phone')}}</td>
+        </tr>
+        <tr>
+            <td>{{ Form::label('lblReis', 'Reis', ['class' => 'field']) }}</td>
+            <td>{{Form::checkbox('Reis', 'Reis')}}</td>
+        </tr>
+        <tr>
+            <td>{{ Form::label('lblKlas', 'Klas', ['class' => 'field']) }}</td>
+            <td>{{Form::checkbox('Klas', 'Klas')}}</td>
+        </tr>
+        <tr>
+            <td>
+                {{Form::submit('Toon Lijst')}}
+            </td>
+        </tr>
         {{ Form::close() }}
-    </div>
-
-    {{--@php
-        var_dump($afilters);
+    </table>
+{{--
+    @php
         var_dump($afilteredUserList);
     @endphp
 --}}
-    <table>
+    <table class="gegTable">
+        <tr>
+            @foreach($afilters as $ofilters)
 
-        @foreach($afilteredUserList as $ofiltereduserlist)
+                @php
+                if($ofilters=='firstname')
+                    {
+                    $ofilters='Voornaam';
+                    }
+                if($ofilters=='lastname')
+                    {
+                    $ofilters='Naam';
+                    }
+                if($ofilters=='phone')
+                    {
+                    $ofilters='Telefoon';
+                    }
+                @endphp
+
+                <th>{{$ofilters}}</th>
+            @endforeach
+        </tr>
+        @foreach($afilteredUserList as $ofiltereduserlist => $data)
             <tr>
-                @foreach($afilters as $ofilters)
+                @foreach($afilters as $ofilters=>$filter)
                     <td>
-                        {{$ofiltereduserlist->$ofilters}}
+                        {{$data[$filter]}}
                     </td>
                 @endforeach
             </tr>
         @endforeach
-    </table>
 
+    </table>
+    </div>
 
 @endsection
