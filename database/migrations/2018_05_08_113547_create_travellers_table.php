@@ -25,7 +25,6 @@ class CreateTravellersTable extends Migration
             $table->string('country',11);
             $table->string('address',255);
             $table->string('sex',11);
-            $table->string('email',255);
             $table->string('phone',255);
             $table->string('emergency_phone_1',255);
             $table->string('emergency_phone_2',255);
