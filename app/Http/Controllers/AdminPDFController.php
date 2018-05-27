@@ -28,14 +28,23 @@ class AdminPDFController extends Controller
         ));
     }
 
+    /**
+     * updateContent
+     *
+     * @author Yoeri op't Roodt - Sasha Van De Voorde
+     * @since 2018-05-07
+     *
+     * @param Request $request
+     */
     public function updateContent(Request $request){
         $pdf = $request->file('pdf');
-        $path = $pdf->store('storage');
-            var_dump($pdf);
-            echo $path;
-      //  Storage::store($pdf->getFilename(), $pdf);
 
-        //$pdf->store('public');
-        //return $pdf;
+        Storage::put('/public/pdf', $pdf);
+
+        Page::where('page_id', $request->post('pageSelector'))->update([
+            'page_content' => $pdf->hashName(),
+        ]);
+
+        return redirect()->back()->with('message', 'De PDF is opgeslagen');
     }
 }

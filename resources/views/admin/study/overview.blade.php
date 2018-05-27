@@ -3,7 +3,7 @@
     <h2>Richting Toevoegen</h2>
     {{Form::open(array('action' => 'AdminStudyController@addStudy', 'method' => 'post'))}}
     {{ Form::label('studyName', 'Richting') }}
-    {{form::text('studyName', '', ['class' => 'form-control', 'placeholder' => 'Richting'])}}
+    {{form::text('studyName', '', ['class' => 'form-control', 'placeholder' => 'Richting', 'required'])}}
     <div class="actions">
         {{ Form::submit('Richting Toevoegen') }}
         <input type="button" onclick="history.go(0)" value="Annuleren"/>
@@ -16,7 +16,7 @@
     {{Form::select('studySelect', $aStudyForm, null, ['class' => 'form-control'])}}
     <table id="majors" class="table"></table>
     {{ Form::label('majorName', 'Afstudeerrichting') }}
-    {{form::text('majorName','' , ['class' => 'form-control', 'placeholder' => 'Afstudeerrichting'])}}
+    {{form::text('majorName','' , ['class' => 'form-control', 'placeholder' => 'Afstudeerrichting', 'required'])}}
     <div class="actions">
         {{ Form::submit('Afstudeerrichting Toevoegen') }}
         <input type="button" onclick="history.go(0)" value="Annuleren"/>
