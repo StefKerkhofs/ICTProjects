@@ -18,6 +18,9 @@
             padding: 15px 30px;
             text-align: right;
         }
+        a{
+            color: #000000;
+        }
     </style>
 @endsection
 @section('content')
@@ -34,7 +37,7 @@
             @foreach($aActiveTrips as $aActiveTrip)
                 <tr>
                     <td>{{ $aActiveTrip->trip_name }}</td>
-                    <td>{{$aActiveTrip->trip_contact}}</td>
+                    <td><a href="mailto:{{$aActiveTrip->trip_contact}}">{{$aActiveTrip->trip_contact}}</a></td>
                 </tr>
             @endforeach
         </table>
