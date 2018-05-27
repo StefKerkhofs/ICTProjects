@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\menu;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,13 +18,11 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function index()
     {
-        //$oMenu = menu::all();
-        //$aMenuItems = "info";
-        return view('user.info.info');
+        $navbars = menu::orderBy('menu_id')->get();
+
+        return view()->share('navbars', $navbars);
     }
 }
