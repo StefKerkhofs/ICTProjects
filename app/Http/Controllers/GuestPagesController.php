@@ -41,6 +41,9 @@ class GuestPagesController extends Controller
                     $sContent = $oPageData->page_content;
                 }
         }
+            catch (\Exception $e){
+                $sContent = $e->getMessage();
+            }
             catch (QueryException $e){
                 $sContent = 'Error 404, page not found';
                 }
