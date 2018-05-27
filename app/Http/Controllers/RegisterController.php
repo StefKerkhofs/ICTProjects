@@ -12,21 +12,25 @@ class RegisterController extends Controller
     /*--------------------------------------------------------------------------FORM 2--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form2(Request $aRequest){
+        //-----------Algemene opbouw van de functies
+
+        //-----------Is begin cookie gezet? zoneen ga je naar de eerste form
         if (!isset($_COOKIE['register'])){
             return view('user.register.form1');
         }
 
         session_start();
 
+        //-----------Data van vorige form word gevalideerd
         $aData = unserialize($_COOKIE['register']);
         $aRequest->validate([
             'radio' => 'required',
-            'txtEmail' => 'required|email',
+            'txtEmail' => [ 'required', 'string', 'email', 'max:255', 'unique:users,email'],
         ],$this->messages());
 
         if($aRequest->post('radio') == 1){
             $aRequest->validate([
-                'txtNummer' => 'required',
+                'txtNummer' => [ 'required', 'max:255', 'unique:users,name']
             ],$this->messages());
             $_SESSION['StudentOrDocent'] = 1;
         }
@@ -39,11 +43,15 @@ class RegisterController extends Controller
             'txtWachtwoord_confirmation' => 'required',
         ],$this->messages());
 
+        //-----------Data van vorige form word opgeslagen in een array
         $aData['txtNummer'] = $aRequest->post('txtNummer');
         $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
         $aData['email'] = $aRequest->post('txtEmail');
+
+        //-----------Array word toegevoegd aan de cookie 'register'
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
+        //-----------Huidige form word getoont
         return view('user.register.form2');
     }
 
@@ -134,7 +142,7 @@ class RegisterController extends Controller
         $aRequest->validate([
             'gsm' => 'required',
             'NoodNummer1' => 'required',
-        ],$this->messages());
+        ]);
 
         $aData = unserialize($_COOKIE['register']);
         $aData['gsm'] = $aRequest->post('gsm');
@@ -253,7 +261,7 @@ class RegisterController extends Controller
     public function messages()
     {
         return [
-            'txtNummer.required' => 'Je Studenten-/docentennumme moet ingevuld worden.',
+            'txtNummer.required' => 'Je Studenten-/docentennummer moet ingevuld worden.',
             'txtWachtwoord.required'  => 'Je moet een wachtwoord invullen.',
             'txtWachtwoord_confirmation.required'  => 'Je moet je wachtwoord bevestigen.',
             'txtWachtwoord.min' => 'Je wachtwoord moet minsten uit 8 tekens bestaan.',
@@ -261,6 +269,8 @@ class RegisterController extends Controller
             'radio.required' => 'Geef aan als je een student/docent bent of niet.',
             'txtEmail.required' => 'Vul je email adres in.',
             'txtEmail.email' => 'Het ingevulde email adres is niet geldig.',
+            'txtEmail.unique' => 'Het ingevulde email adres is al in gebruik.',
+            'txtNummer.unique' => 'Het ingevulde Studenten-/docentennummer is al in gebruik.',
 
             'ReisKiezen.required' => 'Je moet een reis kiezen.',
             'AfstudeerrichtingKiezen.required' => 'Je moet een afstudeerrichting kiezen.',
