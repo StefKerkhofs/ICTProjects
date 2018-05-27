@@ -84,13 +84,22 @@
 @endsection
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         {{ Form::open(array('action' => 'RegisterController@form4', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="leftform">
                     <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="" name="lastname" ></p>
                     <p><label class="field" for="name">Voornaam:</label>        <input type="text" class="textbox" value="" name="firstname"></p>
                     <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="" name="gender"></p>
-                    <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" value="" name="birthdate"></p>
+                    <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" placeholder="DD/MM/YYYY" name="birthdate"></p>
                     <p><label class="field" for="name">Geboorteplaats:</label>  <input type="text" class="textbox" value="" name="birthplace"></p>
                 </div>
 

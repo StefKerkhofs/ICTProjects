@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use App\Traveller;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -16,10 +19,17 @@ class ProfileController extends Controller
     }
     public function searchStudentEdit()
     {
-        return view('user.profile.searchStudentEdit');
+        $aTravellers = DB::table('travellers')
+            ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+            ->select('travellers.*', 'studies.name')
+            ->get();
+        return view('user.profile.searchStudentEdit', ['aTravellers' => $aTravellers]);
     }
     public function editSearchedStudent()
     {
-        return view('user.profile.editSearchedStudent');
+        $aTravellers = DB::table('travellers')
+            //->join('users', 'travellers.user_id', '=', 'users.id')
+            ->get();
+        return view('user.profile.editSearchedStudent', ['aTravellers' => $aTravellers]);
     }
 }

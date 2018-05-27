@@ -83,7 +83,19 @@
     </style>
 @endsection
 @section('content')
+    <?php
+    $aData = unserialize($_COOKIE['register']);
+    ?>
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         {{ Form::open(array('action' => 'RegisterController@form3', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
@@ -95,6 +107,10 @@
                             <option value="3">Book</option>
                         </select>
                     </p>
+                    <?php
+                    if(isset($_SESSION['StudentOrDocent'])){
+                        if($_SESSION['StudentOrDocent'] == 1){
+                        ?>
                     <p><label class="field" for="name">Afstudeerrichting*</label></p>
                     <p>
                         <select name="AfstudeerrichtingKiezen"class="select">
@@ -103,6 +119,10 @@
                             <option value="3">Book</option>
                         </select>
                     </p>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <div class="formbutton">

@@ -88,8 +88,8 @@
         <div class="formcontainer">
             <div class="middle">
                 <p><label class="field">Medische behandeling*:</label></p>
-                <p><input type="radio" name="MedischeAandoening" value="true"> Ja
-                    <input type="radio" name="MedischeAandoening" value="false"> Nee</p>
+                <p><input type="radio" name="MedischeAandoening" value="1" id="1"> <label for="1">Ja</label>
+                    <input type="radio" name="MedischeAandoening" value="0" id="0"> <label for="0">Nee</label></p>
                 <p><label class="field" for="MedischeInfo">Medische info:</label></p>
                 <p><textarea rows="4" cols="50" name="MedischeInfo"></textarea> </p>
             </div>

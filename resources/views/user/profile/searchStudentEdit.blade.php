@@ -63,18 +63,17 @@
                     <th>Klas</th>
                     <th></th>
                 </tr>
+                {{--@for($i = 0; $i<5; $i++)--}}
+                @foreach($aTravellers as $traveller => $data)
                 <tr>
-                    <td>Naam</td>
-                    <td>Voornaam</td>
-                    <td>Klas</td>
+                    <td>{{$data->lastname}}</td>
+                    <td>{{$data->firstname}}</td>
+                    <td>{{$data->name}}</td>
                     <td><a href="/editSearchedStudent"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
                 </tr>
-                <tr>
-                    <td>Naam</td>
-                    <td>Voornaam</td>
-                    <td>Klas</td>
-                    <td><a href="/editSearchedStudent"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
-                </tr>
+
+                @endforeach
+                {{--@endfor--}}
             </table>
         </div>
 

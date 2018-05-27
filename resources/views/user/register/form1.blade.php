@@ -37,6 +37,7 @@
             justify-content:center;
             align-items:center;
             margin: 5px;
+            margin-top: -50px;
         }
         .button a{
             background: #003469;
@@ -62,32 +63,69 @@
         }
         label.field{
             text-align: left;
-            width: 150px;
+            width: 200px;
+            float: left;
+            margin-top: -40px;
+        }
+        label.field1{
+            text-align: left;
+            width: 250px;
             float: left;
         }
         input.textbox{
             width: 250px;
             float: left;
             padding-left: 1px;
+            margin-top: -50px;
         }
+
         form p{
             clear: both;
             padding: 19px;
         }
 
     </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('ifYes').style.display = 'none';
+            document.getElementById('ifNo').style.display = 'none';
+        }
+        function yesnoCheck() {
+            if (document.getElementById('radioJa').checked) {
+                document.getElementById('ifYes').style.display = 'block';
+            }
+            else if(document.getElementById('radioNee').checked) {
+                document.getElementById('ifYes').style.display = 'none';
+            }
+        }
+    </script>
 @endsection
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         {{ Form::open(array('action' => 'RegisterController@form2', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
+                    <p>{{ Form::label('lblNummer', 'Ben je een student of docent?*', ['class' => 'field1']) }}</p>
+                    <p> <input type="radio" onclick="javascript:yesnoCheck();" id="radioJa" name="radio" value="1" class="radio" /><label for="radioJa">Ja</label> &nbsp&nbsp&nbsp <input type="radio" onclick="javascript:yesnoCheck();" id="radioNee" name="radio" value="0" class="radio"/><label for="radioNee">Nee</label></p>
+                    <div id="ifYes">
                     <p>{{ Form::label('lblNummer', 'Studenten-/docentennummer*', ['class' => 'field']) }}</p>
                     <p>{{ Form::text('txtNummer', '', ['class' => 'textbox'] )}} </p>
+                    </div>
+                    <p>{{ Form::label('lblmail', 'Email*', ['class' => 'field']) }}</p>
+                    <p>{{ Form::text('txtEmail', '', ['class' => 'textbox'] )}} </p>
                     <p>{{ Form::label('lblWachtwoord', 'Wachtwoord*', ['class' => 'field']) }}</p>
                     <p>{{ Form::input('password', 'txtWachtwoord', '', ['class' => 'textbox']) }} </p>
                     <p>{{ Form::label('lblBWachtwoord', 'Bevestig wachtwoord*', ['class' => 'field']) }}</p>
-                    <p>{{ Form::input('password', 'txtBWachtwoord', '', ['class' => 'textbox'])  }} </p>
+                    <p>{{ Form::input('password', 'txtWachtwoord_confirmation', '', ['class' => 'textbox'])  }} </p>
                 </div>
             </div>
             <div class="formbutton">
