@@ -19,13 +19,6 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-
-        DB::table('menus')->insert(array(
-            'menu_id' => '1',
-            'page_id' => '1',
-            'name' => 'info',
-        ));
-
     }
 
 

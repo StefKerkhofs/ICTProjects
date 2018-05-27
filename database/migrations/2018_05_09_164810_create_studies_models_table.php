@@ -22,19 +22,6 @@ class CreateStudiesModelsTable extends Migration
 
             $table->timestamps();
         });
-
-        DB::table('studies')->insert(
-            array(
-                'major_id' => 0,
-                'name' => 'ELO-ICT'
-            )
-        );
-        DB::table('studies')->insert(
-            array(
-                'major_id' => 1,
-                'name' => 'ELO-ICT'
-            )
-        );
     }
 
     /**

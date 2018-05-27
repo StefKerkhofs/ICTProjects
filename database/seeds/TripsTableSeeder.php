@@ -12,19 +12,11 @@ class TripsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        /*
-         * trip_name => string,
-         * trip_year => interger,
-         * trip_price => integer,
-         * is_active => boolean,
-         * trip_contact => string
-         */
         DB::table('trips')->insert([
             'trip_name' => 'Amerika',
             'trip_year' => 2019,
             'trip_price' => 500,
-            'is_active' => 1,
+            'is_active' => true,
             'trip_contact' => 'tripcontact.amerika@mail.be'
         ]);
 
@@ -32,7 +24,7 @@ class TripsTableSeeder extends Seeder
             'trip_name' => 'Duitsland',
             'trip_year' => 2020,
             'trip_price' => 400,
-            'is_active' => 1,
+            'is_active' => true,
             'trip_contact' => 'tripcontact.duitsland@mail.be'
         ]);
 
@@ -40,7 +32,7 @@ class TripsTableSeeder extends Seeder
             'trip_name' => 'Italië',
             'trip_year' => 2019,
             'trip_price' => 400,
-            'is_active' => 0,
+            'is_active' => false,
             'trip_contact' => 'tripcontact.italie@mail.be'
         ]);
 

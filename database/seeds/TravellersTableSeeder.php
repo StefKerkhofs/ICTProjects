@@ -12,7 +12,6 @@ class TravellersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('travellers')->insert([
             'zipcode_id' => 1,
             'study_id' => 1,

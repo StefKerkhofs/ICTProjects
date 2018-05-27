@@ -20,12 +20,6 @@ class CreatePagesTable extends Migration
             $table->string('page_type');
             $table->timestamps();
         });
-
-        DB::table('pages')->insert(array(
-            'page_name' => 'info',
-            'page_content' => 'Dit is content',
-            'page_type' => 'html',
-        ));
     }
 
     /**

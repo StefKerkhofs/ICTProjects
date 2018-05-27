@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,9 +19,6 @@ class CreateZipCodesModelsTable extends Migration
             //$table->timestamps();
         });
 
-        DB::table('zip_codes')->insert([
-                'town' => 'Hasselt'
-            ]);
     }
 
     /**
