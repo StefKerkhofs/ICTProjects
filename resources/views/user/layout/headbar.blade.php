@@ -19,7 +19,7 @@
                 <a class="nav-link"  href="/">Reis 2</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="/">Deelnemers</a>
+                <a class="nav-link"  href="/filter">Deelnemers</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
@@ -27,6 +27,7 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/reg">Registreren</a>
             </li>
+<<<<<<< HEAD
             <?php $navbars = HomeController::index(); ?>
                 @foreach($navbars as $navbar)
 
@@ -35,6 +36,12 @@
                     </li>
 
                 @endforeach
+=======
+            <li class="nav-item">
+                <a class="nav-link"  href="/">test</a>
+            </li>
+
+>>>>>>> 8f82aaa9c67b6bcde7a48606f5693fa76508eb6d
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
