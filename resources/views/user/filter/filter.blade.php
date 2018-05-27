@@ -61,11 +61,11 @@
         </tr>
         <tr>
             <td>{{ Form::label('lblReis', 'Reis', ['class' => 'field']) }}</td>
-            <td>{{Form::checkbox('Reis', 'Reis')}}</td>
+            <td>{{Form::checkbox('trip_name', 'trip_name')}}</td>
         </tr>
         <tr>
             <td>{{ Form::label('lblKlas', 'Klas', ['class' => 'field']) }}</td>
-            <td>{{Form::checkbox('Klas', 'Klas')}}</td>
+            <td>{{Form::checkbox('name', 'name')}}</td>
         </tr>
         <tr>
             <td>
@@ -95,6 +95,14 @@
                 if($ofilters=='phone')
                     {
                     $ofilters='Telefoon';
+                    }
+                if($ofilters=='trip_name')
+                    {
+                    $ofilters='Reis';
+                    }
+                if($ofilters=='name')
+                    {
+                    $ofilters='Klas';
                     }
                 @endphp
 
