@@ -27,20 +27,12 @@
             <li class="nav-item">
                 <a class="nav-link"  href="/reg">Registreren</a>
             </li>
-
             <?php $navbars = HomeController::index(); ?>
                 @foreach($navbars as $navbar)
-
                     <li class="nav-item">
                         <a class="nav-link navlink" href="{{ url("/").'/'.$navbar->name }}">{{ $navbar->name }}</a>
                     </li>
-
                 @endforeach
-
-            <li class="nav-item">
-                <a class="nav-link"  href="/">test</a>
-            </li>
-
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
