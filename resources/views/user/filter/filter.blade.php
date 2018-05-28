@@ -105,7 +105,7 @@
                 </td>
 {{--
     @php
-        var_dump($afilteredUserList);
+        var_dump($tripid);
     @endphp
 --}}
                 <td>
