@@ -76,23 +76,23 @@
                     <table class="filterTable">
                         {{Form::open(array('action' => 'FilterController@getFilteredTraveller', 'method' => 'post'))}}
                         <tr>
-                            <td>{{ Form::label('lblNaam', 'Naam', ['class' => 'field']) }}</td>
+                            <td>{{ Form::label('lastname', 'Naam', ['class' => 'field']) }}</td>
                             <td>{{Form::checkbox('lastname', 'lastname')}}</td>
                         </tr>
                         <tr>
-                            <td>{{ Form::label('lblVoornaam', 'Voornaam', ['class' => 'field']) }}</td>
+                            <td>{{ Form::label('firstname', 'Voornaam', ['class' => 'field']) }}</td>
                             <td>{{Form::checkbox('firstname', 'firstname')}}</td>
                         </tr>
                         <tr>
-                            <td>{{ Form::label('lblTelefoon', 'Telefoon', ['class' => 'field']) }}</td>
+                            <td>{{ Form::label('phone', 'Telefoon', ['class' => 'field']) }}</td>
                             <td>{{Form::checkbox('phone', 'phone')}}</td>
                         </tr>
                         <tr>
-                            <td>{{ Form::label('lblReis', 'Reis', ['class' => 'field']) }}</td>
+                            <td>{{ Form::label('trip_name', 'Reis', ['class' => 'field']) }}</td>
                             <td>{{Form::checkbox('trip_name', 'trip_name')}}</td>
                         </tr>
                         <tr>
-                            <td>{{ Form::label('lblKlas', 'Klas', ['class' => 'field']) }}</td>
+                            <td>{{ Form::label('name', 'Klas', ['class' => 'field']) }}</td>
                             <td>{{Form::checkbox('name', 'name')}}</td>
                         </tr>
                         <tr>

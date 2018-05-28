@@ -11,6 +11,28 @@ class ProfileController extends Controller
 {
     public function profile()
     {
+        if(Auth::check()) {
+            $id = Auth::id();
+
+            $oTraveller = Traveller::where('user_id', $id)->first();
+            $aTravellerData = array();
+            $aTravellerData['firstname'] = $oTraveller->firstname;
+            $aTravellerData['lastname'] = $oTraveller->lastname;
+            $aTravellerData['city'] = $oTraveller->city;
+            $aTravellerData['country'] = $oTraveller->country;
+            $aTravellerData['address'] = $oTraveller->address;
+            $aTravellerData['sex'] = $oTraveller->sex;
+            $aTravellerData['email'] = $oTraveller->email;
+            $aTravellerData['phone'] = $oTraveller->phone;
+            $aTravellerData['emergencyPhone1'] = $oTraveller->emergency_phone_1;
+            $aTravellerData['emergencyPhone2'] = $oTraveller->emergency_phone_2;
+            $aTravellerData['nationality'] = $oTraveller->nationality;
+            $aTravellerData['birthdate'] = $oTraveller->birthdate;
+            $aTravellerData['birthplace'] = $oTraveller->birthplace;
+            $aTravellerData['medicalInfo'] = $oTraveller->medical_info;
+
+            return view('user.profile.profile', ['traveller' => $aTravellerData]);
+        }
         return view('user.profile.profile');
     }
     public function profileEdit()
