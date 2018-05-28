@@ -15,6 +15,6 @@ class Menu extends Model
     ];
     public function page()
     {
-        return $this->belongsTo('App\Page');
+        return $this->belongsTo(Page::class, 'page_id');
     }
 }

@@ -15,6 +15,6 @@ class Page extends Model
 
     public function menu()
     {
-        return $this->hasMany('App\Menu');
+        return $this->hasMany(Menu::class, 'page_id');
     }
 }

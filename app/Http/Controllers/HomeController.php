@@ -6,6 +6,7 @@ use App\menu;
 use App\Page;
 use App\Profile;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,16 +25,13 @@ class HomeController extends Controller
      */
     public static function index()
     {
-        $navbars = menu::orderBy('menu_id')->get();
+        $afilteredUserList=DB::table('menus')
+            ->join('pages', 'menus.page_id', '=', 'pages.page_id')
+            ->select('menus.menu_name', 'pages.page_name')
+            ->get();
+        $page = json_decode(json_encode($afilteredUserList),true);
 
-        $menu = [];
-
-        foreach ($navbars as $navbar)
-        {
-            $page = Page::where('page_id', $navbar->page_id)->get();
-        }
-
-        return view()->make('user.layout.headbar', ['navbars' => $navbars, 'page' => $page]);
+        return view()->make('user.layout.headbar', ['navbars' => $page]);
     }
 
     public function create()

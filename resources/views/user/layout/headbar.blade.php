@@ -9,10 +9,11 @@
 
     <div class="collapse navbar-collapse" id="navbarS">
         <ul class="navbar-nav mr-auto">
-            <?php $navbars = HomeController::index();?>
+            <?php $navbars = HomeController::index();
+            //var_dump($navbars['navbars'])?>
                 @foreach($navbars['navbars'] as $navbar)
                     <li class="nav-item">
-                        <a class="nav-link navlink" href="{{ url("/").'/'.$navbar->menu_name }}">{{ $navbar->menu_name }}</a>
+                        <a class="nav-link navlink" href="{{ url("/").'/'.$navbar['page_name'] }}">{{ $navbar['menu_name'] }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item">
