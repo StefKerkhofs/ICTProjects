@@ -17,5 +17,10 @@ class PagesTableSeeder extends Seeder
             'page_content' => 'Dit is content',
             'page_type' => 'html',
         ));
+        DB::table('pages')->insert(array(
+            'page_name' => 'reis1',
+            'page_content' => 'testpdf.pdf',
+            'page_type' => 'pdf',
+        ));
     }
 }
