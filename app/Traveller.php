@@ -31,6 +31,18 @@ class Traveller extends Model
 
     protected function study()
     {
-        return $this->belongsTo('App\StudiesModel');
+        return $this->belongsTo('App\Study');
+    }
+    protected function trip()
+    {
+        return $this->belongsTo('App\Trip');
+    }
+    protected function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    protected function zipcode()
+    {
+        return $this->belongsTo('App\ZipCode');
     }
 }
