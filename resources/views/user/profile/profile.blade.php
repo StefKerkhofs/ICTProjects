@@ -72,24 +72,24 @@
     <form>
         <div class="formcontainer">
             <div class="leftform">
-                <p><label class="field" for="name">Naam:</label>            <span>lastname</span></p>
-                <p><label class="field" for="name">Voornaam:</label>        <span>firstname</span></p>
-                <p><label class="field" for="name">Geslacht:</label>        <span>gender</span></p>
-                <p><label class="field" for="name">Geboortedatum:</label>   <span>birthdate</span></p>
-                <p><label class="field" for="name">Geboorteplaats:</label>  <span>birthplace</span></p>
-                <p><label class="field" for="name">Nationaliteit:</label>   <span>nationality</span></p>
-                <p><label class="field" for="name">Adres: </label>          <span>address</span></p>
-                <p><label class="field" for="name">Gemeente:</label>        <span>town</span></p>
-                <p><label class="field" for="name">Land:</label>            <span>country</span></p>
+                <p><label class="field" for="name">Naam: </label>            <span>{{traveller['lastname']}}</span></p>
+                <p><label class="field" for="name">Voornaam: </label>        <span>{{traveller['firstname']}}</span></p>
+                <p><label class="field" for="name">Geslacht: </label>        <span>{{traveller['sex']}}</span></p>
+                <p><label class="field" for="name">Geboortedatum: </label>   <span>{{traveller['birthdate']}}</span></p>
+                <p><label class="field" for="name">Geboorteplaats: </label>  <span>{{traveller['birthplace']}}</span></p>
+                <p><label class="field" for="name">Nationaliteit: </label>   <span>{{traveller['nationality']}}</span></p>
+                <p><label class="field" for="name">Adres:  </label>          <span>{{traveller['address']}}</span></p>
+                <p><label class="field" for="name">Gemeente: </label>        <span>{{traveller['city']}}</span></p>
+                <p><label class="field" for="name">Land: </label>            <span>{{traveller['country']}}</span></p>
             </div>
 
             <div class="rightform">
-                <p><label class="field" for="name">Email:</label>           <span>email</span></p>
-                <p><label class="field" for="name">Telefoon:</label>        <span>phone</span></p>
-                <p><label class="field" for="name">Noodnummer 1:</label>    <span>emergency_phone_1</span></p>
-                <p><label class="field" for="name">Noodnummer 2:</label>    <span>emergency_phone_2</span></p>
-                <p><label class="field" for="name">Behandeling:</label>     <span>treatment</span></p>
-                <p><label class="field" for="name">Medische info:</label>   <span>medical_info</span></p>
+                <p><label class="field" for="name">Email: </label>           <span>{{traveller['email']}}</span></p>
+                <p><label class="field" for="name">Telefoon: </label>        <span>{{traveller['phone']}}</span></p>
+                <p><label class="field" for="name">Noodnummer 1: </label>    <span>{{traveller['emergencyPhone1']}}</span></p>
+                <p><label class="field" for="name">Noodnummer 2: </label>    <span>{{traveller['emergencyPhone2']}}</span></p>
+                <p><label class="field" for="name">Behandeling:</label>    @if(traveller['treatment']) <span>Ja</span> @else <span>Nee</span> @endif</p>
+                <p><label class="field" for="name">Medische info: </label>   <span>{{traveller['medicalInfo']}}</span></p>
             </div>
         </div>
         <div class="button">
