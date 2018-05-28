@@ -20,6 +20,7 @@ class FilterController extends Controller
         //$id = Auth::id();
         $afilters=$request->all();
         array_shift($afilters);
+
         $tripid=DB::table('travellers')
             ->where('user_id','1'/*id*/)
             ->select('trip_id')
@@ -29,7 +30,7 @@ class FilterController extends Controller
         $afilteredUserList=DB::table('travellers')
             ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
             ->join('trips', 'travellers.trip_id', '=', 'trips.trip_id')
-            ->where('travellers.trip_id',$tripid[0])
+//            ->where('travellers.trip_id',$tripid[0])
             ->get();
         $afilteredUserList = json_decode(json_encode($afilteredUserList),true);
         return view('user.filter.filter', [
