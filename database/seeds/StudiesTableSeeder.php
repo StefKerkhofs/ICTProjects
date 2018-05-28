@@ -14,13 +14,13 @@ class StudiesTableSeeder extends Seeder
     {
         DB::table('studies')->insert(
             array(
-                'major_id' => 0,
+                'major_id' => 1,
                 'name' => 'ELO-ICT'
             )
         );
         DB::table('studies')->insert(
             array(
-                'major_id' => 1,
+                'major_id' => 2,
                 'name' => 'ELO-ICT'
             )
         );

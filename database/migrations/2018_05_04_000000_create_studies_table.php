@@ -15,11 +15,11 @@ class CreateStudiesTable extends Migration
     {
         Schema::create('studies', function (Blueprint $table) {
             $table->increments('study_id');
-            $table->integer('major_id');
+            $table->integer('major_id')->unsigned();
             $table->string('name', 255);
             //$table->timestamps();
 
-            //$table->foreign('major_id')->references('major_id')->on('majors');
+            $table->foreign('major_id')->references('major_id')->on('majors');
         });
     }
 
