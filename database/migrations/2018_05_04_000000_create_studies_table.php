@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZipCodesModelsTable extends Migration
+class CreateStudiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateZipCodesModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('zip_codes', function (Blueprint $table) {
-            $table->increments('zipcode_id');
-            $table->string('town');
+        Schema::create('studies', function (Blueprint $table) {
+            $table->increments('study_id');
+            $table->integer('major_id');
+            $table->string('name', 255);
             //$table->timestamps();
-        });
 
+            //$table->foreign('major_id')->references('major_id')->on('majors');
+        });
     }
 
     /**
@@ -28,6 +30,6 @@ class CreateZipCodesModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zip_codes_models');
+        Schema::dropIfExists('studies');
     }
 }

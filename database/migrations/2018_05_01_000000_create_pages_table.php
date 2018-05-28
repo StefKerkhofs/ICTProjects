@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMajorsModelsTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateMajorsModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('majors', function (Blueprint $table) {
-            $table->increments('major_id');
-            $table->string('name', 255);
+        Schema::create('pages', function (Blueprint $table) {
+            $table->increments('page_id');
+            $table->string('page_name');
+            $table->string('page_content');
+            $table->string('page_type');
             //$table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateMajorsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('majors_models');
+        Schema::dropIfExists('pages');
     }
 }

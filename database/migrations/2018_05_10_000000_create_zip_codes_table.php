@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusTable extends Migration
+class CreateZipCodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->increments('menu_id');
-            $table->integer('page_id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('zip_codes', function (Blueprint $table) {
+            $table->increments('zip_code_id');
+            $table->string('town');
+            //$table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -29,6 +27,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('zip_codes');
     }
 }

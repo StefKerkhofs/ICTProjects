@@ -15,7 +15,7 @@ class MenusTableSeeder extends Seeder
         DB::table('menus')->insert(array(
             'menu_id' => '1',
             'page_id' => '1',
-            'name' => 'info',
+            'menu_name' => 'info',
         ));
     }
 }

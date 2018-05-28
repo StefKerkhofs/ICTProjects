@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStudiesModelsTable extends Migration
+class CreateMajorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +13,10 @@ class CreateStudiesModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('studies', function (Blueprint $table) {
-            $table->increments('study_id');
-            $table->integer('major_id');
+        Schema::create('majors', function (Blueprint $table) {
+            $table->increments('major_id');
             $table->string('name', 255);
-            //$table->foreign('major_id')->references('major_id')->on('majors');
-
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
@@ -31,6 +27,6 @@ class CreateStudiesModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studies_models');
+        Schema::dropIfExists('majors');
     }
 }

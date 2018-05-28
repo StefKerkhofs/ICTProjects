@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StudiesModel extends Model
+class Study extends Model
 {
-    //
     public function traveller()
     {
         return $this->hasMany('App\Traveller');
