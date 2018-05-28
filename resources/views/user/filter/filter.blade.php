@@ -27,9 +27,7 @@
             padding: 15px;
             text-align: right;
         }
-        .gegTable {
-            margin-bottom: 150px;
-        }
+
         .filterTable,.filterTable td{
             border-bottom: 1px solid darkgray;
             border-top: 1px solid darkgray;
@@ -53,7 +51,6 @@
 
 
         .filterTable{
-            margin-top: 50px;
             margin-right: 50px;
         }
         .button{
@@ -65,14 +62,20 @@
             padding: 20px;
         }
 
+        table{
+            margin-top: 50px;
+            display: inline-block;
+            float: left;
+            max-width: 800px;
+            text-align: center;
+        }
+
 
     </style>
 @endsection
 @section('content')
     <div class="container">
-        <table>
-            <tr>
-                <td>
+
                     <table class="filterTable">
                         {{Form::open(array('action' => 'FilterController@getFilteredTraveller', 'method' => 'post'))}}
                         <tr>
@@ -102,13 +105,13 @@
                         </tr>
                         {{ Form::close() }}
                     </table>
-                </td>
+
 {{--
     @php
         var_dump($tripid);
     @endphp
 --}}
-                <td>
+
                     <table class="gegTable">
                         <tr>
                             @foreach($afilters as $ofilters)
@@ -150,9 +153,6 @@
                         @endforeach
 
                     </table>
-                </td>
-            </tr>
-        </table>
     </div>
 
 @endsection
