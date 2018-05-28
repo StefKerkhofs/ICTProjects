@@ -19,7 +19,7 @@
                     <a class="nav-link"  href="/filter">Deelnemers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
+                    <a class="nav-link"  href="/searchTraveller">Editeer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="/reg">Registreren</a>
