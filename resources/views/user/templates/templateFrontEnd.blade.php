@@ -19,7 +19,6 @@
     <section id="content">
         @yield('content')
     </section>
-</div>
 
 <div class="footer">
     @section('footer')
