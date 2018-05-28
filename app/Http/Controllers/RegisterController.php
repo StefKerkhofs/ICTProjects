@@ -11,11 +11,8 @@ class RegisterController extends Controller
 {
     function __construct() {
         session_start();
-        $_SESSION['NextPageID'] = 2;
     }
     function __destruct() {
-        $_SESSION['NextPageID'] = 2;
-        session_abort();
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
@@ -28,6 +25,11 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return view('user.register.form1');
         }
+        if ($_SESSION['pId'] !== 1 || $_SESSION['pId'] !==2){
+            $this->form1();
+        }
+        $_SESSION['pId'] = 2;
+
             //-----------Data van vorige form word gevalideerd
             $aData = unserialize($_COOKIE['register']);
 
@@ -35,35 +37,32 @@ class RegisterController extends Controller
                 'radio' => 'required',
                 'txtEmail' => [ 'required', 'string', 'email', 'max:255', 'unique:users,email'],
             ],$this->messages());
-            echo 'test';
             if($aRequest->post('radio') == 1){
                 $aRequest->validate([
                     'txtNummer' => [ 'required', 'max:255', 'unique:users,name']
                 ],$this->messages());
-                $_SESSION['StudentOrDocent'] = 1;
+                $_SESSION['StudentOrDocent'] = "1";
             }
             else{
-                $_SESSION['StudentOrDocent'] = 2;
+                $_SESSION['StudentOrDocent'] = "2";
             }
 
             $aRequest->validate([
                 'txtWachtwoord' => 'required|min:8|confirmed',
                 'txtWachtwoord_confirmation' => 'required',
             ],$this->messages());
-            if($_SESSION['NextPageID'] !== 2){
-                return view('user.register.form1');
-            }
-            $_SESSION['NextPageID']++;
 
             //-----------Data van vorige form word opgeslagen in een array
             $aData['txtNummer'] = $aRequest->post('txtNummer');
             $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
             $aData['email'] = $aRequest->post('txtEmail');
+            $aData['IsStudentOrDocent'] = $_SESSION["StudentOrDocent"];
 
             //-----------Array word toegevoegd aan de cookie 'register'
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             //-----------Huidige form word getoont
+
             return view('user.register.form2');
     }
 
@@ -74,9 +73,13 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return view('user.register.form1');
         }
+        if ($_SESSION['pId'] !== 2 || $_SESSION['pId'] !==3){
+            $this->form1();
+        }
+        $_SESSION['pId'] = 3;
+
         try{
             $aData = unserialize($_COOKIE['register']);
-
             if(isset($_SESSION['StudentOrDocent'])){
                 if ($_SESSION['StudentOrDocent'] == 1){
                     $aRequest->validate([
@@ -95,14 +98,10 @@ class RegisterController extends Controller
             else{
                 //return view('user.register.form2');
             }
-            if($_SESSION['NextPageID'] !== 3){
-                return view('user.register.form1');
-            }
-            $_SESSION['NextPageID']++;
+
             $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
 
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
-
 
             return view('user.register.form3');
         } catch (Exception $e) {
@@ -119,6 +118,11 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return view('user.register.form1');
         }
+        if ($_SESSION['pId'] !== 3 || $_SESSION['pId'] !==4){
+            $this->form1();
+        }
+        $_SESSION['pId'] = 4;
+
         try{
             if($aRequest->validate([
                 'lastname' => 'required',
@@ -133,10 +137,6 @@ class RegisterController extends Controller
             ],$this->messages())){
             };
 
-            if($_SESSION['NextPageID'] !== 4){
-                return view('user.register.form1');
-            }
-            $_SESSION['NextPageID']++;
 
             $aData = unserialize($_COOKIE['register']);
             $aData["lastname"] = $aRequest->post('lastname');
@@ -169,16 +169,16 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return view('user.register.form1');
         }
+        if ($_SESSION['pId'] !== 4 || $_SESSION['pId'] !==5){
+            $this->form1();
+        }
+        $_SESSION['pId'] = 5;
+
         try{
             $aRequest->validate([
-                'gsm' => 'required|max:50',
-                'NoodNummer1' => 'required|max:50',
+                'gsm' => 'required',
+                'NoodNummer1' => 'required',
             ]);
-
-            if($_SESSION['NextPageID'] !== 5){
-                return view('user.register.form1');
-            }
-            $_SESSION['NextPageID']++;
 
             $aData = unserialize($_COOKIE['register']);
             $aData['gsm'] = $aRequest->post('gsm');
@@ -200,6 +200,11 @@ class RegisterController extends Controller
         if (!isset($_COOKIE['register'])){
             return view('user.register.form1');
         }
+        if ($_SESSION['pId'] !== 5 || $_SESSION['pId'] !==6){
+            $this->form1();
+        }
+        $_SESSION['pId'] = 6;
+
         try{
             if($aRequest->post('MedischeAandoening') == null){
                 return view('user.register.form1');
@@ -207,11 +212,6 @@ class RegisterController extends Controller
             $aRequest->validate([
                 'MedischeAandoening' => 'required',
             ],$this->messages());
-
-            if($_SESSION['NextPageID'] !== 6){
-                return view('user.register.form1');
-            }
-            $_SESSION['NextPageID']++;
 
             $aData = unserialize($_COOKIE['register']);
             $aData['MedischeAandoening'] = $aRequest->post('MedischeAandoening');
@@ -239,7 +239,7 @@ class RegisterController extends Controller
 
             $iUserID = User::where('email',$aData['email']) ->value('id');
 
-            if (!isset($aData['AfstudeerrichtingKiezen'])){
+            if ($aData['IsStudentOrDocent'] == "2"){
                 Traveller::insert(
                     [
                         'user_id' => $iUserID,
@@ -303,17 +303,18 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form1(){
         if(isset($_SESSION['StudentOrDocent'])){
-            $_SESSION['StudentOrDocent'] = null;
+            $_SESSION['StudentOrDocent'] = 0;
         }
+        $_SESSION['pId'] = 1;
 
-        $_SESSION['NextPageID'] = 2;
-            $aData = null;
+        $aData = null;
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
             /*$aTravellers = Traveller::get();
             foreach ($aTravellers as $oTraveller){
                 echo  $oTraveller;
             }*/
-            return view('user.register.form1');
+
+        return view('user.register.form1');
     }
     public function messages()
     {
