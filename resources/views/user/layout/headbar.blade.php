@@ -9,30 +9,21 @@
 
     <div class="collapse navbar-collapse" id="navbarS">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/info">Info <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/reis1">Reis 1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  href="/">Reis 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  href="/filter">Deelnemers</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  href="/reg">Registreren</a>
-            </li>
             <?php $navbars = HomeController::index(); ?>
                 @foreach($navbars as $navbar)
                     <li class="nav-item">
-                        <a class="nav-link navlink" href="{{ url("/").'/'.$navbar->name }}">{{ $navbar->name }}</a>
+                        <a class="nav-link navlink" href="{{ url("/").'/'.$navbar->menu_name }}">{{ $navbar->menu_name }}</a>
                     </li>
                 @endforeach
+                <li class="nav-item">
+                    <a class="nav-link"  href="/filter">Deelnemers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/searchStudentEdit">Editeer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/reg">Registreren</a>
+                </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

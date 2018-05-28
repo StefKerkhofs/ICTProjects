@@ -17,5 +17,17 @@ class MenusTableSeeder extends Seeder
             'page_id' => '1',
             'menu_name' => 'info',
         ));
+
+        DB::table('menus')->insert(array(
+            'menu_id' => '2',
+            'page_id' => '2',
+            'menu_name' => 'Amerika',
+        ));
+
+        DB::table('menus')->insert(array(
+            'menu_id' => '3',
+            'page_id' => '3',
+            'menu_name' => 'Europa',
+        ));
     }
 }
