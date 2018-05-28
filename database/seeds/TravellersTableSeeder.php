@@ -13,7 +13,7 @@ class TravellersTableSeeder extends Seeder
     public function run()
     {
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -34,7 +34,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -55,7 +55,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -76,7 +76,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -97,7 +97,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -118,7 +118,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -139,7 +139,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -160,7 +160,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 2,
             'user_id' => 1,
@@ -181,7 +181,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 4,
             'user_id' => 1,
@@ -202,7 +202,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 2,
             'user_id' => 1,
@@ -223,7 +223,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
             'user_id' => 1,
@@ -244,7 +244,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 3,
             'user_id' => 1,
@@ -265,7 +265,7 @@ class TravellersTableSeeder extends Seeder
         ]);
 
         DB::table('travellers')->insert([
-            'zipcode_id' => 1,
+            'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 3,
             'user_id' => 1,

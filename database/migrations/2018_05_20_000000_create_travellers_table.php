@@ -19,7 +19,7 @@ class CreateTravellersTable extends Migration
             $table->integer('study_id')->unsigned();
             $table->integer('trip_id')->unsigned();
             $table->string('user_id');
-            $table->integer('zipcode_id');
+            $table->integer('zip_code_id')->unsigned();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('city');
@@ -41,7 +41,7 @@ class CreateTravellersTable extends Migration
             $table->foreign('study_id')->references('study_id')->on('studies');
             $table->foreign('trip_id')->references('trip_id')->on('trips');
             //$table->foreign('user_id')->references('user_id')->on('users');
-            //$table->foreign('zipcode_id')->references('zipcode_id')->on('zip_codes');
+            $table->foreign('zip_code_id')->references('zip_code_id')->on('zip_codes');
         });
 
         // Insert some stuff
