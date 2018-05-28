@@ -20,8 +20,9 @@ class FilterController extends Controller
         //$id = Auth::id();
         $afilters=$request->all();
         array_shift($afilters);
+
         $tripid=DB::table('travellers')
-            ->where('user_id','1'/*id*/)
+            ->where('user_id','2'/*id*/)
             ->select('trip_id')
             ->get();
         $tripid = json_decode(json_encode($tripid),true);

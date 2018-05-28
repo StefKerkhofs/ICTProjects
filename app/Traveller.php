@@ -29,19 +29,19 @@ class Traveller extends Model
         'medical_info',
     ];
 
-    protected function study()
+    public function study()
     {
         return $this->belongsTo('App\Study');
     }
-    protected function trip()
+    public function trip()
     {
         return $this->belongsTo('App\Trip');
     }
-    protected function user()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
-    protected function zipcode()
+    public function zipcode()
     {
         return $this->belongsTo('App\ZipCode');
     }

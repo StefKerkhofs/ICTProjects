@@ -111,7 +111,7 @@
                 </ul>
             </div>
         @endif
-        {{ Form::open(array('action' => 'RegisterController@form2', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'RegisterController@form1POST', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
                     <p>{{ Form::label('lblNummer', 'Ben je een student of docent?*', ['class' => 'field1']) }}</p>

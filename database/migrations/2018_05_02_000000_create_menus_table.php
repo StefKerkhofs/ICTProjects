@@ -15,9 +15,11 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('menu_id');
-            $table->integer('page_id');
+            $table->integer('page_id')->unsigned();
             $table->string('menu_name');
             //$table->timestamps();
+
+            $table->foreign('page_id')->references('page_id')->on('pages');
         });
     }
 

@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Study extends Model
 {
     protected $fillable = [
-        'study_id',
         'major_id',
         'name'
     ];
-    protected function major()
+    public function major()
     {
         return $this->belongsTo('App\Major');
     }

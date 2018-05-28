@@ -35,12 +35,12 @@ class GuestPagesController extends Controller
                     $sContent = $oPageData->page_content;
                     $sType = $oPageData->page_type;
         }
+            catch (QueryException $e){
+                $sContent = 'Error 404, page not found';
+            }
             catch (\Exception $e){
                 $sContent = $e->getMessage();
             }
-            catch (QueryException $e){
-                $sContent = 'Error 404, page not found';
-                }
             return view('guest.contentpage', [
                 'sContent' => $sContent,
                 'sType' => $sType

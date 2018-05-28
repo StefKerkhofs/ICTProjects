@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    public function request()
+
+    protected $fillable = [
+        'page_name',
+        'page_content',
+        'page_type'
+    ];
+
+    public function menu()
     {
-        return $this->belongsTo('App\Menu', 'page_id');
+        return $this->hasMany('App\Menu');
     }
 }

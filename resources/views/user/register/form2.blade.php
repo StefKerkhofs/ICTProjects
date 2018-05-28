@@ -96,7 +96,7 @@
                 </ul>
             </div>
         @endif
-        {{ Form::open(array('action' => 'RegisterController@form3', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'RegisterController@form2POST', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="middleform">
                     <p><label class="field" for="name">Reis*</label></p>

@@ -14,115 +14,93 @@ class RegisterController extends Controller
     }
     function __destruct() {
     }
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------FORM 1--------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    public function form1POST(Request $aRequest){
+        //Validation
+        $aRequest->validate([
+            'radio' => 'required',
+            'txtEmail' => [ 'required', 'string', 'email', 'max:255', 'unique:users,email'],
+        ],$this->messages());
+        if($aRequest->post('radio') == 1){
+            $aRequest->validate([
+                'txtNummer' => [ 'required', 'max:255', 'unique:users,name']
+            ],$this->messages());
+            $_SESSION['StudentOrDocent'] = 1;
+        }
+        else{
+            $_SESSION['StudentOrDocent'] = 2;
+        }
+        $aRequest->validate([
+            'txtWachtwoord' => 'required|min:8|confirmed',
+            'txtWachtwoord_confirmation' => 'required',
+        ],$this->messages());
+
+        //Saving
+        $aData['txtNummer'] = $aRequest->post('txtNummer');
+        $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
+        $aData['email'] = $aRequest->post('txtEmail');
+        $aData['IsStudentOrDocent'] = $_SESSION["StudentOrDocent"];
+        $aData['IsStudentOrDocent'] = $aRequest->post('radio');
+
+        //Setting Cookie
+        setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+
+        //Calling next form
+        return $this->form2();
+    }
+    public function form1(){
+
+        return view('user.register.form1');
+
+    }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
-    /*DONE----------------------------------------------------------------------FORM 2--------------------------------------*/
+    /*--------------------------------------------------------------------------FORM 2--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form2(Request $aRequest){
-        //-----------Algemene opbouw van de functies
-
-        //-----------Is begin cookie gezet? zoneen ga je naar de eerste form
-        if (!isset($_COOKIE['register'])){
-            return view('user.register.form1');
-        }
-        if ($_SESSION['pId'] !== 1 || $_SESSION['pId'] !==2){
-            $this->form1();
-        }
-        $_SESSION['pId'] = 2;
-
-            //-----------Data van vorige form word gevalideerd
+    public function form2POST(Request $aRequest){
+        try {
+            //Validation
             $aData = unserialize($_COOKIE['register']);
-
-            $aRequest->validate([
-                'radio' => 'required',
-                'txtEmail' => [ 'required', 'string', 'email', 'max:255', 'unique:users,email'],
-            ],$this->messages());
-            if($aRequest->post('radio') == 1){
+            if ($aData['IsStudentOrDocent'] == "1") {
                 $aRequest->validate([
-                    'txtNummer' => [ 'required', 'max:255', 'unique:users,name']
-                ],$this->messages());
-                $_SESSION['StudentOrDocent'] = 1;
+                    'ReisKiezen' => 'required',
+                    'AfstudeerrichtingKiezen' => 'required',
+                ], $this->messages());
+                $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
+            } else {
+                $aRequest->validate([
+                    'ReisKiezen' => 'required',
+                ], $this->messages());
             }
-            else{
-                $_SESSION['StudentOrDocent'] = 2;
-            }
 
-            $aRequest->validate([
-                'txtWachtwoord' => 'required|min:8|confirmed',
-                'txtWachtwoord_confirmation' => 'required',
-            ],$this->messages());
+            //Saving
+            $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
 
-            //-----------Data van vorige form word opgeslagen in een array
-            $aData['txtNummer'] = $aRequest->post('txtNummer');
-            $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
-            $aData['email'] = $aRequest->post('txtEmail');
-            $aData['IsStudentOrDocent'] = $_SESSION["StudentOrDocent"];
-            $aData['IsStudentOrDocent'] = $aRequest->post('radio');
-
-        echo $aData['IsStudentOrDocent'];
-
-        //-----------Array word toegevoegd aan de cookie 'register'
+            //Setting cookie
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            //-----------Huidige form word getoont
+            //Calling next form
+            return $this->form3();
+        }
+        catch(Exception $exception) {
 
-            return view('user.register.form2');
+        }
+    }
+    public function form2(){
+
+        return view('user.register.form2');
+
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
     /*--------------------------------------------------------------------------FORM 3--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form3(Request $aRequest){
-        if (!isset($_COOKIE['register'])){
-            return view('user.register.form1');
-        }
-        if ($_SESSION['pId'] !== 2 || $_SESSION['pId'] !==3){
-            $this->form1();
-        }
-        $_SESSION['pId'] = 3;
-
+    public function form3POST(Request $aRequest){
         try{
-            $aData = unserialize($_COOKIE['register']);
-                if ($aData['IsStudentOrDocent'] == "1"){
-                    $aRequest->validate([
-                        'ReisKiezen' => 'required',
-                        'AfstudeerrichtingKiezen' => 'required',
-                    ],$this->messages());
-                    $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
-                }
-                else{
-                    $aRequest->validate([
-                        'ReisKiezen' => 'required',
-                    ],$this->messages());
-                }
-
-            $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
-            //echo $aData['AfstudeerrichtingKiezen'];
-            echo $aData['IsStudentOrDocent'];
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
-
-            return view('user.register.form3');
-        } catch (Exception $e) {
-            report($e);
-            return false;
-        }
-
-    }
-
-    /*----------------------------------------------------------------------------------------------------------------------*/
-    /*--------------------------------------------------------------------------FORM 4--------------------------------------*/
-    /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form4(Request $aRequest){
-        if (!isset($_COOKIE['register'])){
-            return view('user.register.form1');
-        }
-        if ($_SESSION['pId'] !== 3 || $_SESSION['pId'] !==4){
-            $this->form1();
-        }
-        $_SESSION['pId'] = 4;
-
-        try{
-            if($aRequest->validate([
+            //Validation
+            $aRequest->validate([
                 'lastname' => 'required',
                 'firstname' => 'required',
                 'gender' => 'required',
@@ -132,10 +110,9 @@ class RegisterController extends Controller
                 'address' => 'required',
                 'Postcode' => 'required',
                 'country' => 'required',
-            ],$this->messages())){
-            };
+            ],$this->messages());
 
-
+            //Saving
             $aData = unserialize($_COOKIE['register']);
             $aData["lastname"] = $aRequest->post('lastname');
             $aData["firstname"] = $aRequest->post('firstname');
@@ -146,13 +123,55 @@ class RegisterController extends Controller
             $aData["Postcode"] = $aRequest->post('Postcode');
             $aData["country"] = $aRequest->post('country');
             $aData["birthdate"] = $aRequest->post('birthdate');;
+
+            //Setting cookie
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            return view('user.register.form4');
-        } catch (Exception $e) {
-            report($e);
-            return false;
+            //Calling next form
+            return $this->form4();
+
         }
+        catch(Exception $exception) {
+
+        }
+    }
+    public function form3(){
+
+        return view('user.register.form3');
+
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------FORM 4--------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    public function form4POST(Request $aRequest){
+        try{
+            //Validation
+            $aRequest->validate([
+                'gsm' => 'required',
+                'NoodNummer1' => 'required',
+            ],$this->messages());
+
+            //Saving
+            $aData = unserialize($_COOKIE['register']);
+            $aData['gsm'] = $aRequest->post('gsm');
+            $aData['NoodNummer1'] = $aRequest->post('NoodNummer1');
+            $aData['NoodNummer2'] = $aRequest->post('NoodNummer2');
+
+            //Setting cookie
+            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
+
+            //Calling next form
+            return $this->form5();
+        }
+        catch(Exception $exception) {
+
+        }
+    }
+
+    public function form4(){
+
+        return view('user.register.form4');
 
     }
 
@@ -172,7 +191,7 @@ class RegisterController extends Controller
             $aRequest->validate([
                 'gsm' => 'required',
                 'NoodNummer1' => 'required',
-            ]);
+            ],$this->messages());
 
             $aData = unserialize($_COOKIE['register']);
             $aData['gsm'] = $aRequest->post('gsm');
@@ -292,24 +311,6 @@ class RegisterController extends Controller
 
     }
 
-    /*----------------------------------------------------------------------------------------------------------------------*/
-    /*DONE----------------------------------------------------------------------FORM 1--------------------------------------*/
-    /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form1(){
-        if(isset($_SESSION['StudentOrDocent'])){
-            $_SESSION['StudentOrDocent'] = 0;
-        }
-        $_SESSION['pId'] = 1;
-
-        $aData = null;
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
-            /*$aTravellers = Traveller::get();
-            foreach ($aTravellers as $oTraveller){
-                echo  $oTraveller;
-            }*/
-
-        return view('user.register.form1');
-    }
     public function messages()
     {
         return [

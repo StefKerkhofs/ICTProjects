@@ -8,9 +8,13 @@ use App\Page;
 class Menu extends Model
 {
     //
-
-    public function Page()
+    protected $fillable = [
+        'menu_id',
+        'page_id',
+        'menu_name'
+    ];
+    public function page()
     {
-        return $this->hasMany('App\Page', 'page_id');
+        return $this->belongsTo('App\Page');
     }
 }

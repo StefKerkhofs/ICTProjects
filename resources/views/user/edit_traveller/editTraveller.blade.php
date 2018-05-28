@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="rightform">
-                    <p><label class="field" for="name">Email:</label>           <input type="text" class="textbox" value="xxxxx" name="email"></p>
+                    <p><label class="field" for="name">Email:</label>           <input type="text" class="textbox" value="{{$data->email}}" name="email"></p>
                     <p><label class="field" for="name">Telefoon:</label>        <input type="text" class="textbox" value="{{$data->phone}}" name="phone"></p>
                     <p><label class="field" for="name">Noodnummer 1:</label>    <input type="text" class="textbox" value="{{$data->emergency_phone_1}}" name="emergency_phone_1"></p>
                     <p><label class="field" for="name">Noodnummer 2:</label>    <input type="text" class="textbox" value="{{$data->emergency_phone_2}}" name="emergency_phone_2"></p>
