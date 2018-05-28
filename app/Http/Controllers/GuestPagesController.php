@@ -28,18 +28,12 @@ class GuestPagesController extends Controller
             }
 
         }
-        elseif ($page == "Home"){
-            $sContent = "test voor de header";
-        }
         else{
+            $sType="";
             try{
                 $oPageData = Page::where('page_name', $page)->first();
-                if ($oPageData->page_type == 'pdf'){
-                    $sContent = '<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url='.$oPageData->page_content.' width="500" height="375">';
-                }
-                else{
                     $sContent = $oPageData->page_content;
-                }
+                    $sType = $oPageData->page_type;
         }
             catch (\Exception $e){
                 $sContent = $e->getMessage();
@@ -48,7 +42,8 @@ class GuestPagesController extends Controller
                 $sContent = 'Error 404, page not found';
                 }
             return view('guest.contentpage', [
-                'sContent' => $sContent
+                'sContent' => $sContent,
+                'sType' => $sType
             ]);
         }
 

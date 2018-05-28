@@ -16,8 +16,8 @@ class CreateTravellersTable extends Migration
     {
         Schema::create('travellers', function (Blueprint $table) {
             $table->increments('traveller_id');
-            $table->integer('study_id')->unsigned();
             $table->integer('trip_id')->unsigned();
+            $table->integer('study_id')->unsigned()->nullable();
             $table->string('user_id');
             $table->integer('zip_code_id')->unsigned();
             $table->string('firstname');
