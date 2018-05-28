@@ -33,6 +33,9 @@ route::any('/reg/form4', 'RegisterController@form4');
 route::any('/reg/form5', 'RegisterController@form5');
 route::any('/reg/form6', 'RegisterController@form6');
 
+Route::get('/log', 'HomeController@create');
+Route::post('/log', 'HomeController@store');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
