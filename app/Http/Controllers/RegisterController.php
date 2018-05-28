@@ -30,8 +30,6 @@ class RegisterController extends Controller
         }
         $_SESSION['pId'] = 2;
 
-        echo $_SESSION["StudentOrDocent"];
-        echo "radio:", $aRequest->post('radio');
             //-----------Data van vorige form word gevalideerd
             $aData = unserialize($_COOKIE['register']);
 
@@ -40,14 +38,13 @@ class RegisterController extends Controller
                 'txtEmail' => [ 'required', 'string', 'email', 'max:255', 'unique:users,email'],
             ],$this->messages());
             if($aRequest->post('radio') == 1){
-                echo 'blup';
                 $aRequest->validate([
                     'txtNummer' => [ 'required', 'max:255', 'unique:users,name']
                 ],$this->messages());
-                $_SESSION['StudentOrDocent'] = 1;
+                $_SESSION['StudentOrDocent'] = "1";
             }
             else{
-                $_SESSION['StudentOrDocent'] = 2;
+                $_SESSION['StudentOrDocent'] = "2";
             }
 
             $aRequest->validate([
@@ -59,6 +56,7 @@ class RegisterController extends Controller
             $aData['txtNummer'] = $aRequest->post('txtNummer');
             $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
             $aData['email'] = $aRequest->post('txtEmail');
+            $aData['IsStudentOrDocent'] = $_SESSION["StudentOrDocent"];
 
             //-----------Array word toegevoegd aan de cookie 'register'
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
@@ -82,7 +80,6 @@ class RegisterController extends Controller
 
         try{
             $aData = unserialize($_COOKIE['register']);
-            echo $_SESSION['StudentOrDocent'];
             if(isset($_SESSION['StudentOrDocent'])){
                 if ($_SESSION['StudentOrDocent'] == 1){
                     $aRequest->validate([
@@ -106,7 +103,6 @@ class RegisterController extends Controller
 
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            echo $_SESSION["StudentOrDocent"];
             return view('user.register.form3');
         } catch (Exception $e) {
             report($e);
@@ -158,7 +154,6 @@ class RegisterController extends Controller
             $aData["birthdate"] = $dBirthDate;
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            echo $_SESSION["StudentOrDocent"];
             return view('user.register.form4');
         } catch (Exception $e) {
             report($e);
@@ -191,7 +186,6 @@ class RegisterController extends Controller
             $aData['NoodNummer2'] = $aRequest->post('NoodNummer2');
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            echo $_SESSION["StudentOrDocent"];
             return view('user.register.form5');
         } catch (Exception $e) {
             report($e);
@@ -245,7 +239,7 @@ class RegisterController extends Controller
 
             $iUserID = User::where('email',$aData['email']) ->value('id');
 
-            if (!isset($aData['AfstudeerrichtingKiezen'])){
+            if ($aData['IsStudentOrDocent'] == "2"){
                 Traveller::insert(
                     [
                         'user_id' => $iUserID,
@@ -293,7 +287,6 @@ class RegisterController extends Controller
                 );
             }
 
-            echo $_SESSION["StudentOrDocent"];
             return view('user.register.form6');
         } catch (Exception $e) {
             abort(403, 'Unauthorized action.');
@@ -321,7 +314,6 @@ class RegisterController extends Controller
                 echo  $oTraveller;
             }*/
 
-        echo $_SESSION["StudentOrDocent"];
         return view('user.register.form1');
     }
     public function messages()
