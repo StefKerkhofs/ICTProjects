@@ -18,5 +18,23 @@ class UsersTableSeeder extends Seeder
             'password' => 'root',
             'function' => 'root'
         ]);
+        DB::table('users')->insert([
+            'name' => 'r0214567',
+            'email' => 'joren.meynen@telenet.be',
+            'password' => 'azertyuiop',
+            'function' => 'root'
+        ]);
+        DB::table('users')->insert([
+            'name' => 'r14856252',
+            'email' => 'jefke@test.test',
+            'password' => 'azertyuiop',
+            'function' => 'root'
+        ]);
+        DB::table('users')->insert([
+            'name' => 'r4752147',
+            'email' => 'azerty@test.test',
+            'password' => 'azertyuiop',
+            'function' => 'root'
+        ]);
     }
 }

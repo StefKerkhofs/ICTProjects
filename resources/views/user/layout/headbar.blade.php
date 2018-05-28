@@ -13,7 +13,7 @@
                 <a class="nav-link" href="/info">Info <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Reis 1</a>
+                <a class="nav-link" href="/reis1">Reis 1</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="/">Reis 2</a>

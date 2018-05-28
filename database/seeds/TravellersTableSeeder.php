@@ -12,6 +12,7 @@ class TravellersTableSeeder extends Seeder
      */
     public function run()
     {
+/*
         DB::table('travellers')->insert([
             'zip_code_id' => 1,
             'study_id' => 1,
@@ -32,12 +33,12 @@ class TravellersTableSeeder extends Seeder
             'MedicalIssue' => '',
             'medical_info' => ''
         ]);
-
+*/
         DB::table('travellers')->insert([
             'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
-            'user_id' => 1,
+            'user_id' => 2,
             'firstname' => 'jefke',
             'lastname' => 'azerty',
             'city' => 'averbode',
@@ -58,7 +59,7 @@ class TravellersTableSeeder extends Seeder
             'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
-            'user_id' => 1,
+            'user_id' => 3,
             'firstname' => 'joren',
             'lastname' => 'meynen',
             'city' => 'averbode',
@@ -79,7 +80,7 @@ class TravellersTableSeeder extends Seeder
             'zip_code_id' => 1,
             'study_id' => 1,
             'trip_id' => 1,
-            'user_id' => 1,
+            'user_id' => 4,
             'firstname' => 'daan',
             'lastname' => 'vandenbosch',
             'city' => 'averbode',
@@ -95,7 +96,7 @@ class TravellersTableSeeder extends Seeder
             'MedicalIssue' => '',
             'medical_info' => ''
         ]);
-
+/*
         DB::table('travellers')->insert([
             'zip_code_id' => 1,
             'study_id' => 1,
@@ -284,5 +285,6 @@ class TravellersTableSeeder extends Seeder
             'MedicalIssue' => '',
             'medical_info' => ''
         ]);
+*/
     }
 }

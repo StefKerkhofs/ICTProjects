@@ -16,9 +16,9 @@ class CreateTravellersTable extends Migration
     {
         Schema::create('travellers', function (Blueprint $table) {
             $table->increments('traveller_id');
+            $table->integer('user_id')->unsigned();
             $table->integer('trip_id')->unsigned();
             $table->integer('study_id')->unsigned()->nullable();
-            $table->string('user_id');
             $table->integer('zip_code_id')->unsigned();
             $table->string('firstname');
             $table->string('lastname');
@@ -40,7 +40,7 @@ class CreateTravellersTable extends Migration
 
             $table->foreign('study_id')->references('study_id')->on('studies');
             $table->foreign('trip_id')->references('trip_id')->on('trips');
-            //$table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('zip_code_id')->references('zip_code_id')->on('zip_codes');
         });
 
