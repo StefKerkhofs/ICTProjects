@@ -41,10 +41,10 @@ class RegisterController extends Controller
                 $aRequest->validate([
                     'txtNummer' => [ 'required', 'max:255', 'unique:users,name']
                 ],$this->messages());
-                $_SESSION['StudentOrDocent'] = "1";
+                $_SESSION['StudentOrDocent'] = 1;
             }
             else{
-                $_SESSION['StudentOrDocent'] = "2";
+                $_SESSION['StudentOrDocent'] = 2;
             }
 
             $aRequest->validate([
@@ -57,8 +57,11 @@ class RegisterController extends Controller
             $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
             $aData['email'] = $aRequest->post('txtEmail');
             $aData['IsStudentOrDocent'] = $_SESSION["StudentOrDocent"];
+            $aData['IsStudentOrDocent'] = $aRequest->post('radio');
 
-            //-----------Array word toegevoegd aan de cookie 'register'
+        echo $aData['IsStudentOrDocent'];
+
+        //-----------Array word toegevoegd aan de cookie 'register'
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             //-----------Huidige form word getoont
@@ -80,27 +83,22 @@ class RegisterController extends Controller
 
         try{
             $aData = unserialize($_COOKIE['register']);
-            if(isset($_SESSION['StudentOrDocent'])){
-                if ($_SESSION['StudentOrDocent'] == 1){
+                if ($aData['IsStudentOrDocent'] == "1"){
                     $aRequest->validate([
                         'ReisKiezen' => 'required',
                         'AfstudeerrichtingKiezen' => 'required',
                     ],$this->messages());
                     $aData['AfstudeerrichtingKiezen'] = $aRequest->post('AfstudeerrichtingKiezen');
-
                 }
                 else{
                     $aRequest->validate([
                         'ReisKiezen' => 'required',
                     ],$this->messages());
                 }
-            }
-            else{
-                //return view('user.register.form2');
-            }
 
             $aData['ReisKiezen'] = $aRequest->post('ReisKiezen');
-
+            //echo $aData['AfstudeerrichtingKiezen'];
+            echo $aData['IsStudentOrDocent'];
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             return view('user.register.form3');
@@ -147,11 +145,7 @@ class RegisterController extends Controller
             $aData["address"] = $aRequest->post('address');
             $aData["Postcode"] = $aRequest->post('Postcode');
             $aData["country"] = $aRequest->post('country');
-
-            $dBirthDate = $aRequest->post('birthdate');
-
-
-            $aData["birthdate"] = $dBirthDate;
+            $aData["birthdate"] = $aRequest->post('birthdate');;
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             return view('user.register.form4');
