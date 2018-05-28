@@ -26,12 +26,24 @@ Route::get('/', function () {
 });
 
 Route::get('/reg', 'RegisterController@form1');
-route::any('/reg/form1', 'RegisterController@form1');
-route::any('/reg/form2', 'RegisterController@form2');
-route::any('/reg/form3', 'RegisterController@form3');
-route::any('/reg/form4', 'RegisterController@form4');
-route::any('/reg/form5', 'RegisterController@form5');
-route::any('/reg/form6', 'RegisterController@form6');
+
+route::post('/reg/form1POST', 'RegisterController@form1POST');
+route::get('/reg/form1', 'RegisterController@form1');
+
+route::post('/reg/form2POST', 'RegisterController@form2POST');
+route::get('/reg/form2', 'RegisterController@form2');
+
+route::post('/reg/form3POST', 'RegisterController@form3POST');
+route::get('/reg/form3', 'RegisterController@form3');
+
+route::post('/reg/form4POST', 'RegisterController@form4POST');
+route::get('/reg/form4', 'RegisterController@form4');
+
+route::post('/reg/form5POST', 'RegisterController@form5POST');
+route::get('/reg/form5', 'RegisterController@form3');
+
+route::post('/reg/form6POST', 'RegisterController@form6POST');
+route::get('/reg/form6', 'RegisterController@form3');
 
 Auth::routes();
 
