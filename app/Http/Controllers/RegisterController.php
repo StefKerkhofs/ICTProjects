@@ -339,7 +339,7 @@ class RegisterController extends Controller
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
-            if ($aData['MedischeInfo'] == null){
+            if ($aData['MedischeAandoening'] == null){
                 return redirect('reg/form1');
             }
             return view('user.register.form6');
@@ -357,7 +357,7 @@ class RegisterController extends Controller
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
-            if ($aData['MedischeInfo'] == null){
+            if ($aData['MedischeAandoening'] == null){
                 return redirect('reg/form1');
             }
             return view('user.register.form7');
