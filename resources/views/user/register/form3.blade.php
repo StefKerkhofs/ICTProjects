@@ -93,7 +93,7 @@
                 </ul>
             </div>
         @endif
-        {{ Form::open(array('action' => 'RegisterController@form4', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'RegisterController@form3POST', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="leftform">
                     <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="" name="lastname" ></p>

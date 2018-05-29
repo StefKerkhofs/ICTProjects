@@ -48,7 +48,7 @@ class RegisterController extends Controller
         setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
         //Calling next form
-        return $this->form2();
+        return redirect('reg/form2');
     }
     public function form1(){
 
@@ -82,13 +82,18 @@ class RegisterController extends Controller
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             //Calling next form
-            return $this->form3();
+            return redirect('reg/form3');
         }
         catch(Exception $exception) {
 
         }
     }
     public function form2(){
+
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['email'] == ""){
+            return redirect()->back();
+        }
 
         return view('user.register.form2');
 
@@ -113,6 +118,7 @@ class RegisterController extends Controller
             ],$this->messages());
 
             //Saving
+
             $aData = unserialize($_COOKIE['register']);
             $aData["lastname"] = $aRequest->post('lastname');
             $aData["firstname"] = $aRequest->post('firstname');
@@ -122,13 +128,13 @@ class RegisterController extends Controller
             $aData["address"] = $aRequest->post('address');
             $aData["Postcode"] = $aRequest->post('Postcode');
             $aData["country"] = $aRequest->post('country');
-            $aData["birthdate"] = $aRequest->post('birthdate');;
+            $aData["birthdate"] = $aRequest->post('birthdate');
 
             //Setting cookie
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             //Calling next form
-            return $this->form4();
+            return redirect('reg/form4');
 
         }
         catch(Exception $exception) {
@@ -136,6 +142,11 @@ class RegisterController extends Controller
         }
     }
     public function form3(){
+
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['ReisKiezen'] == ""){
+            return redirect()->back();
+        }
 
         return view('user.register.form3');
 
@@ -162,14 +173,18 @@ class RegisterController extends Controller
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
             //Calling next form
-            return $this->form5();
+            return redirect('reg/form5');
         }
         catch(Exception $exception) {
 
         }
     }
-
     public function form4(){
+
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['lastname'] == ""){
+            return redirect()->back();
+        }
 
         return view('user.register.form4');
 
@@ -178,60 +193,48 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     /*--------------------------------------------------------------------------FORM 5--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form5(Request $aRequest){
-        if (!isset($_COOKIE['register'])){
-            return view('user.register.form1');
-        }
-        if ($_SESSION['pId'] !== 4 || $_SESSION['pId'] !==5){
-            $this->form1();
-        }
-        $_SESSION['pId'] = 5;
-
+    public function form5POST(Request $aRequest){
         try{
+            //validation
             $aRequest->validate([
-                'gsm' => 'required',
-                'NoodNummer1' => 'required',
+                'MedischeAandoening' => 'required',
             ],$this->messages());
+            echo 'test123';
 
+            //Saving
             $aData = unserialize($_COOKIE['register']);
-            $aData['gsm'] = $aRequest->post('gsm');
-            $aData['NoodNummer1'] = $aRequest->post('NoodNummer1');
-            $aData['NoodNummer2'] = $aRequest->post('NoodNummer2');
+            $aData['MedischeAandoening'] = $aRequest->post('MedischeAandoening');
+            $aData['MedischeInfo'] = $aRequest->post('MedischeInfo');
+
+            //Setting cookie
             setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            return view('user.register.form5');
-        } catch (Exception $e) {
-            report($e);
-            return false;
+            //Call next form
+            return redirect('reg/form6');
         }
+        catch (Exception $exception) {
+
+        }
+    }
+    public function form5(){
+
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['gsm'] == ""){
+            return redirect()->back();
+        }
+
+        return view('user.register.form5');
+
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
     /*--------------------------------------------------------------------------FORM 6--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form6(Request $aRequest){
-        if (!isset($_COOKIE['register'])){
-            return view('user.register.form1');
-        }
-        if ($_SESSION['pId'] !== 5 || $_SESSION['pId'] !==6){
-            $this->form1();
-        }
-        $_SESSION['pId'] = 6;
-
+    public function form6POST(Request $aRequest){
         try{
-            if($aRequest->post('MedischeAandoening') == null){
-                return view('user.register.form1');
-            }
-            $aRequest->validate([
-                'MedischeAandoening' => 'required',
-            ],$this->messages());
-
+            //Scanning whether user is 'begeleider' or 'Reiziger'
             $aData = unserialize($_COOKIE['register']);
-            $aData['MedischeAandoening'] = $aRequest->post('MedischeAandoening');
-            $aData['MedischeInfo'] = $aRequest->post('MedischeInfo');
-            setcookie("register", serialize($aData), time() + (86400 * 30), "/");
 
-            $sFunctie = null;
             if ($aData['txtNummer'] == null){
                 $sFunctie = "Begeleider";
             }
@@ -241,6 +244,8 @@ class RegisterController extends Controller
             else{
                 $sFunctie = "Begeleider";
             }
+
+            //Saving User
             User::insert(
                 [
                     'name' => $aData['txtNummer'],
@@ -250,6 +255,7 @@ class RegisterController extends Controller
                 ]
             );
 
+            //Saving traveller
             $iUserID = User::where('email',$aData['email']) ->value('id');
 
             if ($aData['IsStudentOrDocent'] == "2"){
@@ -270,8 +276,8 @@ class RegisterController extends Controller
                         'nationality' => $aData['nationality'],
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
-                        'medical_info' => $aRequest->post('MedischeInfo'),
-                        'MedicalIssue' => $aRequest->post('MedischeAandoening')
+                        'medical_info' => $aData['MedischeInfo'],
+                        'MedicalIssue' => $aData['MedischeAandoening']
                     ]
                 );
             }
@@ -294,23 +300,53 @@ class RegisterController extends Controller
                         'nationality' => $aData['nationality'],
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
-                        'medical_info' => $aRequest->post('MedischeInfo'),
-                        'MedicalIssue' => $aRequest->post('MedischeAandoening')
+                        'medical_info' => $aData['MedischeInfo'],
+                        'MedicalIssue' => $aData['MedischeAandoening']
                     ]
                 );
             }
 
-            return view('user.register.form6');
-        } catch (Exception $e) {
-            abort(403, 'Unauthorized action.');
+            //Returning completion screen
+            return redirect('reg/form6POST');
+        }
+        catch (Exception $exception) {
+
+            //If error is caught, redirect to first form
+            return redirect('reg');
+
         }
         finally{
+
+            //Reset cookie data
             $aData = null;
             setcookie("register", serialize($aData), time() -1, "/");
+
         }
 
     }
+    public function form6(){
 
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['MedischeInfo'] == ""){
+            return redirect()->back();
+        }
+
+        return view('user.register.form6');
+
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------FORM 7--------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    public function form7(){
+
+        return view('user.register.form7');
+
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------Collection of error messages----------------*/
+    /*----------------------------------------------------------------------------------------------------------------------*/
     public function messages()
     {
         return [
