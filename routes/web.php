@@ -45,7 +45,7 @@ route::get('/reg/form4', 'RegisterController@form4');
 route::post('/reg/form5POST', 'RegisterController@form5POST');
 route::get('/reg/form5', 'RegisterController@form5');
 
-route::post('/reg/form6POST', 'RegisterController@form6POST');
+route::get('/reg/form6GET', 'RegisterController@form6GET');
 route::get('/reg/form6', 'RegisterController@form6');
 
 route::get('/reg/form7', 'RegisterController@form7');

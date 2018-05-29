@@ -86,6 +86,7 @@
 
     </style>
     <script type="text/javascript">
+        document.getElementById('radioJa').checked = true;
         window.onload = function() {
             document.getElementById('ifYes').style.display = 'none';
             document.getElementById('ifNo').style.display = 'none';
@@ -115,7 +116,7 @@
             <div class="formcontainer">
                 <div class="middleform">
                     <p>{{ Form::label('lblNummer', 'Ben je een student of docent?*', ['class' => 'field1']) }}</p>
-                    <p> <input type="radio" onclick="javascript:yesnoCheck();" id="radioJa" name="radio" value="1" class="radio" /><label for="radioJa">Ja</label> &nbsp&nbsp&nbsp <input type="radio" onclick="javascript:yesnoCheck();" id="radioNee" name="radio" value="2" class="radio"/><label for="radioNee">Nee</label></p>
+                    <p> <input type="radio" onclick="javascript:yesnoCheck();" id="radioJa" name="radio" value="1" class="radio" checked="checked"/><label for="radioJa">Ja</label> &nbsp&nbsp&nbsp <input type="radio" onclick="javascript:yesnoCheck();" id="radioNee" name="radio" value="2" class="radio"/><label for="radioNee">Nee</label></p>
                     <div id="ifYes">
                     <p>{{ Form::label('lblNummer', 'Studenten-/docentennummer*', ['class' => 'field']) }}</p>
                     <p>{{ Form::text('txtNummer', '', ['class' => 'textbox'] )}} </p>
