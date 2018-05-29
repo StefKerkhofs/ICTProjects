@@ -265,11 +265,14 @@ class RegisterController extends Controller
             }
 
             //Saving User
+            $sPassword = bcrypt($aData['txtWachtwoord']);
+            echo $sPassword;
+
             User::insert(
                 [
                     'name' => $aData['txtNummer'],
                     'email' => $aData['email'],
-                    'password' => $aData['txtWachtwoord'],
+                    'password' => $sPassword,
                     'function' => $sFunctie,
                 ]
             );
