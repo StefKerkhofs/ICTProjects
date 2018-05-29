@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Page;
 
 class Menu extends Model
 {
+    //
     protected $fillable = [
         'menu_id',
         'page_id',
@@ -13,6 +15,6 @@ class Menu extends Model
     ];
     public function page()
     {
-        return $this->belongsTo('App\Page');
+        return $this->belongsTo(Page::class, 'page_id');
     }
 }

@@ -25,6 +25,9 @@ Route::get('/', function () {
     return view('user.info.info');
 });
 
+/*
+ * RegisterController
+ */
 Route::get('/reg', 'RegisterController@form1');
 
 route::post('/reg/form1POST', 'RegisterController@form1POST');
@@ -47,14 +50,23 @@ route::get('/reg/form6', 'RegisterController@form6');
 
 route::get('/reg/form7', 'RegisterController@form7');
 
+
+Route::get('/log', 'HomeController@create');
+Route::post('/log', 'HomeController@store');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
+/*
+ * ProfileController
+ */
 Route::get('/profile', 'ProfileController@profile');
 Route::get('/profileEdit', 'ProfileController@profileEdit');
-Route::get('/searchStudentEdit', 'ProfileController@searchStudentEdit');
-Route::get('/editSearchedStudent', 'ProfileController@editSearchedStudent');
+/*
+ * EditTravellerController
+ */
+Route::get('/searchTraveller', 'EditTravellerController@searchTraveller');
+Route::get('/editTraveller/{user_id}', 'EditTravellerController@editTraveller');
 
 Route::get('/filter', 'FilterController@getFilteredTraveller');
 route::post('/filter', 'FilterController@getFilteredTraveller');

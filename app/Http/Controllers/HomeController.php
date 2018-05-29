@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\menu;
+use App\Page;
+use App\Profile;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,8 +25,33 @@ class HomeController extends Controller
      */
     public static function index()
     {
-        $navbars = menu::orderBy('menu_id')->get();
+        $afilteredUserList=DB::table('menus')
+            ->join('pages', 'menus.page_id', '=', 'pages.page_id')
+            ->select('menus.menu_name', 'pages.page_name')
+            ->get();
+        $page = json_decode(json_encode($afilteredUserList),true);
 
-        return view()->share('navbars', $navbars);
+        return view()->make('user.layout.headbar', ['navbars' => $page]);
+    }
+
+    public function create()
+    {
+        return view('guest.login');
+    }
+
+    public function store()
+    {
+       if (! auth()->attempt(request(['email', 'password'])))
+       {
+           $user = User::where(['email'=> request('email'), 'password' => request('password')])->get();
+
+           if (! auth()->loginUsingId($user->id))
+           {
+               return back();
+           }
+           return view('user.info.info');
+       }
+
+       return view('user.info.info');
     }
 }
