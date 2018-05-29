@@ -81,6 +81,7 @@
     <div class="container">
         @foreach($aTravellers as $traveller => $data)
         <form>
+            {{ Form::open(array('action' => 'RegisterController@form1POST', 'method' => 'post')) }}
             <div class="formcontainer">
                 <div class="leftform">
                     <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="{{$data->lastname}}" name="lastname" ></p>
@@ -105,10 +106,11 @@
             </div>
             <div class="formbutton">
                 <div class="button">
-                    <a class="nav-link" href="/searchStudentEdit">Annuleren</a>
+                    <a class="nav-link" href="/searchTraveller">Annuleren</a>
                 </div>
                 <input type="submit" value="Opslaan">
             </div>
+
         </form>
         @endforeach
     </div>
