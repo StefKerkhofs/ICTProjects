@@ -90,6 +90,11 @@ class RegisterController extends Controller
     }
     public function form2(){
 
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['email'] == ""){
+            return redirect()->back();
+        }
+
         return view('user.register.form2');
 
     }
@@ -138,6 +143,11 @@ class RegisterController extends Controller
     }
     public function form3(){
 
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['ReisKiezen'] == ""){
+            return redirect()->back();
+        }
+
         return view('user.register.form3');
 
     }
@@ -171,6 +181,11 @@ class RegisterController extends Controller
     }
     public function form4(){
 
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['lastname'] == ""){
+            return redirect()->back();
+        }
+
         return view('user.register.form4');
 
     }
@@ -202,6 +217,11 @@ class RegisterController extends Controller
         }
     }
     public function form5(){
+
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['gsm'] == ""){
+            return redirect()->back();
+        }
 
         return view('user.register.form5');
 
@@ -305,6 +325,11 @@ class RegisterController extends Controller
 
     }
     public function form6(){
+
+        $aData = unserialize($_COOKIE['register']);
+        if ($aData['MedischeInfo'] == ""){
+            return redirect()->back();
+        }
 
         return view('user.register.form6');
 
