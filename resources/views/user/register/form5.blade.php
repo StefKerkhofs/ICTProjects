@@ -84,7 +84,7 @@
 @endsection
 @section('content')
     <div class="container">
-        {{ Form::open(array('action' => 'RegisterController@form6', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'RegisterController@form5POST', 'method' => 'post')) }}
         <div class="formcontainer">
             <div class="middle">
                 <p><label class="field">Medische behandeling*:</label></p>
@@ -98,7 +98,7 @@
             <div class="button">
                 <a class="nav-link" href="/">Annuleren</a>
             </div>
-            <input type="submit" value="Bevestigen">
+            <input type="submit" value="Volgende">
         </div>
         {{ Form::close() }}
     </div>
