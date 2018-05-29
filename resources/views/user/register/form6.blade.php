@@ -85,7 +85,7 @@
 @endsection
 @section('content')
     <div class="container">
-        {{ Form::open(array('action' => 'RegisterController@form6POST', 'method' => 'post')) }}
+        {{ Form::open(array('action' => 'RegisterController@form6GET', 'method' => 'get')) }}
             <div class="formcontainer">
                 <div class="leftform">
                     <?php $aData = unserialize($_COOKIE['register']) ?>

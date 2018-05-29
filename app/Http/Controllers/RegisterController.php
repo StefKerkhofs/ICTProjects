@@ -52,6 +52,9 @@ class RegisterController extends Controller
     }
     public function form1(){
 
+        //Remove previous cookie
+        setcookie("register", null, time() - 1, "/");
+
         return view('user.register.form1');
 
     }
@@ -90,12 +93,16 @@ class RegisterController extends Controller
     }
     public function form2(){
 
-        $aData = unserialize($_COOKIE['register']);
-        if ($aData['email'] == ""){
-            return redirect()->back();
+        if (isset($_COOKIE['register'])){
+            $aData = unserialize($_COOKIE['register']);
+            if ($aData['email'] == null){
+                return redirect('reg/form1');
+            }
+            return view('user.register.form2');
         }
-
-        return view('user.register.form2');
+        else{
+            return redirect('reg/form1');
+        }
 
     }
 
@@ -143,12 +150,16 @@ class RegisterController extends Controller
     }
     public function form3(){
 
-        $aData = unserialize($_COOKIE['register']);
-        if ($aData['ReisKiezen'] == ""){
-            return redirect()->back();
+        if (isset($_COOKIE['register'])){
+            $aData = unserialize($_COOKIE['register']);
+            if ($aData['ReisKiezen'] == null){
+                return redirect('reg/form1');
+            }
+            return view('user.register.form3');
         }
-
-        return view('user.register.form3');
+        else{
+            return redirect('reg/form1');
+        }
 
     }
 
@@ -181,12 +192,16 @@ class RegisterController extends Controller
     }
     public function form4(){
 
-        $aData = unserialize($_COOKIE['register']);
-        if ($aData['lastname'] == ""){
-            return redirect()->back();
+        if (isset($_COOKIE['register'])){
+            $aData = unserialize($_COOKIE['register']);
+            if ($aData['lastname'] == null){
+                return redirect('reg/form1');
+            }
+            return view('user.register.form4');
         }
-
-        return view('user.register.form4');
+        else{
+            return redirect('reg/form1');
+        }
 
     }
 
@@ -218,19 +233,23 @@ class RegisterController extends Controller
     }
     public function form5(){
 
-        $aData = unserialize($_COOKIE['register']);
-        if ($aData['gsm'] == ""){
-            return redirect()->back();
+        if (isset($_COOKIE['register'])){
+            $aData = unserialize($_COOKIE['register']);
+            if ($aData['lastname'] == null){
+                return redirect('reg/form1');
+            }
+            return view('user.register.form5');
         }
-
-        return view('user.register.form5');
+        else{
+            return redirect('reg/form1');
+        }
 
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
     /*--------------------------------------------------------------------------FORM 6--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
-    public function form6POST(Request $aRequest){
+    public function form6GET(){
         try{
             //Scanning whether user is 'begeleider' or 'Reiziger'
             $aData = unserialize($_COOKIE['register']);
@@ -263,7 +282,7 @@ class RegisterController extends Controller
                     [
                         'user_id' => $iUserID,
                         'trip_id' => $aData['ReisKiezen'],
-                        'zipcode_id' => $aData['Postcode'],
+                        'zip_code_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
                         'city' => $aData['Postcode'],
@@ -287,7 +306,7 @@ class RegisterController extends Controller
                         'user_id' => $iUserID,
                         'trip_id' => $aData['ReisKiezen'],
                         'study_id' => $aData['AfstudeerrichtingKiezen'],
-                        'zipcode_id' => $aData['Postcode'],
+                        'zip_code_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
                         'city' => $aData['Postcode'],
@@ -307,7 +326,7 @@ class RegisterController extends Controller
             }
 
             //Returning completion screen
-            return redirect('reg/form6POST');
+            return redirect('reg/form7');
         }
         catch (Exception $exception) {
 
@@ -315,23 +334,19 @@ class RegisterController extends Controller
             return redirect('reg');
 
         }
-        finally{
-
-            //Reset cookie data
-            $aData = null;
-            setcookie("register", serialize($aData), time() -1, "/");
-
-        }
-
     }
     public function form6(){
 
-        $aData = unserialize($_COOKIE['register']);
-        if ($aData['MedischeInfo'] == ""){
-            return redirect()->back();
+        if (isset($_COOKIE['register'])){
+            $aData = unserialize($_COOKIE['register']);
+            if ($aData['MedischeInfo'] == null){
+                return redirect('reg/form1');
+            }
+            return view('user.register.form6');
         }
-
-        return view('user.register.form6');
+        else{
+            return redirect('reg/form1');
+        }
 
     }
 
@@ -340,7 +355,16 @@ class RegisterController extends Controller
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form7(){
 
-        return view('user.register.form7');
+        if (isset($_COOKIE['register'])){
+            $aData = unserialize($_COOKIE['register']);
+            if ($aData['MedischeInfo'] == null){
+                return redirect('reg/form1');
+            }
+            return view('user.register.form7');
+        }
+        else{
+            return redirect('reg/form1');
+        }
 
     }
 
