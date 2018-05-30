@@ -51,10 +51,13 @@
     <div class="container">
         <div class="topdiv">
             <div class="search">
-                <input type="text"/>
+                {{ Form::open(array('action' => 'EditTravellerController@searchTraveller', 'method' => 'post')) }}
+                <input type="text" id="lastname" name="lastname"/>
                 <div>
+                    {{ Form::submit('volgende') }}
                     <img src="{{asset("/image/magnifying_glass.png")}}" alt="magnifying_glass.png" height="45" width="45"/>
                 </div>
+                {{ Form::close() }}
             </div>
         </div>
 

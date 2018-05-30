@@ -67,6 +67,7 @@ Route::get('/profileEdit', 'ProfileController@profileEdit');
  * EditTravellerController
  */
 Route::get('/searchTraveller', 'EditTravellerController@searchTraveller');
+Route::post('/searchTraveller', 'EditTravellerController@searchTravellerQuery');
 Route::get('/editTraveller/{user_id}', 'EditTravellerController@editTraveller');
 Route::post('/searchTraveller', 'EditTravellerController@editTravellerPOST');
 /*

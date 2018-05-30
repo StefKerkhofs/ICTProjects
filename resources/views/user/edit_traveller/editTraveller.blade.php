@@ -84,8 +84,8 @@
 @section('content')
     <div class="container">
         @foreach($aTravellers as $traveller => $data)
-
-            {{ Form::open(array('action' => 'EditTravellerController@editTravellerPOST', 'method' => 'post')) }}
+{{$data->user_id}}
+            {{ Form::open(array('url' => "/editTraveller/$data->user_id", 'method' => 'post')) }}
                 <div class="formcontainer">
                     <div class="leftform">
                         <p>{{ Form::label('lblLastName',    'Naam:',           ['class' => 'field']) }}  {{ Form::text('txtLastName',    $data->lastname,    ['class' => 'textbox'] )}} </p>

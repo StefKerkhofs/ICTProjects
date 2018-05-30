@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Mockery\Matcher\Contains;
 
 class EditTravellerController extends Controller
 {
-    public function searchTraveller(Request $aRequest)
+    public function SearchTravellerQuery(Request $request){
+        $aTravellers = DB::table('travellers')
+            ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+            ->select('travellers.*', 'studies.name')
+            ->where('travellers.lastname', '=', $request->post('lastname'))
+            ->get();
+        return view('user.edit_traveller.searchTraveller', ['aTravellers' => $aTravellers]);
+    }
+    public function searchTraveller()
     {
         $aTravellers = DB::table('travellers')
             ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
             ->select('travellers.*', 'studies.name')
             ->get();
-        echo $aRequest;
         return view('user.edit_traveller.searchTraveller', ['aTravellers' => $aTravellers]);
     }
     public function editTraveller(Request $aRequest, $user_id)
