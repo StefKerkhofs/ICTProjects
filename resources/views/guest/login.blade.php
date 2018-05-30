@@ -2,6 +2,7 @@
 
 
 @section('content')
+    <div class="container">
     <h1>Log in</h1>
 
     <form method="POST" action="/logInUser">
@@ -23,4 +24,5 @@
     </div>
 
     </form>
+    </div>
 @endsection()
