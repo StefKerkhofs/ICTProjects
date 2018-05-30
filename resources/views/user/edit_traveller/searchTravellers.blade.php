@@ -52,7 +52,7 @@
     <div class="container">
         <div class="topdiv">
             <div class="search">
-                {{ Form::open(array('action' => 'EditTravellerController@searchTraveller', 'method' => 'post')) }}
+                {{ Form::open(array('action' => 'EditTravellerController@searchTravellers', 'method' => 'post')) }}
                 <p><input type="text" id="lastname" name="lastname" class="input"/><input type="image" name="submit"  src="{{asset("/image/magnifying_glass.png")}}" alt="magnifying_glass.png" height="45" width="45" style="float:right" /></p>
                 {{ Form::close() }}
             </div>

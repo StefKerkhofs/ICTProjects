@@ -109,7 +109,7 @@
                 </div>
                 <div class="formbutton">
                     <div class="button">
-                        <a class="nav-link" href="/searchTraveller">Annuleren</a>
+                        <a class="nav-link" href="/searchTravellers">Annuleren</a>
                     </div>
                     {{ Form::submit('Opslaan') }}
                 </div>
