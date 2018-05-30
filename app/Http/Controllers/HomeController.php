@@ -6,6 +6,7 @@ use App\menu;
 use App\Page;
 use App\Profile;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -53,5 +54,12 @@ class HomeController extends Controller
        }
 
        return view('user.info.info');
+    }
+
+    public function destroy()
+    {
+        Auth::logout();
+
+        return redirect('/info');
     }
 }

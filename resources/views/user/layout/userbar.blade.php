@@ -10,11 +10,11 @@
             </li>
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                <a class="nav-link" href="/logInUser">Log in</a>
             </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Log in</a>
+                    <a class="nav-link" href="/logoutUser">Log out</a>
                 </li>
             @endguest
         </ul>

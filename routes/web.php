@@ -51,8 +51,9 @@ route::get('/reg/form6', 'RegisterController@form6');
 route::get('/reg/form7', 'RegisterController@form7');
 
 
-Route::get('/log', 'HomeController@create');
-Route::post('/log', 'HomeController@store');
+Route::get('/logInUser', 'HomeController@create');
+Route::post('/logInUser', 'HomeController@store');
+Route::get('/logoutUser', 'HomeController@destroy');
 
 Auth::routes();
 

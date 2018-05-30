@@ -4,7 +4,7 @@
 @section('content')
     <h1>Log in</h1>
 
-    <form method="POST" action="/log">
+    <form method="POST" action="/logInUser">
 
         {{ csrf_field() }}
 
