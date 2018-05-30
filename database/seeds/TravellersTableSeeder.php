@@ -30,8 +30,8 @@ class TravellersTableSeeder extends Seeder
             'nationality' => 'belg',
             'birthdate' => '1998',
             'birthplace' => 'Zichem',
-            'MedicalIssue' => '',
-            'medical_info' => ''
+            'MedicalIssue' => 0,
+            'medical_info' => null
         ]);
 
         DB::table('travellers')->insert([
