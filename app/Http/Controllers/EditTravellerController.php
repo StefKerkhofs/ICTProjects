@@ -19,6 +19,7 @@ class EditTravellerController extends Controller
     {
         $aTravellers = DB::table('travellers')
             ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+            ->orderBy('travellers.lastname')
             ->select('travellers.*', 'studies.name')
             ->get();
         return view('user.edit_traveller.searchTraveller', ['aTravellers' => $aTravellers]);
