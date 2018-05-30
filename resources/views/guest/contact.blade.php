@@ -1,6 +1,10 @@
 @extends('user.templates.templateFrontEnd')
 @section('style')
     <style>
+        table {
+            margin-bottom: 2em;
+            margin-top: 1em;
+        }
         table, th, td {
             border: 1px solid darkgray;
             border-collapse: collapse;
