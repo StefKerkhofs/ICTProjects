@@ -4,31 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Contains;
 
 class EditTravellerController extends Controller
 {
-    private $user_id;
-    public function searchTraveller()
+    public function searchTraveller(Request $aRequest)
     {
         $aTravellers = DB::table('travellers')
             ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
             ->select('travellers.*', 'studies.name')
             ->get();
+        echo $aRequest;
         return view('user.edit_traveller.searchTraveller', ['aTravellers' => $aTravellers]);
     }
-    public function editTraveller($user_id)
+    public function editTraveller(Request $aRequest, $user_id)
     {
-        $this->user_id = $user_id;
         $aTravellers = DB::table('travellers')
             ->join('users', 'travellers.user_id', '=', 'users.id')
             ->where('travellers.user_id', '=', $user_id)
             ->get();
+        //echo $aRequest;
         return view('user.edit_traveller.editTraveller', ['aTravellers' => $aTravellers]);
     }
     public function editTravellerPOST(Request $aRequest)
     {
         DB::table('travellers')
-            ->where('travellers.user_id', '=', $this->user_id)
+            ->join('users', 'travellers.user_id', '=', 'users.id')
+            ->where('travellers.user_id', '=', 1)
             ->update(
             [
                 'lastname'          => $aRequest->post('txtLastName'),
@@ -40,12 +42,12 @@ class EditTravellerController extends Controller
                 'address'           => $aRequest->post('txtAddress'),
                 'city'              => $aRequest->post('txtCity'),
                 'country'           => $aRequest->post('txtCountry'),
-                //'email'             => $aRequest->post('txtEmail'),
+                'email'             => $aRequest->post('txtEmail'),
                 'phone'             => $aRequest->post('txtPhone'),
                 'emergency_phone_1' => $aRequest->post('txtEmergencyPhone1'),
                 'emergency_phone_2' => $aRequest->post('txtEmergencyPhone2'),
-                'medical_info'      => $aRequest->post('txtMedicalIssue'),
-                'MedicalIssue'      => $aRequest->post('txtMedicalInfo'),
+                'MedicalIssue'      => $aRequest->post('txtMedicalIssue'),
+                'medical_info'      => $aRequest->post('txtMedicalInfo'),
             ]
         );
 
@@ -53,6 +55,7 @@ class EditTravellerController extends Controller
             ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
             ->select('travellers.*', 'studies.name')
             ->get();
+        echo $aRequest;
         return view('user.edit_traveller.searchTraveller', ['aTravellers' => $aTravellers]);
     }
 }
