@@ -37,7 +37,7 @@
         }
 
         .filterTable td{
-            padding: 15px 80px 15px 15px;
+            padding: 20px 0px 15px 15px;
             text-align: left;
         }
         .filterTable td:last-child{
@@ -69,7 +69,10 @@
             max-width: 800px;
             text-align: center;
         }
+        .field{
+            width: 180px;
 
+        }
 
     </style>
 @endsection

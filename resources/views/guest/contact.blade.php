@@ -3,7 +3,7 @@
     <style>
         table {
             margin-bottom: 2em;
-            margin-top: 1em;
+            margin-top: 1em ;
         }
         table, th, td {
             border: 1px solid darkgray;
