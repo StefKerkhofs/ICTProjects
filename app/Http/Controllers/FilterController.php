@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Traveller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -17,12 +18,12 @@ class FilterController extends Controller
 {
     public function getFilteredTraveller(Request $request)
     {
-        //$id = Auth::id();
+        $id = Auth::id();
         $afilters=$request->all();
         array_shift($afilters);
 
         $tripid=DB::table('travellers')
-            ->where('user_id','2'/*id*/)
+            ->where('user_id',$id)
             ->select('trip_id')
             ->get();
         $tripid = json_decode(json_encode($tripid),true);
