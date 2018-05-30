@@ -27,6 +27,53 @@ class ProfileController extends Controller
     }
     public function profileEdit()
     {
-        return view('user.profile.profileEdit');
+        if(Auth::check()) {
+            $id = Auth::id();
+
+            $aTravellers = DB::table('travellers')
+                ->join('users', 'travellers.user_id', '=', 'users.id')
+                ->where('travellers.user_id', '=', $id)
+                ->get();
+            //echo $aRequest;
+            return view('user.profile.profileEdit', ['aTravellers' => $aTravellers]);
+        }
+        /*
+         *
+         */
+    }
+
+    public function profileUpdate(Request $aRequest)
+    {
+        if(Auth::check()) {
+            $id = Auth::id();
+
+            DB::table('travellers')
+                ->join('users', 'travellers.user_id', '=', 'users.id')
+                ->where('travellers.user_id', '=', $id)
+                ->update(
+                    [
+                        'lastname'          => $aRequest->post('txtLastName'),
+                        'firstname'         => $aRequest->post('txtFirstName'),
+                        'sex'               => $aRequest->post('txtSex'),
+                        'birthdate'         => $aRequest->post('txtBirthdate'),
+                        'birthplace'        => $aRequest->post('txtBirthplace'),
+                        'nationality'       => $aRequest->post('txtNationality'),
+                        'address'           => $aRequest->post('txtAddress'),
+                        'city'              => $aRequest->post('txtCity'),
+                        'country'           => $aRequest->post('txtCountry'),
+                        'email'             => $aRequest->post('txtEmail'),
+                        'phone'             => $aRequest->post('txtPhone'),
+                        'emergency_phone_1' => $aRequest->post('txtEmergencyPhone1'),
+                        'emergency_phone_2' => $aRequest->post('txtEmergencyPhone2'),
+                        'MedicalIssue'      => $aRequest->post('txtMedicalIssue'),
+                        'medical_info'      => $aRequest->post('txtMedicalInfo'),
+                    ]
+                );
+
+            return redirect('/profile');
+        }
+        /*
+         *
+         */
     }
 }

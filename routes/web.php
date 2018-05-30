@@ -64,13 +64,14 @@ Route::get('/home', 'HomeController@index');
  */
 Route::get('/profile', 'ProfileController@profile');
 Route::get('/profileEdit', 'ProfileController@profileEdit');
+Route::post('/profileEdit/{user_id}', 'ProfileController@profileUpdate');
 /*
  * EditTravellerController
  */
 Route::get('/searchTraveller', 'EditTravellerController@searchTraveller');
 Route::post('/searchTraveller', 'EditTravellerController@searchTravellerQuery');
 Route::get('/editTraveller/{user_id}', 'EditTravellerController@editTraveller');
-Route::post('/searchTraveller', 'EditTravellerController@editTravellerPOST');
+Route::post('/editTraveller/{user_id}', 'EditTravellerController@updateTraveller');
 /*
  * FilterController
  */

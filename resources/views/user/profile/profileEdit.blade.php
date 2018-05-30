@@ -86,43 +86,37 @@
 @endsection
 @section('content')
     <div class="container">
-    <form>
-        <div class="formcontainer">
-            <div class="leftform">
-                <p><label class="field" for="name">Naam:</label>            <input type="text" class="textbox" value="lastname" name="lastname" ></p>
-                <p><label class="field" for="name">Voornaam:</label>        <input type="text" class="textbox" value="firstname" name="firstname"></p>
-                <p><label class="field" for="name">Geslacht:</label>        <input type="text" class="textbox" value="sex" name="sex">
-                    <!--
-                    <div class="radiobuttons">
-                        <input type="radio" name="gender" value="male"> Male
-                        <input type="radio" name="gender" value="female"> Female
-                        <input type="radio" name="gender" value="other"> Other
-                    </div>
-                    -->
-                </p>
-                <p><label class="field" for="name">Geboortedatum:</label>   <input type="text" class="textbox" value="birthdate" name="birthdate"></p>
-                <p><label class="field" for="name">Geboorteplaats:</label>  <input type="text" class="textbox" value="birthplace" name="birthplace"></p>
-                <p><label class="field" for="name">Nationaliteit:</label>   <input type="text" class="textbox" value="nationality" name="nationality"></p>
-                <p><label class="field" for="name">Adres: </label>          <input type="text" class="textbox" value="address" name="address"></p>
-                <p><label class="field" for="name">Gemeente:</label>        <input type="text" class="textbox" value="town" name="town"></p>
-                <p><label class="field" for="name">Land:</label>            <input type="text" class="textbox" value="country" name="country"></p>
-            </div>
+        @foreach($aTravellers as $traveller => $data)
+            {{ Form::open(array('url' => "/profileEdit/$data->user_id", 'method' => 'post')) }}
+            <div class="formcontainer">
+                <div class="leftform">
+                    <p>{{ Form::label('lblLastName',    'Naam:',           ['class' => 'field']) }}  {{ Form::text('txtLastName',    $data->lastname,    ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblFirstName',   'Voornaam:',       ['class' => 'field']) }}  {{ Form::text('txtFirstName',   $data->firstname,   ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblSex',         'Geslacht:',       ['class' => 'field']) }}  {{ Form::text('txtSex',         $data->sex,         ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblBirthdate',   'Geboortedatum:',  ['class' => 'field']) }}  {{ Form::text('txtBirthdate',   $data->birthdate,   ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblBirthplace',  'Geboorteplaats:', ['class' => 'field']) }}  {{ Form::text('txtBirthplace',  $data->birthplace,  ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblNationality', 'Nationaliteit:',  ['class' => 'field']) }}  {{ Form::text('txtNationality', $data->nationality, ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblAddress',     'Adres:',          ['class' => 'field']) }}  {{ Form::text('txtAddress',     $data->address,     ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblCity',        'Gemeente:',       ['class' => 'field']) }}  {{ Form::text('txtCity',        $data->city,        ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblCountry',     'Land:',           ['class' => 'field']) }}  {{ Form::text('txtCountry',     $data->country,     ['class' => 'textbox'] )}} </p>
+                </div>
 
-            <div class="rightform">
-                <p><label class="field" for="name">Email:</label>           <input type="text" class="textbox" value="email" name="email"></p>
-                <p><label class="field" for="name">Telefoon:</label>        <input type="text" class="textbox" value="phone" name="phone"></p>
-                <p><label class="field" for="name">Noodnummer 1:</label>    <input type="text" class="textbox" value="emergency_phone_1" name="emergency_phone_1"></p>
-                <p><label class="field" for="name">Noodnummer 2:</label>    <input type="text" class="textbox" value="emergency_phone_2" name="emergency_phone_2"></p>
-                <p><label class="field" for="name">Behandeling:</label>     <input type="text" class="textbox" value="treatment" name="treatment"></p>
-                <p><label class="field" for="name">Medische info:</label>   <input type="text" class="textbox" value="medical_info" name="medical_info"></p>
+                <div class="rightform">
+                    <p>{{ Form::label('lblEmail',           'Email:',         ['class' => 'field']) }}  {{ Form::text('txtEmail',           $data->email,             ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblPhone',           'Telefoon:',      ['class' => 'field']) }}  {{ Form::text('txtPhone',           $data->phone,             ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblEmergencyPhone1', 'Noodnummer 1:',  ['class' => 'field']) }}  {{ Form::text('txtEmergencyPhone1', $data->emergency_phone_1, ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblEmergencyPhone2', 'Noodnummer 2:',  ['class' => 'field']) }}  {{ Form::text('txtEmergencyPhone2', $data->emergency_phone_2, ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblMedicalIssue',    'Behandeling:',   ['class' => 'field']) }}  {{ Form::text('txtMedicalIssue',    $data->MedicalIssue,      ['class' => 'textbox'] )}} </p>
+                    <p>{{ Form::label('lblMedicalInfo',     'Medische info:', ['class' => 'field']) }}  {{ Form::text('txtMedicalInfo',     $data->medical_info,      ['class' => 'textbox'] )}} </p>
+                </div>
             </div>
-        </div>
-        <div class="formbutton">
-            <div class="button">
-                <a class="nav-link" href="/profile">Annuleren</a>
+            <div class="formbutton">
+                <div class="button">
+                    <a class="nav-link" href="/searchTraveller">Annuleren</a>
+                </div>
+                {{ Form::submit('Opslaan') }}
             </div>
-            <input type="submit" value="Opslaan">
-        </div>
-    </form>
+            {{ Form::close() }}
+        @endforeach
     </div>
 @endsection

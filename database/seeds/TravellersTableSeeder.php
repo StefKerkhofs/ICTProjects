@@ -30,7 +30,7 @@ class TravellersTableSeeder extends Seeder
             'nationality' => 'belg',
             'birthdate' => '1998',
             'birthplace' => 'Zichem',
-            'MedicalIssue' => 0,
+            'MedicalIssue' => false,
             'medical_info' => null
         ]);
 
@@ -51,8 +51,8 @@ class TravellersTableSeeder extends Seeder
             'nationality' => 'engelsman',
             'birthdate' => '1995',
             'birthplace' => 'hasselt',
-            'MedicalIssue' => '',
-            'medical_info' => ''
+            'MedicalIssue' => false,
+            'medical_info' => null
         ]);
 
         DB::table('travellers')->insert([
@@ -72,8 +72,8 @@ class TravellersTableSeeder extends Seeder
             'nationality' => 'belg',
             'birthdate' => '1998',
             'birthplace' => 'Diest',
-            'MedicalIssue' => '',
-            'medical_info' => ''
+            'MedicalIssue' => false,
+            'medical_info' => null
         ]);
 
         DB::table('travellers')->insert([
@@ -93,8 +93,8 @@ class TravellersTableSeeder extends Seeder
             'nationality' => 'belg',
             'birthdate' => '1996',
             'birthplace' => 'Zichem',
-            'MedicalIssue' => '',
-            'medical_info' => ''
+            'MedicalIssue' => false,
+            'medical_info' => null
         ]);
 /*
         DB::table('travellers')->insert([

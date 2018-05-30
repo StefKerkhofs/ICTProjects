@@ -32,11 +32,11 @@ class EditTravellerController extends Controller
         //echo $aRequest;
         return view('user.edit_traveller.editTraveller', ['aTravellers' => $aTravellers]);
     }
-    public function editTravellerPOST(Request $aRequest)
+    public function updateTraveller(Request $aRequest, $user_id)
     {
         DB::table('travellers')
             ->join('users', 'travellers.user_id', '=', 'users.id')
-            ->where('travellers.user_id', '=', 1)
+            ->where('travellers.user_id', '=', $user_id)
             ->update(
             [
                 'lastname'          => $aRequest->post('txtLastName'),
@@ -57,11 +57,6 @@ class EditTravellerController extends Controller
             ]
         );
 
-        $aTravellers = DB::table('travellers')
-            ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
-            ->select('travellers.*', 'studies.name')
-            ->get();
-        echo $aRequest;
-        return view('user.edit_traveller.searchTraveller', ['aTravellers' => $aTravellers]);
+        return redirect('/searchTraveller');
     }
 }

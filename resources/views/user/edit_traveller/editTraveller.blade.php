@@ -84,7 +84,6 @@
 @section('content')
     <div class="container">
         @foreach($aTravellers as $traveller => $data)
-{{$data->user_id}}
             {{ Form::open(array('url' => "/editTraveller/$data->user_id", 'method' => 'post')) }}
                 <div class="formcontainer">
                     <div class="leftform">
