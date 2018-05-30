@@ -4,7 +4,7 @@
     <style>
         .cookiepopup {
             background:#e1e1e1;
-            top:100px;
+            top:200px;
             left:25%;
             width:50%;
             position:absolute;
@@ -21,6 +21,15 @@
     </style>
     <div class="cookiepopup">
         <p>Deze site bevat cookies die je inloggegevens bewaren zodat je je niet iedere keer terug hoeft in te loggen.</p>
-        <button type="button"> Accepteer </button>
+        <button type="button" class="acceptCookie"> Accepteer </button>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script type="text/JavaScript">
+        $('.acceptCookie').click(function() {
+            Cookies.set('cookieGDPR', 'yes', {expires: 7 });
+            location.reload();
+            })
+    </script>
+@elseif(isset($_POST['acceptcookie']))
 @endif
