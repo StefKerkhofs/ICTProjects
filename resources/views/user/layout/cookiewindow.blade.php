@@ -31,5 +31,4 @@
             location.reload();
             })
     </script>
-@elseif(isset($_POST['acceptcookie']))
 @endif
