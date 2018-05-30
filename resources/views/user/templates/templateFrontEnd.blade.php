@@ -9,10 +9,15 @@
     </section>
 </head>
 <body>
+@section('cookiewindow')
+    @include('user.layout.cookiewindow')
+
 @section('userbar')
     @include('user.layout.userbar')
+
 @section('headbar')
     @include('user.layout.headbar')
+
 @show
 
     <section id="content">
