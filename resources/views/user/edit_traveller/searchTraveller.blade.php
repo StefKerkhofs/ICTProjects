@@ -17,13 +17,14 @@
             justify-content: center;
             align-items:center;
         }
-        .search input{
+        .search .input{
             width: 300px;
             height: 50px;
             border: transparent;
             border-right: none;
             outline: none;
             padding-left: 5px;
+            float: left;
         }
         table, th, td {
             border: 1px solid darkgray;
@@ -51,10 +52,9 @@
     <div class="container">
         <div class="topdiv">
             <div class="search">
-                <input type="text"/>
-                <div>
-                    <img src="{{asset("/image/magnifying_glass.png")}}" alt="magnifying_glass.png" height="45" width="45"/>
-                </div>
+                {{ Form::open(array('action' => 'EditTravellerController@searchTraveller', 'method' => 'post')) }}
+                <p><input type="text" id="lastname" name="lastname" class="input"/><input type="image" name="submit"  src="{{asset("/image/magnifying_glass.png")}}" alt="magnifying_glass.png" height="45" width="45" style="float:right" /></p>
+                {{ Form::close() }}
             </div>
         </div>
 

@@ -49,11 +49,19 @@ route::get('/reg/form6GET', 'RegisterController@form6GET');
 route::get('/reg/form6', 'RegisterController@form6');
 
 route::get('/reg/form7', 'RegisterController@form7');
+<<<<<<< HEAD
 
 
 Route::get('/logInUser', 'HomeController@create');
 Route::post('/logInUser', 'HomeController@store');
 Route::get('/logoutUser', 'HomeController@destroy');
+=======
+/*
+ *
+ */
+Route::get('/log', 'HomeController@create');
+Route::post('/log', 'HomeController@store');
+>>>>>>> aee03253cd0143e4be86b8d0d81eb8998742a4dc
 
 Auth::routes();
 
@@ -67,10 +75,16 @@ Route::get('/profileEdit', 'ProfileController@profileEdit');
  * EditTravellerController
  */
 Route::get('/searchTraveller', 'EditTravellerController@searchTraveller');
+Route::post('/searchTraveller', 'EditTravellerController@searchTravellerQuery');
 Route::get('/editTraveller/{user_id}', 'EditTravellerController@editTraveller');
-
+Route::post('/searchTraveller', 'EditTravellerController@editTravellerPOST');
+/*
+ * FilterController
+ */
 Route::get('/filter', 'FilterController@getFilteredTraveller');
 route::post('/filter', 'FilterController@getFilteredTraveller');
-
+/*
+ *
+ */
 Route::get('/{page}', 'GuestPagesController@showPage');
 
