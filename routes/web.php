@@ -49,8 +49,9 @@ route::get('/reg/form6GET', 'RegisterController@form6GET');
 route::get('/reg/form6', 'RegisterController@form6');
 
 route::get('/reg/form7', 'RegisterController@form7');
-
-
+/*
+ *
+ */
 Route::get('/log', 'HomeController@create');
 Route::post('/log', 'HomeController@store');
 
@@ -68,9 +69,14 @@ Route::get('/profileEdit', 'ProfileController@profileEdit');
 Route::get('/searchTraveller', 'EditTravellerController@searchTraveller');
 Route::post('/searchTraveller', 'EditTravellerController@searchTravellerQuery');
 Route::get('/editTraveller/{user_id}', 'EditTravellerController@editTraveller');
-
+Route::post('/searchTraveller', 'EditTravellerController@editTravellerPOST');
+/*
+ * FilterController
+ */
 Route::get('/filter', 'FilterController@getFilteredTraveller');
 route::post('/filter', 'FilterController@getFilteredTraveller');
-
+/*
+ *
+ */
 Route::get('/{page}', 'GuestPagesController@showPage');
 
