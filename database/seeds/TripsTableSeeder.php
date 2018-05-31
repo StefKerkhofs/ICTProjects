@@ -27,9 +27,6 @@ class TripsTableSeeder extends Seeder
             'trip_contact' => '',
             'is_active' => '0',
         ));
-        DB::table('zips')->insert(array(
-            'zip_code' => 3660,
-            'zip_town' => 'Opglabbeek',
-        ));
+
     }
 }
