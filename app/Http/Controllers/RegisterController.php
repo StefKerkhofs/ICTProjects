@@ -423,7 +423,6 @@ class RegisterController extends Controller
             'birthdate.date_format' => 'De waarde die je hebt ingevuld hebt bij geboorte datum in ongeldig',
             'birthplace.required' => 'Je moet je geboorte plaats ingeven.',
             'nationality.required' => 'je moet je nationaliteit opgeven.',
-            'adress.required' => 'Je moet je adres ingeven.',
             'Postcode.required' => 'Je moet je postcode ingeven.',
             'country.required' => 'Je moet je land ingeven',
             'address.required' => 'Je moet je adres ingeven.',
