@@ -32,6 +32,7 @@
         }
         table{
             margin-bottom: 20px;
+            overflow:hidden; overflow-y:scroll;
         }
         th{
             text-align: center;

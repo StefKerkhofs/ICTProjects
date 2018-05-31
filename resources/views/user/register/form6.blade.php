@@ -1,4 +1,6 @@
 @extends("user.templates.templateFrontEnd")
+@section('title')
+    <title>Registratie</title>
 @section('style')
     <style>
         /*
