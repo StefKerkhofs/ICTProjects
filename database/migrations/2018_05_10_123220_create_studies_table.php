@@ -17,6 +17,7 @@ class CreateStudiesTable extends Migration
             $table->increments('study_id');
             $table->string("study_name");
             $table->timestamps();
+
         });
 
 
