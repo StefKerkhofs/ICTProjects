@@ -48,8 +48,11 @@ class HomeController extends Controller
 
     public function store()
     {
+        try
+        {
        if (! auth()->attempt(request(['email', 'password'])))
        {
+
            $user = User::where(['email'=> request('email'), 'password' => request('password')])->get();
 
            if (! auth()->loginUsingId($user->id))
@@ -60,6 +63,10 @@ class HomeController extends Controller
        }
 
         return redirect('/info');
+    }
+    catch (\Exception $e) {
+        return back();
+        }
     }
 
     public function destroy()
