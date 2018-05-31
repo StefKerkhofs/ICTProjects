@@ -40,12 +40,13 @@ class EditTravellerController extends Controller
 
                 //find all travellers with the same trip_id, except for the mentor
                 $oTravellers = DB::table('travellers')
-                    ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
                     ->join('trips', 'travellers.trip_id', '=', 'trips.trip_id')
+                    ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+                    ->join('majors', 'studies.major_id', '=', 'majors.major_id')
                     ->where('travellers.trip_id', '=', $aTripIDMentor)
                     ->where('travellers.user_id', '!=', $iMentor_id)
                     ->orderBy('travellers.lastname')
-                    ->select('travellers.*', 'studies.name')
+                    ->select('travellers.*', 'studies.name as study_name', 'majors.name as major_name')
                     ->get();
 
                 //return travellers to view
@@ -56,7 +57,7 @@ class EditTravellerController extends Controller
                 return $exception;
             }
         }
-        //if user not logged in, return home view
+        //if user is not logged in, return home view
         return redirect('/');
     }
     /*
