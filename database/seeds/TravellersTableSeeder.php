@@ -285,5 +285,7 @@ class TravellersTableSeeder extends Seeder
             'MedicalIssue' => false,
             'medical_info' => null
         ]);
+
+
     }
 }

@@ -35,14 +35,15 @@ class FilterController extends Controller
             $tripid = DB::table('travellers')
                 ->where('user_id', $id)
                 ->select('trip_id')
-                ->get();
+                ->first();
             $tripid = json_decode(json_encode($tripid), true);
 
             //find all travellers with the same trip_id
             $afilteredUserList = DB::table('travellers')
                 ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
                 ->join('trips', 'travellers.trip_id', '=', 'trips.trip_id')
-                ->where('travellers.trip_id', $tripid[0])
+                ->join('users','travellers.user_id','=','users.id')
+                ->where('travellers.trip_id', $tripid)
                 ->get();
             $afilteredUserList = json_decode(json_encode($afilteredUserList), true);
 

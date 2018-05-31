@@ -38,6 +38,9 @@ class GuestPagesController extends Controller
             catch (QueryException $e){
                 $sContent = 'Error 404, page not found';
             }
+            catch (\ErrorException $e){
+                $sContent = 'Error 404, page not found';
+            }
             catch (\Exception $e){
                 $sContent = $e->getMessage();
             }
