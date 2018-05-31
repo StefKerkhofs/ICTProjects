@@ -50,9 +50,21 @@ class AdminZipController extends Controller
         return redirect('admin/zip')->with('message', 'De gemeente is toegevoegd');
     }
 
+    /**
+     * addZipForm will return the addZip view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addZipForm(){
         return view('admin.zip.addZip');
     }
+
+    /**
+     * editZip will edit a zipcode and town by searching on a zip id
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     */
 
     public  function editZip($id, Request $request){
         $validatedData = $request->validate([
@@ -65,12 +77,22 @@ class AdminZipController extends Controller
         return redirect('admin/zip')->with('message', 'De gemeente is aangepast');
     }
 
+    /**
+     * editZipForm will get all the current zip data from the database and return the view editZip with an array $oZipData
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editZipForm($id){
         $oZipData = Zip::where('zip_id', $id)->first();
         return view('admin.zip.editZip', [
             'oZipData' => $oZipData
         ]);
     }
+
+    /**
+     * messages is used by the laravel validator to override the error messages
+     * @return array
+     */
     public function messages()
     {
         return [

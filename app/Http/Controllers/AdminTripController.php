@@ -61,6 +61,11 @@ class AdminTripController extends Controller
         Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice,'trip_contact' => '', 'is_active' => $bActive]);
         return redirect('admin/trip')->with('message', 'De reis is opgeslagen');
     }
+
+    /**
+     * messages is used by the laravel validator to override the error messages
+     * @return array
+     */
     public function messages()
     {
         return [
