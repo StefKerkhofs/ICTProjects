@@ -44,7 +44,7 @@
         }
         td:not(:last-child){
             padding: 15px;
-            text-align: right;
+            text-align: left;
         }
     </style>
 @endsection
@@ -71,7 +71,7 @@
                 <tr>
                     <td>{{$data->lastname}}</td>
                     <td>{{$data->firstname}}</td>
-                    <td>{{$data->name}}</td>
+                    <td>{{$data->study_name}}&nbsp {{$data->major_name}}</td>
                     <td><a href="/editTraveller/{{$data->user_id}}"><img src="{{asset("/image/pen.png")}}" alt="pen.png" height="40" width="40"/></a></td>
                 </tr>
                 @endforeach
