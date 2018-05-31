@@ -1,7 +1,7 @@
 @extends("user.templates.templateFrontEnd")
 @section('style')
     <style>
-        .topdiv{
+        .searchdiv{
             //border: 1px solid orangered;
             display:flex;
             justify-content: flex-end;
@@ -51,7 +51,7 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="topdiv">
+        <div class="searchdiv">
             <div class="search">
                 {{ Form::open(array('action' => 'EditTravellerController@searchTravellers', 'method' => 'post')) }}
                 <p><input type="text" id="lastname" name="lastname" class="input"/><input type="image" name="submit"  src="{{asset("/image/magnifying_glass.png")}}" alt="magnifying_glass.png" height="45" width="45" style="float:right" /></p>
