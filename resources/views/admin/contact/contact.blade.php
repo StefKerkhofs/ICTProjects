@@ -16,11 +16,12 @@
         </thead>
         <tbody>
         {{Form::open(array('action' => 'AdminContactController@updateContact', 'method' => 'post'))}}
-        @foreach($aTripData = DB::table('trips')->where('is_active', '1')->get(['trip_name', 'trip_contact']) as $oTripData)
+        @foreach($aTripData = DB::table('trips')->where('is_active', '1')->get(['trip_id','trip_name', 'trip_contact']) as $oTripData)
+
             <tr>
                 <td>{{ $oTripData->trip_name }}</td>
                 <td>
-                {{ Form::email($oTripData->trip_name,$oTripData->trip_contact ) }}
+                {{ Form::email($oTripData->trip_id,$oTripData->trip_contact ) }}
                 </td>
             </tr>
         @endforeach

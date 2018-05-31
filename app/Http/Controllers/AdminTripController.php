@@ -58,7 +58,7 @@ class AdminTripController extends Controller
             }
         Page::insert(['page_name' => $sName,'page_content' => '' ,'page_type' => 'PDF']);
         $iId = Page::where('page_name', $sName)->value('page_id');
-        Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice, 'is_active' => $bActive]);
+        Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice,'trip_contact' => '', 'is_active' => $bActive]);
         return redirect('admin/trip')->with('message', 'De reis is opgeslagen');
     }
     public function messages()

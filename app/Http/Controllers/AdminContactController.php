@@ -14,7 +14,7 @@ class AdminContactController extends Controller
         $aInputValues = array_values($aInputData);
         $iCounter = 0;
         foreach ($aInputValues as $oInputValue){
-            Trip::where('trip_name', $aInputKeys[$iCounter])->update(['trip_contact' => $oInputValue]);
+            Trip::where('trip_id', $aInputKeys[$iCounter])->update(['trip_contact' => $oInputValue]);
             $iCounter++;
         }
         return redirect('admin/contact')->with('message', 'De contactpersoon is veranderd');
