@@ -9,19 +9,8 @@ use Illuminate\Http\Request;
 class EditTravellerController extends Controller
 {
     /*
-     * Search Table
-     */
-    public function SearchTravellersQuery(Request $request){
-        $aTravellers = DB::table('travellers')
-            ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
-            ->select('travellers.*', 'studies.name')
-            ->where('travellers.lastname', '=', $request->post('lastname'))
-            ->get();
-        return view('user.edit_traveller.searchTravellers', ['aTravellers' => $aTravellers]);
-    }
-    /*
-     * searchTravellers page
-     */
+ * searchTravellers page
+ */
     public function searchTravellers()
     {
         //check if user is logged in
@@ -59,6 +48,39 @@ class EditTravellerController extends Controller
         }
         //if user is not logged in, return home view
         return redirect('/');
+    }
+    /*
+    * Search Table
+    */
+    public function search(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output="";
+            $travellers = DB::table('travellers')
+                ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
+                ->join('majors', 'studies.major_id', '=', 'majors.major_id')
+                ->where('firstname', 'LIKE', '%' . $request->search . "%")
+                ->orWhere('lastname', 'LIKE', '%' . $request->search . "%")
+                ->select('travellers.*', 'studies.name as study_name', 'majors.name as major_name')
+                ->get();
+
+            if ($travellers)
+            {
+                foreach ($travellers as $key => $traveller)
+                {
+                    $output .=
+                        '<tr>' .
+                        '<td>' . $traveller->lastname . '</td>' .
+                        '<td>' . $traveller->firstname . '</td>' .
+                        '<td>' . $traveller->study_name . '&nbsp&nbsp' . $traveller->major_name . '</td>' .
+                        '<td><a href="/editTraveller/' . $traveller->user_id . '"><img src="' . asset("/image/pen.png") . '" alt="pen.png" height="40" width="40"/></a></td>' .
+                        '</tr>';
+
+                }
+                return Response($output);
+            }
+        }
     }
     /*
      * editTraveller page
