@@ -12,6 +12,10 @@ class EditTravellerController extends Controller
      * Search Table
      */
     public function SearchTravellersQuery(Request $request){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
+        {
+            return redirect('/info');
+        }
         $aTravellers = DB::table('travellers')
             ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
             ->select('travellers.*', 'studies.name')
@@ -24,6 +28,10 @@ class EditTravellerController extends Controller
      */
     public function searchTravellers()
     {
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
+        {
+            return redirect('/info');
+        }
         //check if user is logged in
         if(Auth::check()){
             try
@@ -65,6 +73,10 @@ class EditTravellerController extends Controller
      */
     public function editTraveller(Request $aRequest, $user_id)
     {
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
+        {
+            return redirect('/info');
+        }
         $aTravellers = DB::table('travellers')
             ->join('users', 'travellers.user_id', '=', 'users.id')
             ->where('travellers.user_id', '=', $user_id)

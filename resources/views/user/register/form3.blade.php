@@ -108,11 +108,16 @@
                 <div class="rightform">
                     <p><label class="field" for="name">Nationaliteit:</label>   <input type="text" class="textbox" value="" name="nationality"></p>
                     <p><label class="field" for="name">Adres: </label>          <input type="text" class="textbox" value="" name="address"></p>
-                    <p><label class="field" for="name">Postcode, gemeente:</label>
+                    <p><label class="field" for="name">Gemeente:</label>
                         <select name="Postcode" class="select">
-                            <option value="1">Cup</option> <!-- Suppose this option selected -->
-                            <option value="2">Pen</option>
-                            <option value="3">Book</option>
+                            <?php
+                            $aAllZip = \App\ZipCode::all();
+                            foreach ($aAllZip as $oZip){
+                            ?>
+                            <option value="<?php echo $oZip->zip_code_id ?>"><?php echo $oZip->town ?></option>
+                            <?php
+                            }
+                            ?>
                         </select>
                     </p>
                     <p><label class="field" for="name">Land:</label>            <input type="text" class="textbox" value="" name="country"></p>

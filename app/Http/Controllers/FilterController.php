@@ -18,6 +18,10 @@ class FilterController extends Controller
 {
     public function getFilteredTraveller(Request $request)
     {
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
+        {
+            return redirect('/info');
+        }
         //check if user is logged in
         if(Auth::check()) {
             //find the mentor's user_id

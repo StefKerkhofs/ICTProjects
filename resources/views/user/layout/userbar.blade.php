@@ -5,6 +5,21 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mr-3">
+<<<<<<< HEAD
+=======
+            <?php
+            if (\Illuminate\Support\Facades\Auth::user())
+            {
+                $sUserFirstname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('firstname');
+                $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Welcome, <?php echo $sUserFirstname , " " , $sUserLastname ?></a>
+                </li>
+                <?php
+            }
+            ?>
+>>>>>>> b109cd1acae02e42a43c7f4f37a8ad398347f455
             @guest
             <li class="nav-item">
                 <a class="nav-link" href="/logInUser">Log in</a>
