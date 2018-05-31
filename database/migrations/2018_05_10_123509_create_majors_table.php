@@ -21,25 +21,6 @@ class CreateMajorsTable extends Migration
         });
 
 
-        DB::table('majors')->insert(array(
-
-            'study_id' => 1,
-            'major_name' => "ELO"
-        ));
-        DB::table('majors')->insert(array(
-            'study_id' => 1,
-            'major_name' => "ICT"
-        ));
-
-        DB::table('majors')->insert(array(
-
-            'study_id' => 2,
-            'major_name' => "EM"
-        ));
-        DB::table('majors')->insert(array(
-            'study_id' => 2,
-            'major_name' => "ENT"
-        ));
     }
 
     /**
