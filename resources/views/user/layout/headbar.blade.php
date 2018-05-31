@@ -31,13 +31,13 @@
                 </li>
                 <?php
                     }
-                }
-                else{
-                    ?>
+                    elseif ($sFunctie == 'Gebruiker'){
+                ?>
                 <li class="nav-item">
                     <a class="nav-link"  href="/reg">Registreren</a>
                 </li>
                 <?php
+                    }
                 }
             //var_dump($navbars['navbars'])?>
 
