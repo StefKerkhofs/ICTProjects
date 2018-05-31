@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return redirect('reg/form2');
     }
     public function form1(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
 
@@ -96,12 +96,10 @@ class RegisterController extends Controller
         }
     }
     public function form2(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
-        if (Auth::check()){
-            return redirect('/info');
-        }
+
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
             if ($aData['email'] == null){
@@ -158,7 +156,7 @@ class RegisterController extends Controller
         }
     }
     public function form3(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
 
@@ -203,7 +201,7 @@ class RegisterController extends Controller
         }
     }
     public function form4(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
 
@@ -247,7 +245,7 @@ class RegisterController extends Controller
         }
     }
     public function form5(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
 
@@ -357,7 +355,7 @@ class RegisterController extends Controller
         }
     }
     public function form6(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
 
@@ -378,7 +376,7 @@ class RegisterController extends Controller
     /*--------------------------------------------------------------------------FORM 7--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form7(){
-        if (Auth::check()){
+        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
 
@@ -386,6 +384,9 @@ class RegisterController extends Controller
             $aData = unserialize($_COOKIE['register']);
             if ($aData['MedischeAandoening'] == null){
                 return redirect('reg/form1');
+            }
+            if (Auth::user()){
+                Auth::logout();
             }
             return view('user.register.form7');
         }
