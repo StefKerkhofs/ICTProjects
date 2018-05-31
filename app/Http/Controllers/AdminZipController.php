@@ -40,6 +40,9 @@ class AdminZipController extends Controller
      *
      */
     public function addZip(Request $request){
+        $validatedData = $request->validate([
+            'zip_code' => 'integer',
+        ],$this->messages());
         Zip::insert([
             'zip_code' => $request->post('zipCode'),
             'zip_town' => $request->post('zipTown'),
@@ -52,6 +55,9 @@ class AdminZipController extends Controller
     }
 
     public  function editZip($id, Request $request){
+        $validatedData = $request->validate([
+            'zip_code' => 'numeric',
+        ],$this->messages());
         Zip::where('zip_id', $id)->update([
             'zip_code' => $request->post('zipCode'),
             'zip_town' => $request->post('zipTown'),
@@ -64,5 +70,11 @@ class AdminZipController extends Controller
         return view('admin.zip.editZip', [
             'oZipData' => $oZipData
         ]);
+    }
+    public function messages()
+    {
+        return [
+            'zip_code.integer' => 'De postcode moet een getal zijn.',
+        ];
     }
 }
