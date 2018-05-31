@@ -21,14 +21,7 @@ class CreateStudiesTable extends Migration
         });
 
 
-        DB::table('studies')->insert(array(
 
-            'study_name' => "ELO-ICT"
-        ));
-        DB::table('studies')->insert(array(
-
-            'study_name' => "EM-ENT"
-        ));
 
     }
 
