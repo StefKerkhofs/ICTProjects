@@ -3,6 +3,10 @@
     margin: 0;
     padding: 0;
 }
+body{
+    overflow:hidden;
+    overflow-y:scroll;
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -91,4 +95,6 @@ body{
     color: #003469;
     overflow: hidden;
     margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
