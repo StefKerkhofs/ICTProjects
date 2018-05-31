@@ -19,17 +19,6 @@ class CreateStudiesTable extends Migration
             $table->timestamps();
 
         });
-
-
-        DB::table('studies')->insert(array(
-
-            'study_name' => "ELO-ICT"
-        ));
-        DB::table('studies')->insert(array(
-
-            'study_name' => "EM-ENT"
-        ));
-
     }
 
     /**
