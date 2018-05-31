@@ -17,9 +17,6 @@
                 <?php
             }
             ?>
-            <li class="nav-item ">
-                <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
-            </li>
             @guest
             <li class="nav-item">
                 <a class="nav-link" href="/logInUser">Log in</a>

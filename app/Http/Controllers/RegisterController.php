@@ -6,6 +6,7 @@ use App\Traveller;
 use App\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -51,6 +52,9 @@ class RegisterController extends Controller
         return redirect('reg/form2');
     }
     public function form1(){
+        if (Auth::check()){
+            return redirect('/info');
+        }
 
         //Remove previous cookie
         setcookie("register", null, time() - 1, "/");
@@ -92,7 +96,12 @@ class RegisterController extends Controller
         }
     }
     public function form2(){
-
+        if (Auth::check()){
+            return redirect('/info');
+        }
+        if (Auth::check()){
+            return redirect('/info');
+        }
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
             if ($aData['email'] == null){
@@ -149,6 +158,9 @@ class RegisterController extends Controller
         }
     }
     public function form3(){
+        if (Auth::check()){
+            return redirect('/info');
+        }
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
@@ -191,6 +203,9 @@ class RegisterController extends Controller
         }
     }
     public function form4(){
+        if (Auth::check()){
+            return redirect('/info');
+        }
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
@@ -232,6 +247,9 @@ class RegisterController extends Controller
         }
     }
     public function form5(){
+        if (Auth::check()){
+            return redirect('/info');
+        }
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
@@ -339,6 +357,9 @@ class RegisterController extends Controller
         }
     }
     public function form6(){
+        if (Auth::check()){
+            return redirect('/info');
+        }
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
@@ -357,6 +378,9 @@ class RegisterController extends Controller
     /*--------------------------------------------------------------------------FORM 7--------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------------*/
     public function form7(){
+        if (Auth::check()){
+            return redirect('/info');
+        }
 
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
