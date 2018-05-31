@@ -19,9 +19,6 @@ class CreateMajorsTable extends Migration
             $table->string('major_name');
             $table->timestamps();
         });
-
-
-
     }
 
     /**
