@@ -8,12 +8,11 @@
             <?php
             if (\Illuminate\Support\Facades\Auth::user())
             {
-                $bracketsName = \Illuminate\Support\Facades\Auth::user()->select('email')->where('id',\Illuminate\Support\Facades\Auth::id())->get();
-                $step1 = substr($bracketsName,11,strlen($bracketsName));
-                $step2 = substr($step1,0,strlen($step1)-3);
+                $sUserFirstname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('firstname');
+                $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">Welcome, <?php echo $step2 ?></a>
+                    <a class="nav-link" href="/profile">Welcome, <?php echo $sUserFirstname , " " , $sUserLastname ?></a>
                 </li>
                 <?php
             }
