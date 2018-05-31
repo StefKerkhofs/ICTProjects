@@ -90,6 +90,10 @@
                             <td>{{Form::checkbox('firstname', 'firstname')}}</td>
                         </tr>
                         <tr>
+                            <td>{{ Form::label('email', 'Email', ['class' => 'field']) }}</td>
+                            <td>{{Form::checkbox('email', 'email')}}</td>
+                        </tr>
+                        <tr>
                             <td>{{ Form::label('phone', 'Telefoon', ['class' => 'field']) }}</td>
                             <td>{{Form::checkbox('phone', 'phone')}}</td>
                         </tr>
@@ -127,6 +131,11 @@
                                 if($ofilters=='lastname')
                                     {
                                     $ofilters='Naam';
+                                    }
+
+                                if($ofilters=='email')
+                                    {
+                                    $ofilters='Email';
                                     }
                                 if($ofilters=='phone')
                                     {
