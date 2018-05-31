@@ -1,4 +1,6 @@
 @extends("user.templates.templateFrontEnd")
+@section('title')
+    <title>Editeer</title>
 @section('style')
     <style>
         .searchdiv{

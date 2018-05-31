@@ -79,7 +79,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_code_id' => 1,
             'study_id' => 1,
-            'trip_id' => 2,
+            'trip_id' => 1,
             'user_id' => 4,
             'firstname' => 'Joren',
             'lastname' => 'Meynen',

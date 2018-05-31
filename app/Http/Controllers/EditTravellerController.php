@@ -45,7 +45,7 @@ class EditTravellerController extends Controller
                     ->join('majors', 'studies.major_id', '=', 'majors.major_id')
                     ->where('travellers.trip_id', '=', $aTripIDMentor)
                     ->where('travellers.user_id', '!=', $iMentor_id)
-                    ->orderBy('travellers.lastname')
+                    ->orderBy('travellers.firstname')
                     ->select('travellers.*', 'studies.name as study_name', 'majors.name as major_name')
                     ->get();
 
