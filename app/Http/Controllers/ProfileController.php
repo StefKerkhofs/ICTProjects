@@ -52,6 +52,24 @@ class ProfileController extends Controller
     {
         //check if user is logged in
         if(Auth::check()) {
+
+            $aRequest->validate([
+                'txtLastName' => 'required',
+                'txtFirstName' => 'required',
+                'txtSex' => 'required',
+                'txtBirthdate' => 'required|date_format:d/m/Y',
+                'txtBirthplace' => 'required',
+                'txtNationality' => 'required',
+                'txtAddress' => 'required',
+                'txtCity' => 'required',
+                'txtCountry' => 'required',
+
+                'txtEmail' => [ 'required', 'string', 'email', 'max:255' /*, 'unique:users,email' */],
+                'txtPhone' => 'required',
+                'txtEmergencyPhone1' => 'required',
+                'txtMedicalIssue' => 'required',
+            ],$this->messages());
+
             //find the user's user_id
             $id = Auth::id();
 
@@ -83,5 +101,28 @@ class ProfileController extends Controller
         }
         //if user is not logged in
         return redirect('/');
+    }
+
+    public function messages()
+    {
+        return [
+            'txtLastName.required' => 'Je moet je achternaam invullen.',
+            'txtFirstName.required' => 'Je moet je voornaam invullen.',
+            'txtSex.required' => 'Je moet een geslacht kiezen.',
+            'txtBirthdate.required' => 'Je moet je geboorte datum ingeven.',
+            'txtBirthdate.date_format' => 'De waarde die je hebt ingevuld hebt bij geboorte datum in ongeldig',
+            'txtBirthplace.required' => 'Je moet je geboorte plaats ingeven.',
+            'txtNationality.required' => 'je moet je nationaliteit opgeven.',
+            'txtAddress.required' => 'Je moet je adres ingeven.',
+            'txtCity.required' => 'Je moet je postcode ingeven.',
+            'txtCountry.required' => 'Je moet je land ingeven',
+
+            'txtEmail.required' => 'Vul je email adres in.',
+            'txtEmail.email' => 'Het ingevulde email adres is niet geldig.',
+            'txtEmail.unique' => 'Het ingevulde email adres is al in gebruik.',
+            'txtPhone.required' => 'Je moet je GSM nummer invullen.',
+            'txtEmergencyPhone1.required' => 'Je moet minstens 1 noodnummer invullen.',
+            'txtMedicalIssue.required' => 'Je moet aanduiden indien je een medische behandeling volgt of niet.',
+        ];
     }
 }

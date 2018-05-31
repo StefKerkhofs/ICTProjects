@@ -90,6 +90,15 @@
 @endsection
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @foreach($aTravellers as $traveller => $data)
             {{ Form::open(array('url' => "/profileEdit/$data->user_id", 'method' => 'post')) }}
             <div class="formcontainer">
