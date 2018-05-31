@@ -19,18 +19,30 @@ class HomeController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * Show the application dashboard.
+     * Get dynamic menu and show it to the user.
      */
     public static function index()
     {
-        $afilteredUserList=DB::table('menus')
-            ->join('pages', 'menus.page_id', '=', 'pages.page_id')
-            ->select('menus.menu_name', 'pages.page_name')
-            ->get();
-        $page = json_decode(json_encode($afilteredUserList),true);
+        try
+        {
+            $afilteredUserList=DB::table('menus')
+                ->join('pages', 'menus.page_id', '=', 'pages.page_id')
+                ->select('menus.menu_name', 'pages.page_name')
+                ->get();
+            $page = json_decode(json_encode($afilteredUserList),true);
 
-        return view()->make('user.layout.headbar', ['navbars' => $page]);
+            return view()->make('user.layout.headbar', ['navbars' => $page]);
+        }
+        catch (\Exception $e)
+        {
+            return view()->share(back(), ['content' => $e->getMessage()]);
+        }
     }
+
+
 
     /*public function CheckUser()
     {
@@ -41,10 +53,26 @@ class HomeController extends Controller
         return view()->make('user.layout.headbar', ['level' => $level]);
     }*/
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * Go to the login page.
+     */
+
     public function create()
     {
         return view('guest.login');
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Log in function.
+     * Checks if the user is in the database.
+     * If there is something wrong go back to the login page.
+     * If the user logs in with the right email and password,
+     * go to the info page.
+     */
 
     public function store()
     {
@@ -68,6 +96,12 @@ class HomeController extends Controller
         return back();
         }
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Logout the user and sends him back to the info page.
+     */
 
     public function destroy()
     {
