@@ -18,7 +18,7 @@ Route::post('/admin/info', 'AdminInfoController@updateInfo');
  *  Front end pages
  */
 Route::get('/', function () {
-    return view('user.info.info');
+    return redirect('/info');
 });
 /*
  * RegisterController
