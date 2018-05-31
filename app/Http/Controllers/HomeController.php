@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\menu;
-use App\Page;
-use App\Profile;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +32,15 @@ class HomeController extends Controller
         return view()->make('user.layout.headbar', ['navbars' => $page]);
     }
 
+    /*public function CheckUser()
+    {
+        $user = User::where('user_id', Auth::id())->get();
+
+        $level = $user->function;
+
+        return view()->make('user.layout.headbar', ['level' => $level]);
+    }*/
+
     public function create()
     {
         return view('guest.login');
@@ -50,10 +56,10 @@ class HomeController extends Controller
            {
                return back();
            }
-           return view('user.info.info');
+           return redirect('/info');
        }
 
-       return view('user.info.info');
+        return redirect('/info');
     }
 
     public function destroy()
