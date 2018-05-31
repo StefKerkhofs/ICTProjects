@@ -104,9 +104,14 @@
                     <p><label class="field" for="name">Reis*</label></p>
                     <p>
                         <select name="ReisKiezen" class="select">
-                            <option value="1">Cup</option> <!-- Suppose this option selected -->
-                            <option value="2">Pen</option>
-                            <option value="3">Book</option>
+                            <?php
+                                $aAllTrips = \App\Trip::all()->where('is_active',true);
+                                foreach ($aAllTrips as $oTrip){
+                                    ?>
+                                <option value="<?php echo $oTrip->trip_id ?>"><?php echo $oTrip->trip_name ?></option>
+                                <?php
+                                }
+                            ?>
                         </select>
                     </p>
                     <?php
