@@ -64,7 +64,8 @@ class AdminStudyController extends Controller
         Study::insert([
             'study_name'=> $request->post('studyName')
         ]);
-        return redirect()->back();
+        return redirect('admin/study')->with('message', 'De richting is toegvoegd');
+
 
     }
 
@@ -87,7 +88,7 @@ class AdminStudyController extends Controller
             ]);
 
 
-        return redirect()->back();
+        return redirect('admin/study')->with('message', 'De afstudeerrichting is toegvoegd');
     }
 }
 
