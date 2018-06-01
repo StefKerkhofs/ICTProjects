@@ -13,10 +13,15 @@
                     <?php
                         $sUserFirstname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('firstname');
                         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
+                        if ($sUserLastname !== null){
+
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile">Welcome, <?php echo $sUserFirstname , " " , $sUserLastname ?></a>
+                        <a class="nav-link" href="/profile">Welcome <?php echo $sUserFirstname,  " " , $sUserLastname ?></a>
                     </li>
+                    <?php
+                    }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/logoutUser">Log out</a>
                     </li>

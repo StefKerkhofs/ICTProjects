@@ -12,6 +12,12 @@ class ProfileController extends Controller
 {
     public function profile()
     {
+
+        $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
+        if ($sUserLastname == null){
+            return redirect('/');
+        }
+
         //check if user is logged in
         if(Auth::check()) {
             //find the user's user_id
@@ -26,11 +32,17 @@ class ProfileController extends Controller
 
             return view('user.profile.profile', ['traveller' => $oTraveller]);
         }
+
         //if user is not logged in
         return redirect('/');
     }
     public function profileEdit()
     {
+        $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
+        if ($sUserLastname == null){
+            return redirect('/');
+        }
+
         //check if user is logged in
         if(Auth::check()) {
             //find the user's user_id
@@ -50,6 +62,11 @@ class ProfileController extends Controller
 
     public function profileUpdate(Request $aRequest)
     {
+        $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
+        if ($sUserLastname == null){
+            return redirect('/');
+        }
+        
         //check if user is logged in
         if(Auth::check()) {
 
