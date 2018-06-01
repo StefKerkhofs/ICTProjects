@@ -128,5 +128,12 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('gebruiker'),
             'function' => 'Gebruiker'
         ]);
+        //admin
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@ucll.be',
+            'password' => bcrypt('admin'),
+            'function' => 'admin'
+        ]);
     }
 }

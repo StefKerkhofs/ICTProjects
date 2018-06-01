@@ -81,19 +81,27 @@ class HomeController extends Controller
        if (! auth()->attempt(request(['email', 'password'])))
        {
 
-           $user = User::where(['email'=> request('email'), 'password' => request('password')])->get();
+           $user = User::where(['email' => request('email'), 'password' => request('password')])->get();
 
            if (! auth()->loginUsingId($user->id))
            {
-               return back();
+               return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
            }
-           return redirect('/info');
+
+           if ($user->function == 'admin')
+           {
+               redirect('/admin/info');
+           }
+           else
+           {
+               return redirect('/info');
+           }
        }
 
-        return redirect('/info');
+            return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
     }
     catch (\Exception $e) {
-        return back();
+        return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
         }
     }
 

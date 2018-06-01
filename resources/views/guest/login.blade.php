@@ -5,6 +5,12 @@
     <div class="container">
     <h1>Log in</h1>
 
+        @if(session()->has('message'))
+            <div class="alert alert-danger">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+
     <form method="POST" action="/logInUser">
 
         {{ csrf_field() }}
