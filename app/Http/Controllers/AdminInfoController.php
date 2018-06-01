@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\User;
 use Illuminate\Http\Request;
 
 /**
@@ -24,6 +25,7 @@ class AdminInfoController extends Controller
      * @return object $oPageContent
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function getInfo(){
         $oPageContent = Page::where('page_name', 'Info')->get();
         return view('admin.info', array(

@@ -87,18 +87,19 @@ class HomeController extends Controller
            {
                return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
            }
-
-           if ($user->function == 'admin')
-           {
-               redirect('/admin/info');
-           }
-           else
-           {
-               return redirect('/info');
-           }
+           return redirect('/info');
        }
 
-            return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
+            if (Auth::user()) {
+                $sFunctie = \App\User::where('id', \Illuminate\Support\Facades\Auth::id())->value('function');
+                if ($sFunctie == 'admin') {
+                    return redirect('/admin/info');
+                }
+                else
+                {
+                    return redirect('/info');
+                }
+            }
     }
     catch (\Exception $e) {
         return back()->with('message', 'Gebruikersnaam of passwoord is fout.');

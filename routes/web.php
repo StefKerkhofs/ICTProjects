@@ -44,7 +44,6 @@ Route::get('/logInUser', 'HomeController@create');
 Route::post('/logInUser', 'HomeController@store');
 Route::get('/logoutUser', 'HomeController@destroy');
 Auth::routes();
-Route::get('/home', 'HomeController@index');
 /*
  * ProfileController
  */
