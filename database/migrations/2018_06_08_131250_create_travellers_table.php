@@ -39,7 +39,7 @@ class CreateTravellersTable extends Migration
 
             $table->foreign('major_id')->references('major_id')->on('majors');
             $table->foreign('trip_id')->references('trip_id')->on('trips');
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('zip_id')->references('zip_id')->on('zips');
         });
     }
