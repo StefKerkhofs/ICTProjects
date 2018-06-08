@@ -18,6 +18,8 @@ class CreateMajorsTable extends Migration
             $table->integer('study_id');
             $table->string('major_name');
             $table->timestamps();
+
+            // $table->foreign('study_id')->references('study_id')->on('studies');
         });
 
 
