@@ -46,6 +46,10 @@ Route::post('/admin/contact', 'AdminContactController@updateContact');
 /**
  * Front-end Routes
  */
+
+Route::any('/', function () {
+    return redirect('/info');
+});
 Route::get('/reg', 'RegisterController@form1');
 route::post('/reg/form1POST', 'RegisterController@form1POST');
 route::get('/reg/form1', 'RegisterController@form1');

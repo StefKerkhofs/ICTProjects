@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
+     *
+     * @author Nick Castermans
+     *
      * Create a new controller instance.
      *
      * @return void
@@ -19,6 +22,9 @@ class HomeController extends Controller
     }
 
     /**
+     *
+     * @author Nick Castermans
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
      * Show the application dashboard.
@@ -52,6 +58,9 @@ class HomeController extends Controller
     }*/
 
     /**
+     *
+     * @author Nick Castermans
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
      * Go to the login page.
@@ -63,6 +72,9 @@ class HomeController extends Controller
     }
 
     /**
+     *
+     * @author Nick Castermans
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
      * Log in function.
@@ -115,6 +127,9 @@ class HomeController extends Controller
     }
 
     /**
+     *
+     * @author Nick Castermanss
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
      * Logout the user and sends him back to the info page.
