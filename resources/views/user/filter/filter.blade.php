@@ -102,8 +102,8 @@
                             <td>{{Form::checkbox('trip_name', 'trip_name')}}</td>
                         </tr>
                         <tr>
-                            <td>{{ Form::label('name', 'Klas', ['class' => 'field']) }}</td>
-                            <td>{{Form::checkbox('name', 'name')}}</td>
+                            <td>{{ Form::label('major_name', 'Klas', ['class' => 'field']) }}</td>
+                            <td>{{Form::checkbox('major_name', 'major_name')}}</td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -145,7 +145,7 @@
                                     {
                                     $ofilters='Reis';
                                     }
-                                if($ofilters=='name')
+                                if($ofilters=='major_name')
                                     {
                                     $ofilters='Klas';
                                     }
