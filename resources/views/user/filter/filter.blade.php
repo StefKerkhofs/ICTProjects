@@ -27,6 +27,9 @@
             padding: 15px;
             text-align: right;
         }
+        .gegTable{
+            margin-bottom: 100px;
+        }
 
         .filterTable,.filterTable td{
             border-bottom: 1px solid darkgray;
@@ -52,6 +55,7 @@
 
         .filterTable{
             margin-right: 50px;
+            margin-bottom: 100px;
         }
         .button{
             width: 100%;
