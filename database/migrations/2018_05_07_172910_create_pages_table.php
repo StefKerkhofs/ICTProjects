@@ -14,9 +14,8 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->increments('page_id');
+            $table->increments('id');
             $table->string('page_name');
-<<<<<<< HEAD
             $table->string('page_content');
             $table->string('page_type');
             $table->timestamps();
@@ -27,12 +26,6 @@ class CreatePagesTable extends Migration
             'page_content' => 'Dit is content',
             'page_type' => 'html',
         ));
-=======
-            $table->text('page_content');
-            $table->string('page_type');
-            $table->timestamps();
-        });
->>>>>>> back-end
     }
 
     /**

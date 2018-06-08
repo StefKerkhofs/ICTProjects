@@ -25,9 +25,9 @@ class AdminInfoController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getInfo(){
-        $oPageContent = Page::where('page_name', 'Info')->first();
-        return view('admin.info.info', array(
-            'oPageContent' => $oPageContent,
+        $oPageContent = Page::where('page_name', 'Info')->get();
+        return view('admin.info', array(
+            'oPageContent' => $oPageContent[0],
         ));
     }
 
@@ -48,6 +48,6 @@ class AdminInfoController extends Controller
             $sContentString = "";
         }
         Page::where('page_name', 'Info')->update(['page_content' => $sContentString]);
-        return redirect()->back()->with('message', 'De info pagina is aangepast');
+        return redirect()->back();
     }
 }

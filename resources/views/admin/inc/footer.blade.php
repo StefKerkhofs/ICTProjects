@@ -1,1 +1,0 @@
-<footer id="footer">{{ date('Y') }} - {{ config('app.name') }}</footer>
