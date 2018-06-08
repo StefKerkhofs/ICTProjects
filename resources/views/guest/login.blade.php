@@ -5,7 +5,13 @@
     <div class="container">
     <h1>Log in</h1>
 
-    <form method="POST" action="/logInUser">
+        @if(session()->has('message'))
+            <div class="alert alert-danger">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+
+        <form method="POST" action="/logInUser">
 
         {{ csrf_field() }}
 
@@ -15,7 +21,7 @@
     </div>
 
     <div class="form-group">
-        <label>password: </label>
+        <label>Password: </label>
         <input type="password" class="form-control" id="password" name="password">
     </div>
 
