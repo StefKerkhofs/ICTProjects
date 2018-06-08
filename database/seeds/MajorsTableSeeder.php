@@ -11,16 +11,16 @@ class MajorsTableSeeder extends Seeder
      */
     public function run()
     {
-
+        DB::table('majors')->insert(array(
+            'study_id' => 1,
+            'major_name' => "ICT"
+        ));
         DB::table('majors')->insert(array(
 
             'study_id' => 1,
             'major_name' => "ELO"
         ));
-        DB::table('majors')->insert(array(
-            'study_id' => 1,
-            'major_name' => "ICT"
-        ));
+
 
         DB::table('majors')->insert(array(
 

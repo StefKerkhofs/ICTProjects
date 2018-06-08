@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Trip;
 use App\Page;
+use App\Menu;
 
 /**
  * Class AdminTripController
@@ -52,13 +53,23 @@ class AdminTripController extends Controller
         if($bActive == true)
         {
             $bActive = 1;
-        }else
+        }
+        else
             {
                 $bActive = 0;
             }
         Page::insert(['page_name' => $sName,'page_content' => '' ,'page_type' => 'PDF']);
         $iId = Page::where('page_name', $sName)->value('page_id');
         Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice,'trip_contact' => '', 'is_active' => $bActive]);
+        Menu::insert([
+            'page_id' => $iId,
+            'menu_name' => $sName,
+        ]);
+        /*
+            $table->increments('menu_id');
+            $table->integer('page_id')->unsigned();
+            $table->string('menu_name');
+        */
         return redirect('admin/trip')->with('message', 'De reis is opgeslagen');
     }
 
