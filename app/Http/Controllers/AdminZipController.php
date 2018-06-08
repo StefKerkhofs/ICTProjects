@@ -9,6 +9,8 @@ use App\Zip;
 use App\Zipcode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AdminZipController
@@ -26,6 +28,10 @@ class AdminZipController extends Controller
      *
      */
     public function index(){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $aZipData = Zip::get();
         return view('admin.zip.overview', [
             'aZipData' => $aZipData,
@@ -40,6 +46,10 @@ class AdminZipController extends Controller
      *
      */
     public function addZip(Request $request){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $validatedData = $request->validate([
             'zip_code' => 'integer',
         ],$this->messages());
@@ -55,6 +65,10 @@ class AdminZipController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function addZipForm(){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         return view('admin.zip.addZip');
     }
 
@@ -67,6 +81,10 @@ class AdminZipController extends Controller
      */
 
     public  function editZip($id, Request $request){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $validatedData = $request->validate([
             'zip_code' => 'numeric',
         ],$this->messages());
@@ -83,6 +101,10 @@ class AdminZipController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editZipForm($id){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $oZipData = Zip::where('zip_id', $id)->first();
         return view('admin.zip.editZip', [
             'oZipData' => $oZipData

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Trip;
 use App\Page;
 use App\Menu;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AdminTripController
@@ -24,6 +26,10 @@ class AdminTripController extends Controller
      */
     public function getTrips()
     {
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $aTripData = Trip::get();
         return view('admin.trip.overview',[
                 'aTripData' => $aTripData
@@ -41,6 +47,10 @@ class AdminTripController extends Controller
      */
     public function createTrip(Request $request)
     {
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $validatedData = $request->validate([
             'sNameTrip' => 'required',
             'iYearTrip' => 'required',
@@ -95,6 +105,10 @@ class AdminTripController extends Controller
      */
     public function createTripForm()
     {
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         return view('admin.trip.addForm');
     }
     /**
@@ -106,6 +120,10 @@ class AdminTripController extends Controller
      */
     public function editTripForm($id)
     {
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $oTripData = Trip::where('trip_id', $id)->first();
         return view('admin.trip.editForm', [
             'oTripData' => $oTripData,
@@ -122,6 +140,10 @@ class AdminTripController extends Controller
      */
     public function editTrip($id,Request $request)
     {
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $sName = $request->post('sNameTrip');
         $iYear = $request->post('iYearTrip');
         $iPrice = $request->post('iPriceTrip');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AdminInfoController
@@ -25,6 +27,10 @@ class AdminInfoController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getInfo(){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $oPageContent = Page::where('page_name', 'Info')->first();
         return view('admin.info.info', array(
             'oPageContent' => $oPageContent,
@@ -43,6 +49,10 @@ class AdminInfoController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function updateInfo(Request $request){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $sContentString = $request->post('content');
         if (strlen($sContentString) == 0){
             $sContentString = "";

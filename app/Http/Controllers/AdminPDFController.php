@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminPDFController extends Controller
 {
@@ -22,6 +24,10 @@ class AdminPDFController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $aPageList = Page::where('page_type', 'pdf')->get();
         return view('admin.pdf.pdf', array(
             'aPageList' => $aPageList,
@@ -37,6 +43,10 @@ class AdminPDFController extends Controller
      * @param Request $request
      */
     public function updateContent(Request $request){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $pdf = $request->file('pdf');
 
         Storage::put('/public/pdf', $pdf);

@@ -6,6 +6,8 @@ use App\major;
 use App\Page;
 use App\Study;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AdminStudyController
@@ -26,8 +28,10 @@ class AdminStudyController extends Controller
      */
 
     public function getList(){
-
-
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $aMajorData = Major::get();
         $aStudyData = Study::get();
 
@@ -61,6 +65,10 @@ class AdminStudyController extends Controller
      */
 
     public function addStudy(Request $request){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         Study::insert([
             'study_name'=> $request->post('studyName')
         ]);
@@ -78,6 +86,10 @@ class AdminStudyController extends Controller
      */
 
     public function addMajor(Request $request){
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $aMajorData = Major::get();
         $sNewMajor = $request->post('majorName');
 

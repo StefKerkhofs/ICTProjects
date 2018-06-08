@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Trip;
 
 /**
@@ -18,7 +20,10 @@ class AdminContactController extends Controller
      * The updateContact function will update the contacts of the trips and return a page redirect with a succes message
      */
     public function updateContact(Request $request){
-
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         $aInputData = $request->all();
         $aInputKeys = array_keys($aInputData);
         $aInputValues = array_values($aInputData);
@@ -37,9 +42,11 @@ class AdminContactController extends Controller
      *
      */
     public function showContact(){
-
+        if (DB::table('users')->where('id', Auth::id())->value('function') !== 'admin')
+        {
+            return redirect('/');
+        }
         return view('admin.contact.contact');
-
     }
 
 

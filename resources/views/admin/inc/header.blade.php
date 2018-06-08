@@ -2,7 +2,7 @@
     <div id="top-bar">
         <ul>
             <li><a href="">Admin</a></li>
-            <li><a href="">Afmelden / Logout</a></li>
+            <li><a href="/logoutUser">Afmelden / Logout</a></li>
         </ul>
     </div>
     <div id="bottom-bar">
