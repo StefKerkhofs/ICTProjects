@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ $oTripData->trip_name }}</td>
                 <td>
-                {{ Form::email($oTripData->trip_id,$oTripData->trip_contact ) }}
+                {{ Form::email($oTripData->trip_id,$oTripData->trip_contact, ['class' => 'form-control'] ) }}
                 </td>
             </tr>
         @endforeach

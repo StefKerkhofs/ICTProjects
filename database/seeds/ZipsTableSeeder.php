@@ -11,9 +11,9 @@ class ZipsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('zips')->insert(array(
+        DB::table('zips')->insert([
             'zip_code' => 3660,
             'zip_town' => 'Opglabbeek',
-        ));
+        ]);
     }
 }

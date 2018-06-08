@@ -25,7 +25,7 @@ class TripsTableSeeder extends Seeder
             'trip_year' => '2018',
             'trip_price' => '99',
             'trip_contact' => '',
-            'is_active' => '0',
+            'is_active' => '1',
         ));
 
     }
