@@ -125,7 +125,7 @@
                             $aAllMajors = \App\Major::all();
                             foreach ($aAllMajors as $oMajor){
                             ?>
-                            <option value="<?php echo $oMajor->major_id ?>"><?php echo $oMajor->name ?></option>
+                            <option value="<?php echo $oMajor->major_id ?>"><?php echo $oMajor->major_name ?></option>
                             <?php
                             }
                             ?>
