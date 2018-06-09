@@ -64,6 +64,9 @@
             clear: both;
             padding: 19px;
         }
+        form{
+            margin-bottom: 100px;
+        }
 
     </style>
 @endsection
@@ -88,7 +91,7 @@
                 <p><label class="field" for="name">Telefoon: </label>        <span>{{$traveller['phone']}}</span></p>
                 <p><label class="field" for="name">Noodnummer 1: </label>    <span>{{$traveller['emergency_phone_1']}}</span></p>
                 <p><label class="field" for="name">Noodnummer 2: </label>    <span>{{$traveller['emergency_phone_2']}}</span></p>
-                <p><label class="field" for="name">Behandeling:</label>    @if($traveller['MedicalIssue']) <span>Ja</span> @else <span>Nee</span> @endif</p>
+                <p><label class="field" for="name">Behandeling:</label>    @if($traveller['medical_issue']) <span>Ja</span> @else <span>Nee</span> @endif</p>
                 <p><label class="field" for="name">Medische info: </label>   <span>{{$traveller['medical_info']}}</span></p>
             </div>
         </div>
