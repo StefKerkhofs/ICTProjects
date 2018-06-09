@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         @if($sType == "pdf")
-            <embed style="margin: auto; display: block;" src="storage/pdf/{{$sContent}}" type="application/pdf" width="90%" class="responsive" height="600px" />
+            <embed style="margin: auto; display: block;" src="storage/pdf/ {!! $sContent !!}" type="application/pdf" width="90%" class="responsive" height="600px" />
         @else
-            {{$sContent}}
+            {!! $sContent !!}
         @endif
 
     </div>
