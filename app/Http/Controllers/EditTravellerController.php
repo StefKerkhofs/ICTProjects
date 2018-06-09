@@ -36,12 +36,12 @@ class EditTravellerController extends Controller
                 //find all travellers with the same trip_id, except for the mentor
                 $oTravellers = DB::table('travellers')
                     ->join('trips', 'travellers.trip_id', '=', 'trips.trip_id')
-                    ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
-                    ->join('majors', 'studies.major_id', '=', 'majors.major_id')
+                    ->join('majors', 'travellers.major_id', '=', 'majors.major_id')
+                    ->join('studies', 'studies.study_id', '=', 'majors.study_id')
                     ->where('travellers.trip_id', '=', $aTripIDMentor)
                     ->where('travellers.user_id', '!=', $iMentor_id)
                     ->orderBy('travellers.lastname')
-                    ->select('travellers.*', 'studies.name as study_name', 'majors.name as major_name')
+                    ->select('travellers.*', 'studies.study_name as study_name', 'majors.major_name as major_name')
                     ->get();
 
                 //return travellers to view
@@ -64,11 +64,11 @@ class EditTravellerController extends Controller
         {
             $output="";
             $travellers = DB::table('travellers')
-                ->join('studies', 'travellers.study_id', '=', 'studies.study_id')
-                ->join('majors', 'studies.major_id', '=', 'majors.major_id')
+                ->join('majors', 'travellers.major_id', '=', 'majors.major_id')
+                ->join('studies', 'studies.study_id', '=', 'majors.study_id')
                 ->where('firstname', 'LIKE', '%' . $request->search . "%")
                 ->orWhere('lastname', 'LIKE', '%' . $request->search . "%")
-                ->select('travellers.*', 'studies.name as study_name', 'majors.name as major_name')
+                ->select('travellers.*', 'studies.study_name as study_name', 'majors.major_name as major_name')
                 ->get();
 
             if ($travellers)
@@ -144,7 +144,7 @@ class EditTravellerController extends Controller
                     'phone'             => $aRequest->post('txtPhone'),
                     'emergency_phone_1' => $aRequest->post('txtEmergencyPhone1'),
                     'emergency_phone_2' => $aRequest->post('txtEmergencyPhone2'),
-                    'MedicalIssue'      => $aRequest->post('txtMedicalIssue'),
+                    'medical_issue'      => $aRequest->post('txtMedicalIssue'),
                     'medical_info'      => $aRequest->post('txtMedicalInfo'),
                 ]
             );
