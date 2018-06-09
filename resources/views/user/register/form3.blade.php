@@ -111,7 +111,7 @@
                     <p><label class="field" for="name">Gemeente:</label>
                         <select name="Postcode" class="select">
                             <?php
-                            $aAllZip = \App\ZipCode::all();
+                            $aAllZip = \App\Zip::all();
                             foreach ($aAllZip as $oZip){
                             ?>
                             <option value="<?php echo $oZip->zip_id ?>"><?php echo $oZip->zip_town . " " . $oZip->zip_code ?></option>
