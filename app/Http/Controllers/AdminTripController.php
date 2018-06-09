@@ -68,7 +68,7 @@ class AdminTripController extends Controller
             {
                 $bActive = 0;
             }
-        Page::insert(['page_name' => $sName,'page_content' => '' ,'page_type' => 'PDF']);
+        Page::insert(['page_name' => $sName,'page_content' => '' ,'page_type' => 'pdf']);
         $iId = Page::where('page_name', $sName)->value('page_id');
         Trip::insert(['page_id' => $iId,'trip_name' => $sName,'trip_year' => $iYear, 'trip_price' => $iPrice,'trip_contact' => '', 'is_active' => $bActive]);
         Menu::insert([
