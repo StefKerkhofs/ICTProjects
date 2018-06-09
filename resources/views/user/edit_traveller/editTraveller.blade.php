@@ -116,8 +116,8 @@
                         <p>{{ Form::label('lblEmergencyPhone2', 'Noodnummer 2:',  ['class' => 'field']) }}  {{ Form::text('txtEmergencyPhone2', $data->emergency_phone_2, ['class' => 'textbox'] )}} </p>
                         <p style="padding-bottom: 0px;margin-bottom: 0px;">
                             {{ Form::label('lblMedicalIssue', 'Behandeling:',  ['class' => 'field']) }}
-                            <input type="radio"  name="txtMedicalIssue" value="1" id="1" {{ $data->MedicalIssue == '1' ? 'checked' : '' }} > <label class="radiolabel" for="1">Ja</label>
-                            <input type="radio"  name="txtMedicalIssue" value="0" id="0" {{ $data->MedicalIssue  == '0' ? 'checked' : '' }}> <label class="radiolabel" for="0">Nee</label>
+                            <input type="radio"  name="txtMedicalIssue" value="1" id="1" {{ $data->medical_issue == '1' ? 'checked' : '' }} > <label class="radiolabel" for="1">Ja</label>
+                            <input type="radio"  name="txtMedicalIssue" value="0" id="0" {{ $data->medical_issue  == '0' ? 'checked' : '' }}> <label class="radiolabel" for="0">Nee</label>
                         </p>
                         <p>{{ Form::label('lblMedicalInfo',     'Medische info:', ['class' => 'field']) }}  {{ Form::textarea('txtMedicalInfo', $data->medical_info, ['size' => '30x5']) }}
 
