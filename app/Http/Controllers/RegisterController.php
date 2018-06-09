@@ -284,14 +284,26 @@ class RegisterController extends Controller
             $sPassword = bcrypt($aData['txtWachtwoord']);
             echo $sPassword;
 
-            User::insert(
-                [
-                    'name' => $aData['txtNummer'],
-                    'email' => $aData['email'],
-                    'password' => $sPassword,
-                    'function' => $sFunctie,
-                ]
-            );
+            if ($aData['IsStudentOrDocent'] == "2") {
+                User::insert(
+                    [
+                        'name' => $aData['email'],
+                        'email' => $aData['email'],
+                        'password' => $sPassword,
+                        'function' => $sFunctie,
+                    ]
+                );
+            }
+            else{
+                User::insert(
+                    [
+                        'name' => $aData['txtNummer'],
+                        'email' => $aData['email'],
+                        'password' => $sPassword,
+                        'function' => $sFunctie,
+                    ]
+                );
+            }
 
             //Saving traveller
             $iUserID = User::where('email',$aData['email']) ->value('id');
@@ -301,10 +313,9 @@ class RegisterController extends Controller
                     [
                         'user_id' => $iUserID,
                         'trip_id' => $aData['ReisKiezen'],
-                        'zip_code_id' => $aData['Postcode'],
+                        'zip_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
-                        'zip_id' => $aData['Postcode'],
                         'country' => $aData['country'],
                         'address' => $aData['address'],
                         'sex' => $aData['gender'],
@@ -315,7 +326,8 @@ class RegisterController extends Controller
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
                         'medical_info' => $aData['MedischeInfo'],
-                        'MedicalIssue' => $aData['MedischeAandoening']
+                        'medical_issue' => $aData['MedischeAandoening'],
+                        'city' => 'zipId'
                     ]
                 );
             }
@@ -324,11 +336,10 @@ class RegisterController extends Controller
                     [
                         'user_id' => $iUserID,
                         'trip_id' => $aData['ReisKiezen'],
-                        'study_id' => $aData['AfstudeerrichtingKiezen'],
-                        'zip_code_id' => $aData['Postcode'],
+                        'major_id' => $aData['AfstudeerrichtingKiezen'],
+                        'zip_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
-                        'city' => $aData['Postcode'],
                         'country' => $aData['country'],
                         'address' => $aData['address'],
                         'sex' => $aData['gender'],
@@ -339,7 +350,8 @@ class RegisterController extends Controller
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
                         'medical_info' => $aData['MedischeInfo'],
-                        'MedicalIssue' => $aData['MedischeAandoening']
+                        'medical_issue' => $aData['MedischeAandoening'],
+                        'city' => 'zipId'
                     ]
                 );
             }

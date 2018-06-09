@@ -9,7 +9,7 @@ class Traveller extends Model
     protected $fillable = [
         'traveller_id',
         'zip_code_id',
-        'study_id',
+        'major_id',
         'trip_id',
         'user_id',
         'firstname',
@@ -24,7 +24,7 @@ class Traveller extends Model
         'nationality',
         'birthdate',
         'birthplace',
-        'MedicalIssue',
+        'medical_issue',
         'medical_info',
     ];
 

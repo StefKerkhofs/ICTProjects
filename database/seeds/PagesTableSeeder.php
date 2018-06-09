@@ -19,7 +19,7 @@ class PagesTableSeeder extends Seeder
 
         DB::table('pages')->insert(array(
             'page_name' => 'Amerika 2017',
-            'page_content' => '',
+            'page_content' => 'blup.pdf',
             'page_type' => 'pdf',
         ));
         DB::table('pages')->insert(array(
