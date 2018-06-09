@@ -16,6 +16,10 @@
             margin-top: 20px;
         }
          */
+        .container{
+            margin-bottom: 100px;
+        }
+
         .formcontainer{
             display:flex;
             justify-content:center;
