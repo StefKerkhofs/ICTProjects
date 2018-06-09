@@ -304,7 +304,7 @@ class RegisterController extends Controller
                         'zip_code_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
-                        'city' => $aData['Postcode'],
+                        'zip_id' => $aData['Postcode'],
                         'country' => $aData['country'],
                         'address' => $aData['address'],
                         'sex' => $aData['gender'],

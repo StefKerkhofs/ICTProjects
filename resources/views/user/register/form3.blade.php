@@ -114,7 +114,7 @@
                             $aAllZip = \App\ZipCode::all();
                             foreach ($aAllZip as $oZip){
                             ?>
-                            <option value="<?php echo $oZip->zip_code_id ?>"><?php echo $oZip->town ?></option>
+                            <option value="<?php echo $oZip->zip_id ?>"><?php echo $oZip->zip_town . " " . $oZip->zip_code ?></option>
                             <?php
                             }
                             ?>
