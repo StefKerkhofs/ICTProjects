@@ -109,7 +109,7 @@ class ProfileController extends Controller
                         'phone'             => $aRequest->post('txtPhone'),
                         'emergency_phone_1' => $aRequest->post('txtEmergencyPhone1'),
                         'emergency_phone_2' => $aRequest->post('txtEmergencyPhone2'),
-                        'MedicalIssue'      => $aRequest->post('txtMedicalIssue'),
+                        'medical_issue'      => $aRequest->post('txtMedicalIssue'),
                         'medical_info'      => $aRequest->post('txtMedicalInfo'),
                     ]
                 );
