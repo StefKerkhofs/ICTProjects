@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 
 class EditTravellerController extends Controller
 {
-    /*
-     *searchTravellers page
+    /**
+     * @author
+     * @return \Exception|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a table of travellers on the same trip as the mentor
+     * Checks if the user is logged in
+     * Find the mentor's trip id and all the relevant travellers
+     * Show the view
+     * If the user isn't logged in redirect to the homepage
      */
     public function searchTravellers()
     {
@@ -55,9 +62,16 @@ class EditTravellerController extends Controller
         //if user is not logged in, return home view
         return redirect('/');
     }
-    /*
-    * Search Table
-    */
+
+    /**
+     * @author
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     *
+     * Filter the travellers by their first- or lastname
+     * Generate the html of the table
+     * Show the view
+     */
     public function search(Request $request)
     {
         if($request->ajax())
