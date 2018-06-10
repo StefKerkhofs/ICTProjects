@@ -36,7 +36,8 @@ class HomeController extends Controller
         {
             $afilteredUserList=DB::table('menus')
                 ->join('pages', 'menus.page_id', '=', 'pages.page_id')
-                ->select('menus.menu_name', 'pages.page_name')
+                ->join('trips', 'trips.page_id', '=', 'pages.page_id')
+                ->select('menus.menu_name', 'pages.page_name', 'trips.is_active')
                 ->get();
             $page = json_decode(json_encode($afilteredUserList),true);
 

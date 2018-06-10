@@ -11,11 +11,14 @@
     <div class="collapse navbar-collapse" id="navbarS">
         <ul class="navbar-nav mr-auto">
 
-            <?php $navbars = HomeController::index();?>
+            <?php $navbars = HomeController::index();
+            //var_dump($navbars['navbars'])?>
             @foreach($navbars['navbars'] as $navbar)
+                @if($navbar['is_active'] == true)
                     <li class="nav-item">
                         <a class="nav-link navlink" href="{{ url("/").'/'.$navbar['page_name'] }}">{{ $navbar['menu_name'] }}</a>
                     </li>
+                    @endif
                 @endforeach
                 <?php
             //Check if logged in
