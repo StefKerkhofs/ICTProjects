@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class EditTravellerController extends Controller
 {
     /**
-     * @author
+     * @author Joren Meynen
      * @return \Exception|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      *
      * Shows a table of travellers on the same trip as the mentor

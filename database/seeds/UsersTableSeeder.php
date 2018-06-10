@@ -11,13 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'u',
-            'email' => 'root@root.root',
-            'password' => bcrypt('root'),
-            'function' => 'Begeleider'
-        ]);
-        //Stefan Segers = 2
+        //Stefan Segers = 1
         DB::table('users')->insert([
             'name' => 'u0067341',
             'email' => 'u0067341@ucll.be',
@@ -25,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Begeleider'
         ]);
 
-        //Andrey Sereda = 3
+        //Andrey Sereda = 2
         DB::table('users')->insert([
             'name' => 'r0615163',
             'email' => 'r0615163@ucll.be',
@@ -33,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Daan Vandenbosch = 4
+        //Daan Vandenbosch = 3
         DB::table('users')->insert([
             'name' => 'r0664592',
             'email' => 'r0664592@ucll.be',
@@ -41,7 +35,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Joren Meynen = 5
+        //Joren Meynen = 4
         DB::table('users')->insert([
             'name' => 'r0674424',
             'email' => 'r0674424@ucll.be',
@@ -49,7 +43,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Kaan Akpinar = 6
+        //Kaan Akpinar = 5
         DB::table('users')->insert([
             'name' => 'r0577574',
             'email' => 'r0577574@ucll.be',
@@ -57,7 +51,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Luca Thielens = 7
+        //Luca Thielens = 6
         DB::table('users')->insert([
             'name' => 'r0666244',
             'email' => 'r0666244@ucll.be',
@@ -65,7 +59,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Michiel Guilliams = 8
+        //Michiel Guilliams = 7
         DB::table('users')->insert([
             'name' => 'r0668515',
             'email' => 'r0668515@ucll.be',
@@ -73,7 +67,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Nick Castermans = 9
+        //Nick Castermans = 8
         DB::table('users')->insert([
             'name' => 'r0618569',
             'email' => 'r0618569@ucll.be',
@@ -81,7 +75,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Nico Schelfhout = 10
+        //Nico Schelfhout = 9
         DB::table('users')->insert([
             'name' => 'r0679934',
             'email' => 'r0679934@ucll.be',
@@ -89,7 +83,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Robin Machiels = 11
+        //Robin Machiels = 10
         DB::table('users')->insert([
             'name' => 'r0664407',
             'email' => 'r0664407@ucll.be',
@@ -97,7 +91,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Sasha Van de Voorde = 12
+        //Sasha Van de Voorde = 11
         DB::table('users')->insert([
             'name' => 'r0673786',
             'email' => 'r0673786@ucll.be',
@@ -105,7 +99,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Stef Kerkhofs = 13
+        //Stef Kerkhofs = 12
         DB::table('users')->insert([
             'name' => 'r0658314',
             'email' => 'r0658314@ucll.be',
@@ -113,14 +107,14 @@ class UsersTableSeeder extends Seeder
             'function' => 'Reiziger'
         ]);
 
-        //Yoeri op't Roodt = 14
+        //Yoeri op't Roodt = 13
         DB::table('users')->insert([
             'name' => 'r0663911',
             'email' => 'r0663911@ucll.be',
             'password' => bcrypt('azertyuiop'),
             'function' => 'Reiziger'
         ]);
-        //gebruiker = 15
+        //gebruiker = 14
         DB::table('users')->insert([
             'name' => 'gebruiker',
             'email' => 'gebruiker@ucll.be',
@@ -128,7 +122,7 @@ class UsersTableSeeder extends Seeder
             'function' => 'Gebruiker'
         ]);
 
-        //gebruiker = 15
+        //admin = 15
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@ucll.be',
