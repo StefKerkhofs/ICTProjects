@@ -1,5 +1,5 @@
 * {
-    font-family: "Aleo", "Arial", "Helvetica", "sans-serif";
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     margin: 0;
     padding: 0;
 }
@@ -13,7 +13,7 @@ ul {
 a {
     color: white;
     text-decoration: none;
-    text-transform: lowercase;
+    text-transform: capitalize;
 }
 
 li {
@@ -37,12 +37,12 @@ li a:hover {
 
 nav.headbar {
     background-color: #e00049;
-    font-size: 1.75em;
+    font-size: 1.5em;
 }
 
 nav.userbar {
     background-color: #003469;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 nav.headbar a {
