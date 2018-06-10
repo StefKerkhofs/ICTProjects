@@ -110,7 +110,6 @@ class HomeController extends Controller
                     return redirect('/info');
 
                 }
-                return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
             }
 
             if (Auth::user()) {
