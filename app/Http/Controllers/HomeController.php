@@ -98,7 +98,11 @@ class HomeController extends Controller
 
                 if ($user->function == 'admin')
                 {
-                    redirect('/admin/info');
+                    return redirect('/admin/info');
+                }
+                elseif($user->function == 'Gebruiker')
+                {
+                    return redirect('/reg');
                 }
                 else
                 {
@@ -112,6 +116,10 @@ class HomeController extends Controller
                 $sFunctie = User::where('id', Auth::id())->value('function');
                 if ($sFunctie == 'admin') {
                     return redirect('/admin/info');
+                }
+                elseif($sFunctie == 'Gebruiker')
+                {
+                    return redirect('/reg');
                 }
                 else
                 {
