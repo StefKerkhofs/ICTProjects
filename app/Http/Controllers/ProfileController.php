@@ -10,9 +10,19 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    /**
+     * @author Robin Machiels
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a Travellers profile
+     * Checks if the user is logged in
+     * Find the data of that user in the travellers table
+     * Send the data to the view
+     * If there is something wrong redirect to the homepage
+     */
     public function profile()
     {
-
         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
         if ($sUserLastname == null){
             return redirect('/');
@@ -36,6 +46,17 @@ class ProfileController extends Controller
         //if user is not logged in
         return redirect('/');
     }
+
+    /**
+     * @author Joren Meynen
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a traveller's profile ready to be edited
+     * Checks if a user is logged in
+     * Find the data of that user in the travellers table
+     * Send the data to the view
+     * If there is something wrong redirect to the homepage
+     */
     public function profileEdit()
     {
         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
@@ -60,6 +81,19 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
+    /**
+     * @author Joren Meynen
+     * @param Request $aRequest
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Updates the profile of a traveller
+     *
+     * Check if the user is logged in
+     * Validate the form
+     * Update the data
+     * Redirect to the profile
+     * If there is something wrong redirect to the homepage
+     */
     public function profileUpdate(Request $aRequest)
     {
         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
@@ -120,6 +154,10 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
+    /**
+     * @return array
+     * Returns an array with all the error messages for the form
+     */
     public function messages()
     {
         return [
