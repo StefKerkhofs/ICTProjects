@@ -14,7 +14,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 1,
             'firstname' => 'root',
             'lastname' => '',
@@ -56,7 +56,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 3,
             'firstname' => 'Andrey',
             'lastname' => 'Sereda',
@@ -140,7 +140,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 7,
             'firstname' => 'Luca',
             'lastname' => 'Thielens',
@@ -203,7 +203,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 10,
             'firstname' => 'Nico',
             'lastname' => 'Schelfhout',
@@ -245,7 +245,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 12,
             'firstname' => 'Sasha',
             'lastname' => 'Van de Voorde',
@@ -266,7 +266,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 13,
             'firstname' => 'Stef',
             'lastname' => 'Kerkhofs',
@@ -287,7 +287,7 @@ class TravellersTableSeeder extends Seeder
         DB::table('travellers')->insert([
             'zip_id' => 1,
             'major_id' => 1,
-            'trip_id' => 1,
+            'trip_id' => 2,
             'user_id' => 14,
             'firstname' => 'Yoeri',
             'lastname' => 'op\'t Roodt',

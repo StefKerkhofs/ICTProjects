@@ -24,7 +24,7 @@ class TripsTableSeeder extends Seeder
             'trip_name' => 'Amerika 2018',
             'trip_year' => '2018',
             'trip_price' => '99',
-            'trip_contact' => '',
+            'trip_contact' => 'Amerika2018@ucll.be',
             'is_active' => '1',
         ));
 
