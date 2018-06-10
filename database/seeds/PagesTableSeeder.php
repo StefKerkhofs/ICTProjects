@@ -24,7 +24,7 @@ class PagesTableSeeder extends Seeder
         ));
         DB::table('pages')->insert(array(
             'page_name' => 'Amerika 2018',
-            'page_content' => '',
+            'page_content' => 'b.pdf',
             'page_type' => 'pdf',
         ));
     }
