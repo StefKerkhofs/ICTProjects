@@ -23,7 +23,7 @@
                     }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logoutUser">Log out</a>
+                        <a class="nav-link" href="/logoutUser">Afmelden/Log out</a>
                     </li>
             @endguest
         </ul>
