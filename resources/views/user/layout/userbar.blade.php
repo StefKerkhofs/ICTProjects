@@ -23,7 +23,7 @@
                     }
                     ?>
                     <li class="nav-item">
-                        <a style="color: white" class="nav-link" href="/logoutUser">Log out</a>
+                        <a style="color: white" class="nav-link" href="/logoutUser">Afmelden/Log out</a>
                     </li>
             @endguest
         </ul>
