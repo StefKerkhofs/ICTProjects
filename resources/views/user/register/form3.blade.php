@@ -127,7 +127,7 @@
                 <div class="button">
                     <a class="nav-link" href="/">Annuleren</a>
                 </div>
-                <input type="submit" value="volgende">
+                <input type="submit" value="Volgende">
             </div>
         {{ Form::close() }}
     </div>
