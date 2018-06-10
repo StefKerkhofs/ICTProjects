@@ -7,7 +7,7 @@
         <ul class="navbar-nav ml-auto mr-3">
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="/logInUser">Log in</a>
+                <a class="nav-link" href="/logInUser">Aanmelden/Log in</a>
             </li>
             @else
                     <?php
