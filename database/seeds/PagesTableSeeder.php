@@ -13,7 +13,7 @@ class PagesTableSeeder extends Seeder
     {
         DB::table('pages')->insert(array(
             'page_name' => 'Info',
-            'page_content' => 'test',
+            'page_content' => '<h1>STUDIEREIZEN 3DE OPLEIDINGSFASE PROFESSIONELE BACHELOR</h1><span style="color: #626262;">Hier komt alle informatie te staan over de reizen voor studenten.</span>',
             'page_type' => 'html',
         ));
 

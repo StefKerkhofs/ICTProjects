@@ -7,6 +7,12 @@ use App\Trip;
 use App\TripsModel;
 use Illuminate\Database\QueryException;
 
+/**
+ * Class FilterController
+ * @package App\Http\Controllers
+ * @author Kaan Akpinar
+ */
+
 class GuestPagesController extends Controller
 {
     public function showPage($page)
