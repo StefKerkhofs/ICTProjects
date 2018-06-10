@@ -16,6 +16,18 @@ use Illuminate\Support\Facades\DB;
 
 class FilterController extends Controller
 {
+    /**
+     * @author Michiel Guilliams
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a list of all travellers that go on the same trip as the mentor, with the selected attributes
+     * Checks if a user is logged in
+     * Get the attribute filter
+     * Get the trip_id and proceed to get all the relevant travellers
+     * Show the filtered table
+     * If the user isn't logged in redirect to the homepage
+     */
     public function getFilteredTraveller(Request $request)
     {
         if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
