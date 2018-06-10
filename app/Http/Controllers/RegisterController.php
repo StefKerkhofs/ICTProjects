@@ -301,31 +301,7 @@ class RegisterController extends Controller
                     [
                         'user_id' => $iUserID,
                         'trip_id' => $aData['ReisKiezen'],
-                        'zip_code_id' => $aData['Postcode'],
-                        'firstname' => $aData['firstname'],
-                        'lastname' => $aData['lastname'],
                         'zip_id' => $aData['Postcode'],
-                        'country' => $aData['country'],
-                        'address' => $aData['address'],
-                        'sex' => $aData['gender'],
-                        'phone' => $aData['gsm'],
-                        'emergency_phone_1' => $aData['NoodNummer1'],
-                        'emergency_phone_2' => $aData['NoodNummer2'],
-                        'nationality' => $aData['nationality'],
-                        'birthdate' => $aData['birthdate'],
-                        'birthplace' => $aData['birthplace'],
-                        'medical_info' => $aData['MedischeInfo'],
-                        'MedicalIssue' => $aData['MedischeAandoening']
-                    ]
-                );
-            }
-            else{
-                Traveller::insert(
-                    [
-                        'user_id' => $iUserID,
-                        'trip_id' => $aData['ReisKiezen'],
-                        'study_id' => $aData['AfstudeerrichtingKiezen'],
-                        'zip_code_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
                         'city' => $aData['Postcode'],
@@ -339,7 +315,31 @@ class RegisterController extends Controller
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
                         'medical_info' => $aData['MedischeInfo'],
-                        'MedicalIssue' => $aData['MedischeAandoening']
+                        'medical_issue' => $aData['MedischeAandoening']
+                    ]
+                );
+            }
+            else{
+                Traveller::insert(
+                    [
+                        'user_id' => $iUserID,
+                        'trip_id' => $aData['ReisKiezen'],
+                        'major_id' => $aData['AfstudeerrichtingKiezen'],
+                        'zip_id' => $aData['Postcode'],
+                        'firstname' => $aData['firstname'],
+                        'lastname' => $aData['lastname'],
+                        'city' => $aData['Postcode'],
+                        'country' => $aData['country'],
+                        'address' => $aData['address'],
+                        'sex' => $aData['gender'],
+                        'phone' => $aData['gsm'],
+                        'emergency_phone_1' => $aData['NoodNummer1'],
+                        'emergency_phone_2' => $aData['NoodNummer2'],
+                        'nationality' => $aData['nationality'],
+                        'birthdate' => $aData['birthdate'],
+                        'birthplace' => $aData['birthplace'],
+                        'medical_info' => $aData['MedischeInfo'],
+                        'medical_issue' => $aData['MedischeAandoening']
                     ]
                 );
             }
