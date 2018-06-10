@@ -1,5 +1,11 @@
 @extends('user.templates.templateFrontEnd')
-
+@section('style')
+    <style>
+        .container{
+            margin-bottom: 100px;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container">
         @if($sType == "pdf")

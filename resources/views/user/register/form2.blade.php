@@ -105,7 +105,7 @@
                     <p>
                         <select name="ReisKiezen" class="select">
                             <?php
-                                $aAllTrips = \App\Trip::all()->where('is_active',true);
+                                $aAllTrips = \App\Trip::all()->where('is_active','=',true)->where('trip_name','<>','Info');
                                 foreach ($aAllTrips as $oTrip){
                                     ?>
                                 <option value="<?php echo $oTrip->trip_id ?>"><?php echo $oTrip->trip_name ?></option>

@@ -82,6 +82,9 @@
             float: left;
             padding-left: 1px;
         }
+        .container{
+            margin-bottom: 100px;
+        }
 
     </style>
 @endsection
