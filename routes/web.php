@@ -91,6 +91,6 @@ Route::post('/editTraveller/{user_id}', 'EditTravellerController@updateTraveller
 Route::get('/filter', 'FilterController@getFilteredTraveller');
 route::post('/filter', 'FilterController@getFilteredTraveller');
 /*
- *
+ * GuestPagesController
  */
 Route::get('/{page}', 'GuestPagesController@showPage');
