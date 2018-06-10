@@ -13,6 +13,9 @@
 
             <?php $navbars = HomeController::index();
             //var_dump($navbars['navbars'])?>
+            <li class="nev-item">
+                <a class="nav-link" href="{{ App\Menu::where('menu_id', 1)->first()->menu_name }}">{{ App\Menu::where('menu_id', 1)->first()->menu_name }}</a>
+            </li>
             @foreach($navbars['navbars'] as $navbar)
                 @if($navbar['is_active'] == true)
                     <li class="nav-item">

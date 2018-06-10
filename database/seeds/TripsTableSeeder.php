@@ -12,14 +12,6 @@ class TripsTableSeeder extends Seeder
     public function run()
     {
         DB::table('trips')->insert(array(
-            'page_id' => 1,
-            'trip_name' => 'Info',
-            'trip_year' => '1',
-            'trip_price' => '1',
-            'trip_contact' => '',
-            'is_active' => '1',
-        ));
-        DB::table('trips')->insert(array(
             'page_id' => 2,
             'trip_name' => 'Amerika 2017',
             'trip_year' => '2017',
