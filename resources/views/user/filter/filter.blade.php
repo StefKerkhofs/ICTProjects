@@ -1,4 +1,6 @@
 @extends("user.templates.templateFrontEnd")
+@section('title')
+    <title>Filter</title>
 @section('style')
     <style>
 
