@@ -64,7 +64,7 @@ class EditTravellerController extends Controller
     }
 
     /**
-     * @author
+     * @author Joren Meynen
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      *
@@ -102,13 +102,20 @@ class EditTravellerController extends Controller
             }
         }
     }
-    /*
-     * editTraveller page
+    /**
+     * @author Joren Meynen
+     * @param $user_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a form of the selected traveller
+     * Checks if the user is logged in
+     * Find all details of selected traveller
+     * Show the view
+     * If the user isn't logged in redirect to the homepage
      */
-    public function editTraveller(Request $aRequest, $user_id)
+    public function editTraveller($user_id)
     {
-        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
-        {
+        if (\App\User::where('id', \Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider') {
             return redirect('/info');
         }
         $aTravellers = DB::table('travellers')
@@ -119,8 +126,16 @@ class EditTravellerController extends Controller
         //echo $aRequest;
         return view('user.edit_traveller.editTraveller', ['aTravellers' => $aTravellers]);
     }
-    /*
-     * update selected Traveller in database
+    /**
+     * @author Joren Meynen
+     * @param Request $aRequest
+     * @param $user_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Update selected Traveller in database
+     * Validates all field in form, returns errors if present
+     * Updates the selected Traveller in database
+     * redirects to editTravellers
      */
     public function updateTraveller(Request $aRequest, $user_id)
     {
@@ -167,6 +182,12 @@ class EditTravellerController extends Controller
         return redirect('/searchTravellers');
     }
 
+    /**
+     * @author Joren Meynen
+     * @return array
+     *
+     * The error messages for updateTraveller
+     */
     public function messages()
     {
         return [

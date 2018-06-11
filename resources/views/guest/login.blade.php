@@ -1,6 +1,5 @@
 @extends('user.templates.templateFrontEnd')
-
-
+@section('title') <title>Login</title>
 @section('content')
     <div class="container">
     <h1>Log in</h1>
