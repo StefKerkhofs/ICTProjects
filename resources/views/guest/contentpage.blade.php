@@ -1,4 +1,6 @@
 @extends('user.templates.templateFrontEnd')
+@section('title')
+    <title>Reizen IWT</title>
 @section('style')
     <style>
         .container{
