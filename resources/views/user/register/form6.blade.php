@@ -72,6 +72,11 @@
             float: left;
             padding-left: 1px;
         }
+        span{
+            width: 250px;
+            float: left;
+            font-weight: normal;
+        }
         form p{
             clear: both;
             margin-top: -20px;

@@ -85,9 +85,6 @@
     </style>
 @endsection
 @section('content')
-    <?php
-    $aData = unserialize($_COOKIE['register']);
-    ?>
     <div class="container">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -109,9 +106,7 @@
                                 foreach ($aAllTrips as $oTrip){
                                     ?>
                                 <option value="<?php echo $oTrip->trip_id ?>"><?php echo $oTrip->trip_name ?></option>
-                                <?php
-                                }
-                            ?>
+                                <?php } ?>
                         </select>
                     </p>
                     <?php
@@ -126,15 +121,10 @@
                             foreach ($aAllMajors as $oMajor){
                             ?>
                             <option value="<?php echo $oMajor->major_id ?>"><?php echo $oMajor->major_name ?></option>
-                            <?php
-                            }
-                            ?>
+                            <?php } ?>
                         </select>
                     </p>
-                    <?php
-                        }
-                    }
-                    ?>
+                    <?php }} ?>
                 </div>
             </div>
             <div class="formbutton">
