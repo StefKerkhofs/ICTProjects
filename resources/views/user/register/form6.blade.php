@@ -72,6 +72,11 @@
             float: left;
             padding-left: 1px;
         }
+        span{
+            width: 250px;
+            float: left;
+            font-weight: normal;
+        }
         form p{
             clear: both;
             margin-top: -20px;
@@ -93,7 +98,9 @@
         {{ Form::open(array('action' => 'RegisterController@form6GET', 'method' => 'get')) }}
             <div class="formcontainer">
                 <div class="leftform">
-                    <?php $aData = unserialize($_COOKIE['register']) ?>
+                    <?php $aData = unserialize($_COOKIE['register']);
+                    $Gemeente = \App\Zip::all()->where('zip_id',$aData['Postcode']);
+                    ?>
                     <p><label class="field" for="name">Naam: </label>            <span><?php echo $aData['lastname']?></span></p>
                     <p><label class="field" for="name">Voornaam: </label>        <span><?php echo $aData['firstname']?></span></p>
                     <p><label class="field" for="name">Geslacht: </label>        <span><?php echo $aData['gender']?></span></p>
@@ -101,7 +108,7 @@
                     <p><label class="field" for="name">Geboorteplaats: </label>  <span><?php echo $aData['birthplace']?></span></p>
                     <p><label class="field" for="name">Nationaliteit: </label>   <span><?php echo $aData['nationality']?></span></p>
                     <p><label class="field" for="name">Adres:  </label>          <span><?php echo $aData['address']?></span></p>
-                    <p><label class="field" for="name">Gemeente: </label>        <span><?php echo $aData['Postcode']?></span></p>
+                    <p><label class="field" for="name">Gemeente: </label>        <span><?php foreach ($Gemeente as $oGemeente){echo $oGemeente->zip_town;}?></span></p>
                     <p><label class="field" for="name">Land: </label>            <span><?php echo $aData['country']?></span></p>
                 </div>
 
@@ -110,7 +117,8 @@
                     <p><label class="field" for="name">Telefoon: </label>        <span><?php echo $aData['gsm']?></span></p>
                     <p><label class="field" for="name">Noodnummer 1: </label>    <span><?php echo $aData['NoodNummer1']?></span></p>
                     <p><label class="field" for="name">Noodnummer 2: </label>    <span><?php echo $aData['NoodNummer2']?></span></p>
-                    <p><label class="field" for="name">Behandeling:</label>      <span><?php echo $aData['MedischeAandoening']?></span></p>
+
+                    <p><label class="field" for="name">Behandeling:</label>    @if($aData['MedischeAandoening']) <span>Ja</span> @else <span>Nee</span> @endif</p>
                     <p><label class="field" for="name">Medische info: </label>   <span><?php echo $aData['MedischeInfo']?></span></p>
                 </div>
             </div>

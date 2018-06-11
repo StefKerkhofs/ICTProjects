@@ -6,7 +6,7 @@
         <ul class="navbar-nav ml-auto mr-3">
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="/logInUser">Aanmelden/Log in</a>
+                <a style="color: white" class="nav-link" href="/logInUser">Aanmelden/Log in</a>
             </li>
             @else
                     <?php
@@ -15,13 +15,13 @@
                         if ($sUserLastname !== null){
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile">Welcome <?php echo $sUserFirstname,  " " , $sUserLastname ?></a>
+                        <a style="color: white" class="nav-link" href="/profile">Welcome <?php echo $sUserFirstname,  " " , $sUserLastname ?></a>
                     </li>
                     <?php
                     }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logoutUser">Afmelden/Log out</a>
+                        <a style="color: white" class="nav-link" href="/logoutUser">Afmelden/Log out</a>
                     </li>
             @endguest
         </ul>

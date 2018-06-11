@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class EditTravellerController extends Controller
 {
     /**
-     * @author
+     * @author Joren Meynen
      * @return \Exception|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      *
      * Shows a table of travellers on the same trip as the mentor
@@ -64,7 +64,7 @@ class EditTravellerController extends Controller
     }
 
     /**
-     * @author
+     * @author Joren Meynen
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      *
@@ -102,24 +102,40 @@ class EditTravellerController extends Controller
             }
         }
     }
-    /*
-     * editTraveller page
+    /**
+     * @author Joren Meynen
+     * @param $user_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a form of the selected traveller
+     * Checks if the user is logged in
+     * Find all details of selected traveller
+     * Show the view
+     * If the user isn't logged in redirect to the homepage
      */
-    public function editTraveller(Request $aRequest, $user_id)
+    public function editTraveller($user_id)
     {
-        if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider')
-        {
+        if (\App\User::where('id', \Illuminate\Support\Facades\Auth::id())->value('function') !== 'Begeleider') {
             return redirect('/info');
         }
         $aTravellers = DB::table('travellers')
             ->join('users', 'travellers.user_id', '=', 'users.id')
+            ->join('zips', 'travellers.zip_id', '=', 'zips.zip_id')
             ->where('travellers.user_id', '=', $user_id)
             ->get();
         //echo $aRequest;
         return view('user.edit_traveller.editTraveller', ['aTravellers' => $aTravellers]);
     }
-    /*
-     * update selected Traveller in database
+    /**
+     * @author Joren Meynen
+     * @param Request $aRequest
+     * @param $user_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Update selected Traveller in database
+     * Validates all field in form, returns errors if present
+     * Updates the selected Traveller in database
+     * redirects to editTravellers
      */
     public function updateTraveller(Request $aRequest, $user_id)
     {
@@ -131,7 +147,7 @@ class EditTravellerController extends Controller
             'txtBirthplace' => 'required',
             'txtNationality' => 'required',
             'txtAddress' => 'required',
-            'txtCity' => 'required',
+            'Postcode' => 'required',
             'txtCountry' => 'required',
 
             'txtEmail' => [ 'required', 'string', 'email', 'max:255' /*, 'unique:users,email' */],
@@ -152,13 +168,13 @@ class EditTravellerController extends Controller
                     'birthplace'        => $aRequest->post('txtBirthplace'),
                     'nationality'       => $aRequest->post('txtNationality'),
                     'address'           => $aRequest->post('txtAddress'),
-                    'city'              => $aRequest->post('txtCity'),
+                    'zip_id'            =>  $aRequest->post('Postcode'),
                     'country'           => $aRequest->post('txtCountry'),
                     'email'             => $aRequest->post('txtEmail'),
                     'phone'             => $aRequest->post('txtPhone'),
                     'emergency_phone_1' => $aRequest->post('txtEmergencyPhone1'),
                     'emergency_phone_2' => $aRequest->post('txtEmergencyPhone2'),
-                    'medical_issue'      => $aRequest->post('txtMedicalIssue'),
+                    'medical_issue'     => $aRequest->post('txtMedicalIssue'),
                     'medical_info'      => $aRequest->post('txtMedicalInfo'),
                 ]
             );
@@ -166,6 +182,12 @@ class EditTravellerController extends Controller
         return redirect('/searchTravellers');
     }
 
+    /**
+     * @author Joren Meynen
+     * @return array
+     *
+     * The error messages for updateTraveller
+     */
     public function messages()
     {
         return [
@@ -177,7 +199,7 @@ class EditTravellerController extends Controller
             'txtBirthplace.required' => 'Je moet je geboorte plaats ingeven.',
             'txtNationality.required' => 'je moet je nationaliteit opgeven.',
             'txtAddress.required' => 'Je moet je adres ingeven.',
-            'txtCity.required' => 'Je moet je postcode ingeven.',
+            'Postcode.required' => 'Je moet je postcode ingeven.',
             'txtCountry.required' => 'Je moet je land ingeven',
 
             'txtEmail.required' => 'Vul je email adres in.',
@@ -189,3 +211,4 @@ class EditTravellerController extends Controller
         ];
     }
 }
+

@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
+    /**
+     * @author Daan Vandebosch
+     * @return \Exception|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Show all register forms and validates / saves data.
+     */
+
     function __construct() {
         session_start();
     }
@@ -42,7 +49,6 @@ class RegisterController extends Controller
         $aData['txtNummer'] = $aRequest->post('txtNummer');
         $aData['txtWachtwoord'] = $aRequest->post('txtWachtwoord');
         $aData['email'] = $aRequest->post('txtEmail');
-        $aData['IsStudentOrDocent'] = $_SESSION["StudentOrDocent"];
         $aData['IsStudentOrDocent'] = $aRequest->post('radio');
 
         //Setting Cookie
@@ -110,7 +116,6 @@ class RegisterController extends Controller
         else{
             return redirect('reg/form1');
         }
-
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
@@ -304,7 +309,6 @@ class RegisterController extends Controller
                         'zip_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
-                        'city' => $aData['Postcode'],
                         'country' => $aData['country'],
                         'address' => $aData['address'],
                         'sex' => $aData['gender'],
@@ -328,7 +332,6 @@ class RegisterController extends Controller
                         'zip_id' => $aData['Postcode'],
                         'firstname' => $aData['firstname'],
                         'lastname' => $aData['lastname'],
-                        'city' => $aData['Postcode'],
                         'country' => $aData['country'],
                         'address' => $aData['address'],
                         'sex' => $aData['gender'],
