@@ -1,11 +1,6 @@
 <?php use \App\Http\Controllers\HomeController;?>
 <nav class="navbar navbar-expand-lg navbar-dark headbar">
-<<<<<<< HEAD
-    <img src="{{asset("/image/ucll_3493.png")}}" alt="ucll logo" height="55" width="120"/>
-=======
-
     <img style="margin-right: 60px;margin-left: 50px;" src="{{asset("/images/logo.svg")}}" alt="ucll logo" height="60" width="auto"/>
->>>>>>> 6eec728541bcdcf5387a114e6f8bd64558607a8b
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
