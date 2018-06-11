@@ -154,17 +154,14 @@ class RegisterController extends Controller
 
             //Calling next form
             return redirect('reg/form4');
-
         }
         catch(Exception $exception) {
-
         }
     }
     public function form3(){
         if (\App\User::where('id',\Illuminate\Support\Facades\Auth::id())->value('function') !== 'Gebruiker'){
             return redirect('/info');
         }
-
         if (isset($_COOKIE['register'])){
             $aData = unserialize($_COOKIE['register']);
             if ($aData['ReisKiezen'] == null){
@@ -175,7 +172,6 @@ class RegisterController extends Controller
         else{
             return redirect('reg/form1');
         }
-
     }
 
     /*----------------------------------------------------------------------------------------------------------------------*/
