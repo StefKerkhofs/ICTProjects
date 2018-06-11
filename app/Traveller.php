@@ -14,7 +14,6 @@ class Traveller extends Model
         'user_id',
         'firstname',
         'lastname',
-        'city',
         'country',
         'address',
         'sex',

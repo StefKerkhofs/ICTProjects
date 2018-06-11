@@ -36,7 +36,8 @@ class HomeController extends Controller
         {
             $afilteredUserList=DB::table('menus')
                 ->join('pages', 'menus.page_id', '=', 'pages.page_id')
-                ->select('menus.menu_name', 'pages.page_name')
+                ->join('trips', 'trips.page_id', '=', 'pages.page_id')
+                ->select('menus.menu_name', 'pages.page_name', 'trips.is_active')
                 ->get();
             $page = json_decode(json_encode($afilteredUserList),true);
 
@@ -98,20 +99,27 @@ class HomeController extends Controller
 
                 if ($user->function == 'admin')
                 {
-                    redirect('/admin/info');
+                    return redirect('/admin/info');
+                }
+                elseif($user->function == 'Gebruiker')
+                {
+                    return redirect('/reg');
                 }
                 else
                 {
                     return redirect('/info');
 
                 }
-                return back()->with('message', 'Gebruikersnaam of passwoord is fout.');
             }
 
             if (Auth::user()) {
                 $sFunctie = User::where('id', Auth::id())->value('function');
                 if ($sFunctie == 'admin') {
                     return redirect('/admin/info');
+                }
+                elseif($sFunctie == 'Gebruiker')
+                {
+                    return redirect('/reg');
                 }
                 else
                 {

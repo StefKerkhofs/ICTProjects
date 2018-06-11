@@ -109,7 +109,25 @@
                         <p>{{ Form::label('lblBirthplace',  'Geboorteplaats:', ['class' => 'field']) }}  {{ Form::text('txtBirthplace',  $data->birthplace,  ['class' => 'textbox'] )}} </p>
                         <p>{{ Form::label('lblNationality', 'Nationaliteit:',  ['class' => 'field']) }}  {{ Form::text('txtNationality', $data->nationality, ['class' => 'textbox'] )}} </p>
                         <p>{{ Form::label('lblAddress',     'Adres:',          ['class' => 'field']) }}  {{ Form::text('txtAddress',     $data->address,     ['class' => 'textbox'] )}} </p>
-                        <p>{{ Form::label('lblCity',        'Gemeente:',       ['class' => 'field']) }}  {{ Form::text('txtCity',        $data->city,        ['class' => 'textbox'] )}} </p>
+                        <p style="padding-bottom: 0px;margin-bottom: 0px;"><label class="field" for="name">Gemeente:</label>
+                            <select name="Postcode" class="select">
+                                <?php
+                                $aAllZip = \App\Zip::all();
+                                foreach ($aAllZip as $oZip){
+                                    if($oZip->zip_id == $data->zip_id){
+                                    ?>
+                                        <option value="<?php echo $oZip->zip_id ?>" selected><?php echo $oZip->zip_town . " " . $oZip->zip_code ?></option>
+                                    <?php
+                                    }
+                                    else{
+                                    ?>
+                                        <option value="<?php echo $oZip->zip_id ?>"><?php echo $oZip->zip_town . " " . $oZip->zip_code ?></option>
+                                    <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </p>
                         <p>{{ Form::label('lblCountry',     'Land:',           ['class' => 'field']) }}  {{ Form::text('txtCountry',     $data->country,     ['class' => 'textbox'] )}} </p>
                     </div>
 

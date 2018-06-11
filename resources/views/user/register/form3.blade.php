@@ -24,12 +24,12 @@
         }
         .leftform{
 
-            height: 500px;
+            height: 350px;
             float:left;
         //border: 1px solid red;
         }
         .rightform{
-            height: 500px;
+            height: 350px;
         //border: 1px solid green;
             float: left;
         }
@@ -127,7 +127,7 @@
                 <div class="button">
                     <a class="nav-link" href="/">Annuleren</a>
                 </div>
-                <input type="submit" value="volgende">
+                <input type="submit" value="Volgende">
             </div>
         {{ Form::close() }}
     </div>

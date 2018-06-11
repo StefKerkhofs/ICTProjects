@@ -21,7 +21,6 @@ class CreateTravellersTable extends Migration
             $table->integer('zip_id')->unsigned();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('city');
             $table->string('country', 11);
             $table->string('address', 255);
             $table->string('sex', 11);

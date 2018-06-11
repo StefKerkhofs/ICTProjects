@@ -82,7 +82,7 @@
                 <p><label class="field" for="name">Geboorteplaats: </label>  <span>{{$traveller['birthplace']}}</span></p>
                 <p><label class="field" for="name">Nationaliteit: </label>   <span>{{$traveller['nationality']}}</span></p>
                 <p><label class="field" for="name">Adres:  </label>          <span>{{$traveller['address']}}</span></p>
-                <p><label class="field" for="name">Gemeente: </label>        <span>{{$traveller['city']}}</span></p>
+                <p><label class="field" for="name">Gemeente: </label>        <span>{{$traveller['zip_town']}} {{$traveller['zip_code']}}</span></p>
                 <p><label class="field" for="name">Land: </label>            <span>{{$traveller['country']}}</span></p>
             </div>
 

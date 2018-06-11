@@ -10,9 +10,19 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    /**
+     * @author Robin Machiels
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a Travellers profile
+     * Checks if the user is logged in
+     * Find the data of that user in the travellers table
+     * Send the data to the view
+     * If there is something wrong redirect to the homepage
+     */
     public function profile()
     {
-
         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
         if ($sUserLastname == null){
             return redirect('/');
@@ -26,6 +36,7 @@ class ProfileController extends Controller
             //find the user's traveller_id
             $oTraveller = DB::table('travellers')
                 ->join('users', 'travellers.user_id', '=', 'users.id')
+                ->join('zips', 'travellers.zip_id', '=', 'zips.zip_id')
                 ->where('travellers.user_id', '=', $id)
                 ->first();
             $oTraveller = json_decode(json_encode($oTraveller),true);
@@ -36,6 +47,17 @@ class ProfileController extends Controller
         //if user is not logged in
         return redirect('/');
     }
+
+    /**
+     * @author Joren Meynen
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a traveller's profile ready to be edited
+     * Checks if a user is logged in
+     * Find the data of that user in the travellers table
+     * Send the data to the view
+     * If there is something wrong redirect to the homepage
+     */
     public function profileEdit()
     {
         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
@@ -51,6 +73,7 @@ class ProfileController extends Controller
             //find the user's traveller_id
             $aTravellers = DB::table('travellers')
                 ->join('users', 'travellers.user_id', '=', 'users.id')
+                ->join('zips', 'travellers.zip_id', '=', 'zips.zip_id')
                 ->where('travellers.user_id', '=', $id)
                 ->get();
             //echo $aRequest;
@@ -60,6 +83,19 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
+    /**
+     * @author Joren Meynen
+     * @param Request $aRequest
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Updates the profile of a traveller
+     *
+     * Check if the user is logged in
+     * Validate the form
+     * Update the data
+     * Redirect to the profile
+     * If there is something wrong redirect to the homepage
+     */
     public function profileUpdate(Request $aRequest)
     {
         $sUserLastname = \App\Traveller::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('lastname');
@@ -78,7 +114,7 @@ class ProfileController extends Controller
                 'txtBirthplace' => 'required',
                 'txtNationality' => 'required',
                 'txtAddress' => 'required',
-                'txtCity' => 'required',
+                'Postcode' => 'required',
                 'txtCountry' => 'required',
 
                 'txtEmail' => [ 'required', 'string', 'email', 'max:255' /*, 'unique:users,email' */],
@@ -103,7 +139,7 @@ class ProfileController extends Controller
                         'birthplace'        => $aRequest->post('txtBirthplace'),
                         'nationality'       => $aRequest->post('txtNationality'),
                         'address'           => $aRequest->post('txtAddress'),
-                        'city'              => $aRequest->post('txtCity'),
+                        'zip_id'            =>  $aRequest->post('Postcode'),
                         'country'           => $aRequest->post('txtCountry'),
                         'email'             => $aRequest->post('txtEmail'),
                         'phone'             => $aRequest->post('txtPhone'),
@@ -120,6 +156,10 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
+    /**
+     * @return array
+     * Returns an array with all the error messages for the form
+     */
     public function messages()
     {
         return [
@@ -131,7 +171,7 @@ class ProfileController extends Controller
             'txtBirthplace.required' => 'Je moet je geboorte plaats ingeven.',
             'txtNationality.required' => 'je moet je nationaliteit opgeven.',
             'txtAddress.required' => 'Je moet je adres ingeven.',
-            'txtCity.required' => 'Je moet je postcode ingeven.',
+            'Postcode.required' => 'Je moet je postcode ingeven.',
             'txtCountry.required' => 'Je moet je land ingeven',
 
             'txtEmail.required' => 'Vul je email adres in.',

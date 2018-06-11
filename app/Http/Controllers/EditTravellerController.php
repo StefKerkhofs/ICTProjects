@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 
 class EditTravellerController extends Controller
 {
-    /*
-     *searchTravellers page
+    /**
+     * @author Joren Meynen
+     * @return \Exception|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     *
+     * Shows a table of travellers on the same trip as the mentor
+     * Checks if the user is logged in
+     * Find the mentor's trip id and all the relevant travellers
+     * Show the view
+     * If the user isn't logged in redirect to the homepage
      */
     public function searchTravellers()
     {
@@ -55,9 +62,16 @@ class EditTravellerController extends Controller
         //if user is not logged in, return home view
         return redirect('/');
     }
-    /*
-    * Search Table
-    */
+
+    /**
+     * @author
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     *
+     * Filter the travellers by their first- or lastname
+     * Generate the html of the table
+     * Show the view
+     */
     public function search(Request $request)
     {
         if($request->ajax())
@@ -99,6 +113,7 @@ class EditTravellerController extends Controller
         }
         $aTravellers = DB::table('travellers')
             ->join('users', 'travellers.user_id', '=', 'users.id')
+            ->join('zips', 'travellers.zip_id', '=', 'zips.zip_id')
             ->where('travellers.user_id', '=', $user_id)
             ->get();
         //echo $aRequest;
@@ -117,7 +132,7 @@ class EditTravellerController extends Controller
             'txtBirthplace' => 'required',
             'txtNationality' => 'required',
             'txtAddress' => 'required',
-            'txtCity' => 'required',
+            'Postcode' => 'required',
             'txtCountry' => 'required',
 
             'txtEmail' => [ 'required', 'string', 'email', 'max:255' /*, 'unique:users,email' */],
@@ -138,13 +153,13 @@ class EditTravellerController extends Controller
                     'birthplace'        => $aRequest->post('txtBirthplace'),
                     'nationality'       => $aRequest->post('txtNationality'),
                     'address'           => $aRequest->post('txtAddress'),
-                    'city'              => $aRequest->post('txtCity'),
+                    'zip_id'            =>  $aRequest->post('Postcode'),
                     'country'           => $aRequest->post('txtCountry'),
                     'email'             => $aRequest->post('txtEmail'),
                     'phone'             => $aRequest->post('txtPhone'),
                     'emergency_phone_1' => $aRequest->post('txtEmergencyPhone1'),
                     'emergency_phone_2' => $aRequest->post('txtEmergencyPhone2'),
-                    'medical_issue'      => $aRequest->post('txtMedicalIssue'),
+                    'medical_issue'     => $aRequest->post('txtMedicalIssue'),
                     'medical_info'      => $aRequest->post('txtMedicalInfo'),
                 ]
             );
@@ -163,7 +178,7 @@ class EditTravellerController extends Controller
             'txtBirthplace.required' => 'Je moet je geboorte plaats ingeven.',
             'txtNationality.required' => 'je moet je nationaliteit opgeven.',
             'txtAddress.required' => 'Je moet je adres ingeven.',
-            'txtCity.required' => 'Je moet je postcode ingeven.',
+            'Postcode.required' => 'Je moet je postcode ingeven.',
             'txtCountry.required' => 'Je moet je land ingeven',
 
             'txtEmail.required' => 'Vul je email adres in.',
@@ -175,3 +190,4 @@ class EditTravellerController extends Controller
         ];
     }
 }
+

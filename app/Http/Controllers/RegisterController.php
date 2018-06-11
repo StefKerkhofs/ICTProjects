@@ -284,26 +284,14 @@ class RegisterController extends Controller
             $sPassword = bcrypt($aData['txtWachtwoord']);
             echo $sPassword;
 
-            if ($aData['IsStudentOrDocent'] == "2") {
-                User::insert(
-                    [
-                        'name' => $aData['email'],
-                        'email' => $aData['email'],
-                        'password' => $sPassword,
-                        'function' => $sFunctie,
-                    ]
-                );
-            }
-            else{
-                User::insert(
-                    [
-                        'name' => $aData['txtNummer'],
-                        'email' => $aData['email'],
-                        'password' => $sPassword,
-                        'function' => $sFunctie,
-                    ]
-                );
-            }
+            User::insert(
+                [
+                    'name' => $aData['txtNummer'],
+                    'email' => $aData['email'],
+                    'password' => $sPassword,
+                    'function' => $sFunctie,
+                ]
+            );
 
             //Saving traveller
             $iUserID = User::where('email',$aData['email']) ->value('id');
@@ -326,8 +314,7 @@ class RegisterController extends Controller
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
                         'medical_info' => $aData['MedischeInfo'],
-                        'medical_issue' => $aData['MedischeAandoening'],
-                        'city' => 'zipId'
+                        'medical_issue' => $aData['MedischeAandoening']
                     ]
                 );
             }
@@ -350,8 +337,7 @@ class RegisterController extends Controller
                         'birthdate' => $aData['birthdate'],
                         'birthplace' => $aData['birthplace'],
                         'medical_info' => $aData['MedischeInfo'],
-                        'medical_issue' => $aData['MedischeAandoening'],
-                        'city' => 'zipId'
+                        'medical_issue' => $aData['MedischeAandoening']
                     ]
                 );
             }

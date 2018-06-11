@@ -85,6 +85,9 @@
             clear: both;
             padding: 19px;
         }
+        .container{
+            margin-bottom: 100px;
+        }
 
     </style>
     <script type="text/javascript">
@@ -135,7 +138,7 @@
                 <div class="button">
                     <a class="nav-link" href="/">Annuleren</a>
                 </div>
-                {{ Form::submit('volgende') }}
+                {{ Form::submit('Volgende') }}
             </div>
         {{ Form::close() }}
     </div>
